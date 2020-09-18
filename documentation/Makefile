@@ -4,22 +4,19 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
+TRANSITIONS   = $(sort $(patsubst $(SOURCEDIR)/transition/%/index.rst,%,$(wildcard $(SOURCEDIR)/transition/*/index.rst)))
 
-.PHONY: Makefile publish transition
+.PHONY: Makefile publish transition $(TRANSITIONS)
 
-ALLVERS:= $(dir $(wildcard $(SOURCEDIR)/transition/*/index.rst))
-ALLVERS:= $(subst ./transition/,,$(ALLVERS))
-ALLVERS:= $(subst /,,$(ALLVERS))
+transition: $(TRANSITIONS)
 
-transition:
-	for ver in $(ALLVERS) ; do \
-		$(SPHINXBUILD) -M html "$(SOURCEDIR)"/transition/$$ver/ "$(BUILDDIR)"/$$ver $(SPHINXOPTS) $(O) -c "$(SOURCEDIR)"  ;\
-	done
+$(TRANSITIONS):
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)"/transition/$@/ "$(BUILDDIR)"/$@ $(SPHINXOPTS) $(O) -c "$(SOURCEDIR)"
 
 publish: transition
 	rm -rf $(BUILDDIR)/final/
 	mkdir -p $(BUILDDIR)/final/
-	for ver in $(ALLVERS) ; do \
+	for ver in $(TRANSITIONS) ; do \
 		mkdir -p $(BUILDDIR)/final/$$ver ;\
 		cp -r $(BUILDDIR)/$$ver/html/* $(BUILDDIR)/final/$$ver/ ;\
 	done
