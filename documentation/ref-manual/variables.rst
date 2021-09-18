@@ -6132,6 +6132,13 @@ system and gives an overview of their function and contents.
       BitBake User Manual for additional information on tasks and
       dependencies.
 
+   :term:`RECIPE_NO_UPDATE_REASON`
+      If a recipe should not be replaced by a more recent upstream version,
+      putting the reason why in this variable in a recipe allows
+      ``devtool check-upgrade-status`` command to display it, as explained
+      in the ":ref:`ref-manual/devtool-reference:checking on the upgrade status of a recipe`"
+      section.
+
    :term:`REQUIRED_DISTRO_FEATURES`
       When inheriting the
       :ref:`features_check <ref-classes-features_check>`
@@ -8483,9 +8490,21 @@ system and gives an overview of their function and contents.
       install initscripts package them in the main package for the recipe,
       you rarely need to set this variable in individual recipes.
 
+   :term:`UPSTREAM_CHECK_COMMITS`
+      You can perform a per-recipe check for what the latest upstream
+      source code version is by calling ``devtool latest-version recipe``. If
+      the recipe source code is provided from Git repositories, but
+      releases are not identified by Git tags, set :term:`UPSTREAM_CHECK_COMMITS`
+      to ``1`` in the recipe, and the OpenEmbedded build system
+      will compare the latest commit with the one currently specified
+      by the recipe (:term:`SRCREV`).
+      ::
+
+         UPSTREAM_CHECK_COMMITS = "1"
+
    :term:`UPSTREAM_CHECK_GITTAGREGEX`
       You can perform a per-recipe check for what the latest upstream
-      source code version is by calling ``bitbake -c checkpkg`` recipe. If
+      source code version is by calling ``devtool latest-version recipe``. If
       the recipe source code is provided from Git repositories, the
       OpenEmbedded build system determines the latest upstream version by
       picking the latest tag from the list of all repository tags.
@@ -8508,7 +8527,7 @@ system and gives an overview of their function and contents.
 
    :term:`UPSTREAM_CHECK_URI`
       You can perform a per-recipe check for what the latest upstream
-      source code version is by calling ``bitbake -c checkpkg`` recipe. If
+      source code version is by calling ``devtool latest-version recipe``. If
       the source code is provided from tarballs, the latest version is
       determined by fetching the directory listing where the tarball is and
       attempting to find a later tarball. When this approach does not work,
@@ -8517,6 +8536,18 @@ system and gives an overview of their function and contents.
       ::
 
          UPSTREAM_CHECK_URI = "recipe_url"
+
+   :term:`UPSTREAM_VERSION_UNKNOWN`
+      You can perform a per-recipe check for what the latest upstream
+      source code version is by calling ``devtool latest-version recipe``.
+      If no combination of the :term:`UPSTREAM_CHECK_URI`, :term:`UPSTREAM_CHECK_REGEX`,
+      :term:`UPSTREAM_CHECK_GITTAGREGEX` and :term:`UPSTREAM_CHECK_COMMITS` variables in
+      the recipe allows to determine what the latest upstream version is,
+      you can set :term:`UPSTREAM_VERSION_UNKNOWN` to ``1`` in the recipe
+      to acknowledge that the check cannot be performed.
+      ::
+
+         UPSTREAM_VERSION_UNKNOWN = "1"
 
    :term:`USE_DEVFS`
       Determines if ``devtmpfs`` is used for ``/dev`` population. The

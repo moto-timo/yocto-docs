@@ -422,8 +422,9 @@ Before the OpenEmbedded build system can use your new layer, you need to
 enable it. To enable your layer, simply add your layer's path to the
 :term:`BBLAYERS` variable in your ``conf/bblayers.conf`` file, which is
 found in the :term:`Build Directory`.
-The following example shows how to enable a layer named
-``meta-mylayer``::
+The following example shows how to enable your new
+``meta-mylayer`` layer (note how your new layer exists outside of
+the official ``poky`` repository which you would have checked out earlier)::
 
    # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
    # changes incompatibly
@@ -434,7 +435,7 @@ The following example shows how to enable a layer named
        /home/user/poky/meta \
        /home/user/poky/meta-poky \
        /home/user/poky/meta-yocto-bsp \
-       /home/user/poky/meta-mylayer \
+       /home/user/mystuff/meta-mylayer \
        "
 
 BitBake parses each ``conf/layer.conf`` file from the top down as
@@ -553,6 +554,67 @@ The end result of this ``.bbappend`` file is that on a Raspberry Pi, where
 ``meta-raspberrypi/recipes-bsp/formfactor/formfactor/rpi/machconfig`` will be
 used during :ref:`ref-tasks-fetch` and the test for a non-zero file size in
 :ref:`ref-tasks-install` will return true, and the file will be installed.
+
+Installing Additional Files Using Your Layer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As another example, consider the main ``xserver-xf86-config`` recipe and a
+corresponding ``xserver-xf86-config`` append file both from the :term:`Source
+Directory`.  Here is the main ``xserver-xf86-config`` recipe, which is named
+``xserver-xf86-config_0.1.bb`` and located in the "meta" layer at
+``meta/recipes-graphics/xorg-xserver``::
+
+   SUMMARY = "X.Org X server configuration file"
+   HOMEPAGE = "http://www.x.org"
+   SECTION = "x11/base"
+   LICENSE = "MIT-X"
+   LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+   PR = "r33"
+
+   SRC_URI = "file://xorg.conf"
+
+   S = "${WORKDIR}"
+
+   CONFFILES:${PN} = "${sysconfdir}/X11/xorg.conf"
+
+   PACKAGE_ARCH = "${MACHINE_ARCH}"
+   ALLOW_EMPTY:${PN} = "1"
+
+   do_install () {
+	if test -s ${WORKDIR}/xorg.conf; then
+		install -d ${D}/${sysconfdir}/X11
+		install -m 0644 ${WORKDIR}/xorg.conf ${D}/${sysconfdir}/X11/
+	fi
+   }
+
+Following is the append file, which is named ``xserver-xf86-config_%.bbappend``
+and is from the Raspberry Pi BSP Layer named ``meta-raspberrypi``. The
+file is in the layer at ``recipes-graphics/xorg-xserver``::
+
+   FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+   SRC_URI:append:rpi = " \
+       file://xorg.conf.d/98-pitft.conf \
+       file://xorg.conf.d/99-calibration.conf \
+   "
+   do_install:append:rpi () {
+       PITFT="${@bb.utils.contains("MACHINE_FEATURES", "pitft", "1", "0", d)}"
+       if [ "${PITFT}" = "1" ]; then
+           install -d ${D}/${sysconfdir}/X11/xorg.conf.d/
+           install -m 0644 ${WORKDIR}/xorg.conf.d/98-pitft.conf ${D}/${sysconfdir}/X11/xorg.conf.d/
+           install -m 0644 ${WORKDIR}/xorg.conf.d/99-calibration.conf ${D}/${sysconfdir}/X11/xorg.conf.d/
+       fi
+   }
+
+   FILES:${PN}:append:rpi = " ${sysconfdir}/X11/xorg.conf.d/*"
+
+Building off of the previous example, we once again are setting the
+:term:`FILESEXTRAPATHS` variable.  In this case we are also using
+:term:`SRC_URI` to list additional source files to use when ``rpi`` is found in
+the list of :term:`OVERRIDES`.  The :ref:`ref-tasks-install` task will then perform a
+check for an additional :term:`MACHINE_FEATURES` that if set will cause these
+additional files to be installed.  These additional files are listed in
+:term:`FILES` so that they will be packaged.
 
 Prioritizing Your Layer
 -----------------------
@@ -5199,17 +5261,19 @@ command to return the available Wic images as follows::
 
    $ wic list images
      genericx86                    		Create an EFI disk image for genericx86*
-     beaglebone-yocto              		Create SD card image for Beaglebone
      edgerouter                    		Create SD card image for Edgerouter
-     qemux86-directdisk            		Create a QEMU machine 'pcbios' direct disk image
-     directdisk-gpt                		Create a 'pcbios' direct disk image
-     mkefidisk                     		Create an EFI disk image
-     directdisk                    		Create a 'pcbios' direct disk image
+     beaglebone-yocto              		Create SD card image for Beaglebone
+     qemux86-directdisk            		Create a qemu machine 'pcbios' direct disk image
      systemd-bootdisk              		Create an EFI disk image with systemd-boot
      mkhybridiso                   		Create a hybrid ISO image
+     mkefidisk                     		Create an EFI disk image
      sdimage-bootpart              		Create SD card image with a boot partition
      directdisk-multi-rootfs       		Create multi rootfs image using rootfs plugin
+     directdisk                    		Create a 'pcbios' direct disk image
      directdisk-bootloader-config  		Create a 'pcbios' direct disk image with custom bootloader config
+     qemuriscv                     		Create qcow2 image for RISC-V QEMU machines
+     directdisk-gpt                		Create a 'pcbios' direct disk image
+     efi-bootdisk
 
 Once you know the list of available
 Wic images, you can use ``help`` with the command to get help on a
