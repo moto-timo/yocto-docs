@@ -7,6 +7,12 @@ Project components. In particular see the README under documentation/.
 An online version of the documentation can be found at:
     https://docs.yoctoproject.org
 
+Contributing
+============
+
+Read the documentation/standards.md file which specifies some rules
+to follow when contributing to the documentation.
+
 Where to Send Patches
 =====================
 
