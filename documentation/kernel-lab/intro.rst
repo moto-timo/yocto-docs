@@ -72,8 +72,94 @@ information and background on the topics covered in this lab.
    results of any previous lab, so feel free to jump right to any lab
    that is of interest to you.
 
+
 Build System Basic Setup
 ========================
 
+This hands-on lab was designed to be completed on a computer running
+the Ubuntu 20.04 “Focal Fossa” operating system. While this specific
+release of Ubuntu is recommended to avoid unforeseen incompatibilities,
+you can generally use a recent release of Debian, Ubuntu, Fedora, or
+OpenSUSE to complete this hands-on lab. This hands-on lab was developed
+and therefore also tested on a Debian 11 system.
+
+Before starting these exercises, please ensure that your system has
+the necessary software prerequisites installed as described in
+":ref:`brief-yoctoprojectqs/index:build host packages`"
+
+This hands-on lab assumes you have a network connection and have a
+working version of `git` installed.  You'll need a good network
+connection for the initial setup and download of the source packages
+built by the recipes. `git` is required for creating and testing kernel
+patches for the git-based kernel recipes used in lab4, but is not
+required by the other labs.
+
+
 Preparing Your Build Environment
 ================================
+
+Please log in to your system as a normal user and once logged in,
+launch a terminal by simultaneously pressing the following keys:
+
+	:kbd:`Ctrl + Alt + T`
+
+Alternatively, you can open a terminal by clicking the 'Dash' icon and
+typing 'terminal' in the entry field.  When the 'Terminal' icon
+appears, click on it to open a terminal.
+
+Throughout the lab you may find it useful to work with more than one
+tab in your terminal. To create additional tabs:
+
+	:guilabel:`File ‣ Open Tab`
+
+In order to run the labs, you will first need to checkout the Poky
+release 3.4 'honister' sources into your home directory. From your
+terminal shell, type:
+
+.. code-block:: shell
+
+   $ git clone git://git.yoctoproject.org/poky -b honister-3.4
+
+Once you've gotten the sources, you should :command:`cd` into the
+directory that was created:
+
+.. code-block:: shell
+
+   $ cd poky
+
+Listing the files in that directory should show the following files
+and subdirectories:
+
+.. code-block:: shell
+
+   $ ls
+   bitbake               Makefile        oe-init-build-env
+   contrib               MEMORIAM        README.hardware.md
+   documentation         meta            README.md
+   LICENSE               meta-poky       README.OE-Core.md
+   LICENSE.GPL-2.0-only  meta-selftest   README.poky.md
+   LICENSE.MIT           meta-skeleton   README.qemu.md
+   MAINTAINERS.md        meta-yocto-bsp  scripts
+
+You also need to get and unpack the instructional layers for this lab:
+
+.. code-block:: shell
+
+   $ wget https://www.yoctoproject.org/sites/yoctoproject.org/files/kernel-lab-3.4-layers.tar.bz2
+   $ bunzip2 -c kernel-lab-3.4-layers.tar.bz2 | tar xvf -
+
+Listing the files in the current directory should now show the
+following files and subdirectories:
+
+.. code-block:: shell
+
+   $ ls
+   bitbake                        MEMORIAM           meta-yocto-bsp
+   contrib                        meta               oe-init-build-env
+   documentation                  meta-lab1-qemux86  README.hardware.md
+   kernel-lab-3.4-layers.tar.bz2  meta-lab2-qemux86  README.md
+   LICENSE                        meta-lab3-qemux86  README.OE-Core.md
+   LICENSE.GPL-2.0-only           meta-lab4-qemux86  README.poky.md
+   LICENSE.MIT                    meta-poky          README.qemu.md
+   MAINTAINERS.md                 meta-selftest      scripts
+   Makefile                       meta-skeleton
