@@ -2439,8 +2439,23 @@ is installed with the :ref:`pip_install_wheel <ref-classes-pip_install_wheel>` c
 =======================
 
 The ``setuptools3`` class supports Python version 3.x extensions that
-use build systems based on ``setuptools``. If your recipe uses these
-build systems, the recipe needs to inherit the ``setuptools3`` class.
+use build systems based on ``setuptools`` (e.g. only have a ``setup.py`` and
+have not migrated to the official ``pyproject.toml`` format). If your recipe
+uses these build systems, the recipe needs to inherit the ``setuptools3`` class.
+
+   .. note::
+
+      ``setuptools3`` ``do_compile`` now calls `setup.py bdist_wheel` to
+      build the ``wheel`` binary package format
+      (See `PEP-427 <https://www.python.org/dev/peps/pep-0427/>`__).
+      A consequence of this is that legacy software still using deprecated
+      `distutils` from the Python standard library cannot be packaged as
+      ``wheels`. A common solution is the replace
+      ``from distutils.core import setup`` with ``from setuptools import setup``.
+
+     ``setuptools3`` ``do_install`` now calls ``pip install`` to install
+     the ``wheel`` binary package. In current versions of ``setuptools`` the
+     legacy ``setup.py install`` method is deprecated.
 
 .. _ref-classes-setuptools3-base:
 
