@@ -38,6 +38,13 @@ Welcome to the Yocto Project Documentation
 
 .. toctree::
    :maxdepth: 1
+   :caption: Hands-on Manuals
+   :hidden:
+
+   Hands-on Kernel Lab Manual <kernel-lab/index>
+
+.. toctree::
+   :maxdepth: 1
    :caption: Releases manual
    :hidden:
 
