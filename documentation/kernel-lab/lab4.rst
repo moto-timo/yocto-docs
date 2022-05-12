@@ -27,7 +27,7 @@ Open :file:`local.conf`:
    $ vi conf/local.conf
 
 Add the following line just above the line that says
-``MACHINE ??= “qemux86”``:
+``MACHINE ??= “qemux86_64”``:
 
 .. code-block:: shell
 
@@ -44,7 +44,7 @@ Now open :file:`bblayers.conf`:
 and add the 'meta-lab4-qemux86' layer to the :term:`BBLAYERS` variable.
 The final result should look like this, assuming your account is called
 'myacct' (simply copy the line containing 'meta-yocto-bsp' and replace
-'meta-yocto-bsp' with 'meta-lab4-qemux86'):
+'poky/meta-yocto-bsp' with 'kernel-lab-layers/meta-lab4-qemux86'):
 
 .. code-block:: shell
 
@@ -52,7 +52,7 @@ The final result should look like this, assuming your account is called
      /home/myacct/poky/meta \
      /home/myacct/poky/meta-poky \
      /home/myacct/poky/meta-yocto-bsp \
-     /home/myacct/poky/meta-lab4-qemux86 \
+     /home/myacct/kernel-lab-layers/meta-lab4-qemux86 \
      "
 
 You should not need to make any further changes. Save your changes and
@@ -65,7 +65,7 @@ This layer differs from meta-lab3-qemux86 in that instead of
 :file:`yocto-testmod` patch in the Linux kernel recipe itself, you'll
 add an external kernel module called :file:`hello-mod`. It also
 contains a change to the :term:`SRC_URI` in the
-:file:`linux-yocto-custom.bb` that points it to a local kernel repo,
+:file:`linux-yocto-custom_git.bb` that points it to a local kernel repo,
 which you'll need to modify, and a :term:`KBRANCH` variable that will
 point to a 'working branch' in the local repo, which we'll describe in
 more detail later. This layer contains the following files for the
@@ -83,17 +83,17 @@ kernel:
      linux /
      linux-yocto-custom /
       defconfig
-    linux-yocto-custom.bb
+    linux-yocto-custom_git.bb
 
 Open the kernel recipe:
 
 .. code-block:: shell
 
-   $ vi ~/poky/meta-lab4-qemux86/recipes-kernel/linux/linux-yocto-custom.bb
+   $ vi ~/kernel-lab-layers/meta-lab4-qemux86/recipes-kernel/linux/linux-yocto-custom.bb
 
 Note that as in lab3, this is a complete recipe rather an extension as
 in lab2. In fact it was derived from the :file:`linux-yocto-custom.bb`
-recipe found in :file:`honister/meta-skeleton/recipes-kernel/linux`.
+recipe found in :file:`poky/meta-skeleton/recipes-kernel/linux`.
 Notice that it uses a :file:`defconfig` file but doesn't add any
 additional :file:`.cfg` file to the :term:`SRC_URI` as in lab3.
 
@@ -127,7 +127,7 @@ and examine it:
 
 .. code-block:: shell
 
-   $ vi ~/poky/meta-lab4-qemux86/recipes-kernel/hello-mod/hello-mod_0.1.bb
+   $ vi ~/kernel-lab-layers/meta-lab4-qemux86/recipes-kernel/hello-mod/hello-mod_0.1.bb
 
 The recipe itself is very simple – it names the files that make up the
 module in the :term:`SRC_URI` and inherits the :file:`module` bbclass,
@@ -138,7 +138,7 @@ you can also examine.
 
 Because in this lab you're building the kernel from a local repository,
 you first need to create a local clone of the kernel you want to use.
-To do this, :command:`cd` into the :file:`honister` directory and
+To do this, :command:`cd` into the :file:`poky` directory and
 create a local clone of the ``linux-stable`` kernel:
 
 .. code-block:: shell
@@ -151,18 +151,18 @@ You should see something like the following as output:
 .. code-block:: shell
 
    Cloning into 'linux-stable-work.git'...
-   remote: Enumerating objects: 4150, done.
-   remote: Counting objects: 100% (4150/4150), done.
-   remote: Compressing objects: 100% (2048/2048), done.
-   remote: Total 9511447(delta 2963), reused 2792 (delta 2102), pack-reused 9507297
-   Receiving objects: 100% (9511447/9511447), 3.49 GiB | 1.89 MiB/s, done.
-   Resolving deltas: 100% (7616872/7616872), done.
-   Updating files: 100% (72212/72212), done.
+   remote: Enumerating objects: 74, done.
+   remote: Counting objects: 100% (74/74), done.
+   remote: Compressing objects: 100% (14/14), done.
+   remote: Total 10370198 (delta 64), reused 63 (delta 60), pack-reused 10370124
+   Receiving objects: 100% (10370198/10370198), 4.01 GiB | 41.67 MiB/s, done.
+   Resolving deltas: 100% (8276124/8276124), done.
+   Updating files: 100% (75874/75874), done.
 
 .. note::
    Cloning the kernel can take a long time. You can speed up the clone
    if you already have a local clone that you can base the new one off
-   of – see 'git-clone –reference' for details).
+   of (see `git-clone -–reference <https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---reference-if-ableltrepositorygt>`_ for details).
 
 Now :command:`cd` into the cloned kernel and check out a branch named
 'work-branch':
@@ -170,21 +170,21 @@ Now :command:`cd` into the cloned kernel and check out a branch named
 .. code-block:: shell
 
    $ cd ~/poky/linux-stable-work.git
-   $ git checkout -b work-branch remotes/origin/linux-5.10.y
+   $ git checkout -b work-branch remotes/origin/linux-&KERNEL_LAB_MAINLINE_VERSION;.y
 
 You should see something like the following as output:
 
 .. code-block:: shell
 
-   Checking out files: 100% (11240/11240), done.
-   Branch work-branch set up to track remote branch linux-5.10.y from origin.
+   Updating files: 100% (13278/13278), done.
+   Branch 'work-branch' set up to track remote branch 'linux-5.17.y' from 'origin'.
    Switched to a new branch 'work-branch'
 
 Edit the :file:`linux-yocto-custom` kernel recipe:
 
 .. code-block:: shell
 
-   $ vi ~/poky/meta-lab4-qemux86/recipes-kernel/linux/linux-yocto-custom.bb
+   $ vi ~/kernel-lab-layers/meta-lab4-qemux86/recipes-kernel/linux/linux-yocto-custom_git.bb
 
 and change the :term:`SRC_URI` to point to the local clone you just
 created. If you've done it as instructed, you should only need to
@@ -217,7 +217,7 @@ directory):
 
    $ cd ~/poky/build
    $ bitbake core-image-minimal
-   $ runqemu tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
+   $ runqemu nographic tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
 
 Add the External Kernel Module
 ==============================
@@ -232,7 +232,7 @@ To do that, first open the machine configuration file:
 
 .. code-block:: shell
 
-   $ vi ~/poky/meta-lab4-qemux86/conf/machine/lab4-qemux86.conf
+   $ vi ~/kernel-lab-layers/meta-lab4-qemux86/conf/machine/lab4-qemux86.conf
 
 and uncomment the following line at the end of the file:
 
@@ -263,11 +263,11 @@ configuration has changed and will build and add the new module:
 .. code-block:: shell
 
    $ bitbake core-image-minimal
-   $ runqemu tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
+   $ runqemu nographic tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
 
 Logging into the machine and looking around, you can see that the new
 module was indeed added to the image, in this case the
-:file:`/lib/modules/5.10.40-custom/extra` directory, which you see
+:file:`/lib/modules/&KERNEL_LAB_MAINLINE_FULL_VERSION;-custom/extra` directory, which you see
 contains your :file:`hello.ko` module. You can load it and see the
 results using :command:`modprobe hello`:
 
@@ -312,15 +312,15 @@ quickly locate it):
        return 0;
    }
 
-Add a simple ``printk()`` to that function, so that when you
+Add a simple ``pr_info()`` to that function, so that when you
 :command:`cat /proc/filesystems` in the booted image you'll see a
 message in the kernel logs.
 
 .. code-block:: c
 
-   printk("Kilroy was here!\n");
+   pr_info("Kilroy was here!\n");
 
-After adding the ``printk()``, ``filesystems_proc_show(...)`` should
+After adding the ``pr_info()``, ``filesystems_proc_show(...)`` should
 look like this:
 
 .. code-block:: c
@@ -339,7 +339,7 @@ look like this:
        }
        read_unlock(&file_systems_lock);
 
-       printk("Kilroy was here!\n");
+       pr_info("Kilroy was here!\n");
 
        return 0;
    }
@@ -363,7 +363,7 @@ You should see something like the following as output:
            }
            read_unlock(&file_systems_lock);
    +
-   +       printk("Kilroy was here!\n");
+   +       pr_info("Kilroy was here!\n");
    +
            return 0;
    }
@@ -417,12 +417,12 @@ faster than a normal kernel fetch over the network):
    $ cd ~/poky/build
    $ bitbake -c cleanall virtual/kernel
    $ bitbake -c deploy virtual/kernel
-   $ runqemu tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
+   $ runqemu nographic tmp/deploy/images/lab4-qemux86/bzImage-lab4-qemux86.bin tmp/deploy/images/lab4-qemux86/core-image-minimal-lab4-qemux86.ext4
 
 The boot process output shows that :file:`/proc/filesystems` is read by
 other processes, which produces multiple messages in the boot output.
 You can however show the new code in action by :command:`cat`'ing that
-file yourself and seeing that the number of ``printk`` lines increases
+file yourself and seeing that the number of ``pr_info`` lines increases
 in the kernel log:
 
 .. image:: figures/lab4-qemu2.png
@@ -444,13 +444,13 @@ following steps can be used to use a local version of the
 .. code-block:: shell
 
    $ cd ~/poky
-   $ git clone -b v5.10 git://git.yoctoproject.org/linux-yocto linux-yocto-5.10.git
+   $ git clone -b v&KERNEL_LAB_LTS_VERSION; git://git.yoctoproject.org/linux-yocto linux-yocto-&KERNEL_LAB_LTS_VERSION;.git
 
 You should see something like the following as output:
 
 .. code-block:: shell
 
-   Cloning into bare repository 'linux-yocto-5.10.git'...
+   Cloning into bare repository 'linux-yocto-&KERNEL_LAB_LTS_VERSION;.git'...
    remote: Enumerating objects: 9489044
    remote: Counting objects: 100% (9489044/9489044), done.
    remote: Compressing objects: 100% (1430104/1430104), done.
@@ -464,16 +464,16 @@ named 'standard/base':
 
 .. code-block:: shell
 
-   $ cd linux-yocto-5.10.git/
-   $ git checkout v5.10/standard/base
+   $ cd linux-yocto-&KERNEL_LAB_LTS_VERSION;.git/
+   $ git checkout v&KERNEL_LAB_LTS_VERSION;/standard/base
 
 You should see something like the following as output:
 
 .. code-block:: shell
 
    Previous HEAD position was 2c85ebc57b3e... Linux 5.10
-   Branch v5.10/standard/base set up to track remote branch v5.10/standard/base from origin.
-   Switched to a new branch 'v5.10/standard/base'
+   Branch v&KERNEL_LAB_LTS_VERSION;/standard/base set up to track remote branch v&KERNEL_LAB_LTS_VERSION;/standard/base from origin.
+   Switched to a new branch 'v&KERNEL_LAB_LTS_VERSION;/standard/base'
 
 Switch to the lab2 layer
 ========================
@@ -490,7 +490,7 @@ Open :file:`local.conf` (don't forget to :command:`cd` back into the
    $ vi conf/local.conf
 
 Add the following line just above the line that says
-``MACHINE ??= “qemux86”``:
+``MACHINE ??= “qemux86_64”``:
 
 .. code-block:: shell
 
@@ -505,7 +505,8 @@ Now open :file:`bblayers.conf`:
    $ vi conf/bblayers.conf
 
 and add the 'meta-lab2-qemux86' layer to the :term:`BBLAYERS` variable.
-The final result should look like this, assuming your account is called 'myacct' (simply copy the line containing 'meta-yocto-bsp' and replace
+The final result should look like this, assuming your account is called
+'myacct' (simply copy the line containing 'meta-yocto-bsp' and replace
 'meta-yocto-bsp' with 'meta-lab2-qemux86'):
 
 .. code-block:: shell
@@ -514,7 +515,7 @@ The final result should look like this, assuming your account is called 'myacct'
      /home/myacct/poky/meta \
      /home/myacct/poky/meta-poky \
      /home/myacct/poky/meta-yocto-bsp \
-     /home/myacct/poky/meta-lab2-qemux86 \
+     /home/myacct/kernal-lab-layers/meta-lab2-qemux86 \
      "
 
 You should not need to make any further changes. Save your changes and
@@ -527,7 +528,7 @@ Edit the :file:`linux-yocto` kernel recipe:
 
 .. code-block:: shell
 
-   $ vi ~/poky/meta-lab2-qemux86/recipes-kernel/linux/linux-yocto_5.10.bbappend
+   $ vi ~/kernel-lab-layers/meta-lab2-qemux86/recipes-kernel/linux/linux-yocto_5.10.bbappend
 
 You'll need to enable the new :term:`SRC_URI` to point to the local
 ``linux-yocto`` clone you just created. If you've done it as
@@ -536,8 +537,8 @@ home directory and uncomment the following lines:
 
 .. code-block:: shell
 
-   SRC_URI = "git:///home/myacct/poky/linux-yocto-5.10.git;name=machine;branch=${KBRANCH}; \
-              git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.10;destsuffix=${KMETA}"
+   SRC_URI = "git:///home/myacct/poky/linux-yocto-&KERNEL_LAB_LTS_VERSION;.git;name=machine;branch=${KBRANCH}; \
+              git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-&KERNEL_LAB_LTS_VERSION;;destsuffix=${KMETA}"
    KERNEL_VERSION_SANITY_SKIP="1"
 
 Also, comment out the current :term:`SRCREV` lines and uncomment the
@@ -568,8 +569,8 @@ such:
 .. code-block:: shell
 
    PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto"
-   PREFERRED_VERSION_linux-yocto ?= "5.10%"
-   #PREFERRED_VERSION_linux-yocto ?= "5.4%"
+   PREFERRED_VERSION_linux-yocto ?= "&KERNEL_LAB_STABLE_VERSION;%"
+   #PREFERRED_VERSION_linux-yocto ?= "&KERNEL_LAB_LTS_VERSION;%"
 
 Rebuild the Kernel
 ==================
@@ -601,11 +602,11 @@ using these steps:
 
 .. code-block:: shell
 
-   $ cd ~/poky/linux-yocto-5.10.git
+   $ cd ~/poky/linux-yocto-&KERNEL_LAB_STABLE_VERSION;.git
    $ vi fs/filesystems.c
    $ git commit -a -m "fs/filesystems.c: add a message that will be logged to the kernel log when you 'cat /proc/filesystems'."
 
-After adding the ``printk()``, ``filesystems_proc_show(...)`` should
+After adding the ``pr_info()``, ``filesystems_proc_show(...)`` should
 look like this:
 
 .. code-block:: c
@@ -624,7 +625,7 @@ look like this:
        }
        read_unlock(&file_systems_lock);
 
-       printk("Kilroy was here!\n");
+       pr_info("Kilroy was here!\n");
 
        return 0;
    }
@@ -634,7 +635,7 @@ current branch via :command:`git log`:
 
 .. code-block:: shell
 
-   $ git log v5.10/standard/base
+   $ git log v&KERNEL_LAB_STABLE_VERSION;/standard/base
 
 You should see something like the following as output:
 
