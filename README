@@ -10,23 +10,22 @@ An online version of the documentation can be found at:
 Contributing
 ============
 
-See https://www.openembedded.org/wiki/How_to_submit_a_patch_to_OpenEmbedded
-for generic guidelines for configuring Git and preparing patches.
+Please refer to our contributor guide here: https://docs.yoctoproject.org/contributor-guide/
+for full details on how to submit changes.
 
-Read the documentation/README and documentation/standards.md files
-for rules to follow when contributing to the documentation.
+As a quick guide, patches should be sent to docs@lists.yoctoproject.org
+The git command to do that would be:
 
-Where to Send Patches
-=====================
-
-When sending single patches, please using something like:
-'git send-email -1 --to docs@lists.yoctoproject.org
+     git send-email -M -1 --to docs@lists.yoctoproject.org
 
 The 'To' header can be set as default for this repository:
 
-$ git config sendemail.to docs@lists.yoctoproject.org
+     git config sendemail.to docs@lists.yoctoproject.org
 
 Now you can just do 'git send-email origin/master..' to send all local patches.
+
+Read the documentation/README and documentation/standards.md files
+for rules to follow when contributing to the documentation.
 
 Git repository: https://git.yoctoproject.org/yocto-docs
 Mailing list: docs@lists.yoctoproject.org
