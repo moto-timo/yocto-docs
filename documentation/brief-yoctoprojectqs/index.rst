@@ -87,75 +87,112 @@ distribution:
    see the :ref:`ref-manual/system-requirements:required packages for the build host`
    section in the Yocto Project Reference Manual.
 
-Use Git to Clone Poky
-=====================
+Use Git to Clone bitbake-setup
+==============================
 
 Once you complete the setup instructions for your machine, you need to
-get a copy of the Poky repository on your build host. Use the following
-commands to clone the Poky repository.
+get a copy of the bitbake-setup tool to setup the Poky reference
+distribution on your build host. Use the following commands to clone
+the bitbake repository.
 
 .. code-block:: shell
 
-   $ git clone git://git.yoctoproject.org/poky
-   Cloning into 'poky'...
-   remote: Counting
-   objects: 432160, done. remote: Compressing objects: 100%
-   (102056/102056), done. remote: Total 432160 (delta 323116), reused
-   432037 (delta 323000) Receiving objects: 100% (432160/432160), 153.81 MiB | 8.54 MiB/s, done.
-   Resolving deltas: 100% (323116/323116), done.
-   Checking connectivity... done.
+   $ git clone git://git.openembedded.org/bitbake bitbake-setup
+   Cloning into 'bitbake-setup'...
+   remote: Enumerating objects: 68454, done.
+   remote: Counting objects: 100% (49/49), done.
+   remote: Compressing objects: 100% (44/44), done.
+   remote: Total 68454 (delta 31), reused 5 (delta 5), pack-reused 68405 (from 1)
+   Receiving objects: 100% (68454/68454), 14.17 MiB | 10.56 MiB/s, done.
+   Resolving deltas: 100% (51776/51776), done.
 
-Go to :yocto_wiki:`Releases wiki page </Releases>`, and choose a release
-codename (such as ``&DISTRO_NAME_NO_CAP;``), corresponding to either the
-latest stable release or a Long Term Support release.
-
-Then move to the ``poky`` directory and take a look at existing branches:
+Setup a build environment with the following command:
 
 .. code-block:: shell
 
-   $ cd poky
-   $ git branch -a
-   .
-   .
-   .
-   remotes/origin/HEAD -> origin/master
-   remotes/origin/dunfell
-   remotes/origin/dunfell-next
-   .
-   .
-   .
-   remotes/origin/gatesgarth
-   remotes/origin/gatesgarth-next
-   .
-   .
-   .
-   remotes/origin/master
-   remotes/origin/master-next
-   .
-   .
-   .
+   $ ./bitbake-setup/bin/bitbake-setup init
 
-
-For this example, check out the ``&DISTRO_NAME_NO_CAP;`` branch based on the
-``&DISTRO_NAME;`` release:
+By default, this will setup in $HOME/bitbake-builds. If you prefer to
+setup your builds in a different directory, for example the current
+directory, you can instead use the ``--top-dir`` argument:
 
 .. code-block:: shell
 
-   $ git checkout -t origin/&DISTRO_NAME_NO_CAP; -b my-&DISTRO_NAME_NO_CAP;
-   Branch 'my-&DISTRO_NAME_NO_CAP;' set up to track remote branch '&DISTRO_NAME_NO_CAP;' from 'origin'.
-   Switched to a new branch 'my-&DISTRO_NAME_NO_CAP;'
+  $ ./bitbake-setup/bin/bitbake-setup init --top-dir $PWD
 
-The previous Git checkout command creates a local branch named
-``my-&DISTRO_NAME_NO_CAP;``. The files available to you in that branch
-exactly match the repository's files in the ``&DISTRO_NAME_NO_CAP;``
-release branch.
+`bitbake-setup init` is an interactive program by default and will ask
+you to make some decisions. Depending on your answers, the choices may
+differ from the examples below.
 
-Note that you can regularly type the following command in the same directory
-to keep your local files in sync with the release branch:
+#. Choose a configuration (for example, ``yocto-master-options``):
+
+   .. code-block:: shell
+
+      Available configurations:
+      0. yocto-master-nested-configs	(future) Official Yocto configurations: poky, poky-altcfg, poky-tiny, for qemux86-64 and arm64 (defined with nested configurations)
+      1. yocto-master-options	(future) Official Yocto configurations: poky, poky-altcfg, poky-tiny, for qemux86-64, riscv64 and arm64 (defined with options)
+
+      Please select one of the above configurations by its number:
+      1
+
+#. Choose a target machine (for example, ``qemux86-64``):
+
+   .. code-block:: shell
+
+      Selecting the only available bitbake configuration poky
+      Available target machines:
+      0. machine/qemux86-64
+      1. machine/qemuarm64
+      2. machine/qemuriscv64
+      Please select one of the above options by its number:
+      0
+
+#. Choose a distribution (for example, ``poky``):
+
+   .. code-block:: shell
+
+      Available distributions:
+      0. distro/poky
+      1. distro/poky-altcfg
+      2. distro/poky-tiny
+      Please select one of the above options by its number:
+      0
+      Run 'bitbake-setup yocto-master-options poky distro/poky machine/qemux86-64' to select this configuration non-interactively.
+      Initializing a build in /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64
+      Fetching layer/tool repository bitbake into /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/layers/bitbake
+      Fetching layer/tool repository openembedded-core into /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/layers/openembedded-core
+      Fetching layer/tool repository meta-yocto into /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/layers/meta-yocto
+      Fetching layer/tool repository yocto-docs into /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/layers/yocto-docs
+      ==============================
+      Setting up bitbake configuration in /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build
+      This bitbake configuration provides: Poky reference distro build
+      Usage instructions and additional information are in /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/README
+
+If you prefer to run non-interactively, you could use a command
+like the following:
 
 .. code-block:: shell
 
-   $ git pull
+   $ bitbake-setup yocto-master-options poky distro/poky machine/qemux86-64
+
+Among other things, the script creates the :term:`Build Directory`, which is
+``build`` in this case and is located in the "top-dir" directory.  The script
+also clones the layers needed to build the Poky reference distribution, in the
+``layers`` subdirectory. After the script runs, your current working directory
+is set to the :term:`Build Directory`. Later, when the build completes, the
+:term:`Build Directory` contains all the files created during the build.
+
+
+Information about the build environment can be found in ``/path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/README`` which should look something like the following:
+
+.. code-block:: shell
+
+   Poky reference distro build
+
+   Additional information is in /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/conf/conf-summary.txt and /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/conf/conf-notes.txt
+
+   Source the environment using '. /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/init-build-env' to run builds from the command line.
+   The bitbake configuration files (local.conf, bblayers.conf and more) can be found in /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/conf
 
 For more options and information about accessing Yocto Project related
 repositories, see the
@@ -182,61 +219,47 @@ an entire Linux distribution, including the toolchain, from source.
       ":yocto_wiki:`Working Behind a Network Proxy </Working_Behind_a_Network_Proxy>`"
       page of the Yocto Project Wiki.
 
-#. **Initialize the Build Environment:** From within the ``poky``
-   directory, run the :ref:`ref-manual/structure:``oe-init-build-env```
-   environment
-   setup script to define Yocto Project's build environment on your
-   build host.
+#. **Initialize the Build Environment:**
+   Run the ``init-build-env`` environment setup script within the build directory
+   to define Yocto Project's build environment on your build host.
 
    .. code-block:: shell
 
-      $ cd poky
-      $ source oe-init-build-env
-      You had no conf/local.conf file. This configuration file has therefore been
-      created for you with some default values. You may wish to edit it to, for
-      example, select a different MACHINE (target hardware). See conf/local.conf
-      for more information as common configuration options are commented.
+      $ source /path/to/top-dir/yocto-master-options-poky-distro_poky-machine_qemux86-64/build/init-build-env
+      Poky reference distro build
 
-      You had no conf/bblayers.conf file. This configuration file has therefore
-      been created for you with some default values. To add additional metadata
-      layers into your configuration please add entries to conf/bblayers.conf.
+#. **Examine Your Auto Configuration File:** When you set up the build
+   environment, an auto configuration file named ``auto.conf`` becomes
+   available in aa ``conf`` subdirectory of the :term:`Build Directory`. For this
+   example, the defaults are set to include three ``OE_FRAGMENTS``:
+   ``core/yocto/sstate-mirror-cdn``, ``machine/qemux86-64`` and ``distro/poky``.
+   These set up the environment similar to what was previously in the local
+   configuration file named ``local.conf`` which is now largely empty.
+   For more information on fragments, see :ref:`bitbake-user-manual/bitbake-user-manual-metadata:\`\`addfragments\`\` directive` in the Bitbake User Manual.
 
-      The Yocto Project has extensive documentation about OE including a reference
-      manual which can be found at:
-          https://docs.yoctoproject.org
+   ``core/yocto/sstate-mirror-cdn`` sets up :term:`BB_HASHSERVE_UPSTREAM` and
+   :term:`SSTATE_MIRRORS`. The definition can be found in
+   ``../layers/openembedded-core/meta/conf/fragments/yocto/sstate-mirror-cdn.conf``.
 
-      For more information about OpenEmbedded see their website:
-          https://www.openembedded.org/
+   .. code-block:: shell
 
-      ### Shell environment set up for builds. ###
+      BB_CONF_FRAGMENT_SUMMARY = "Use prebuilt sstate artifacts for standard Yocto build configurations."
+      BB_CONF_FRAGMENT_DESCRIPTION = "The Yocto Project has prebuilt artefacts available for standard build configurations. \
+      This fragment enables their use. This will mean the build will query the \
+      the network to check for artefacts at the start of builds, which does slow it down \
+      initially but it will then speed up the builds by not having to build things if they are \
+      present in the cache. It assumes you can download something faster than you can build it \
+      which will depend on your network. \
+      Note: For this to work you also need hash-equivalence passthrough to the matching server \
+      "
 
-      You can now run 'bitbake <target>'
-
-      Common targets are:
-          core-image-minimal
-          core-image-full-cmdline
-          core-image-sato
-          core-image-weston
-          meta-toolchain
-          meta-ide-support
-
-      You can also run generated QEMU images with a command like 'runqemu qemux86-64'
-
-      Other commonly useful commands are:
-       - 'devtool' and 'recipetool' handle common recipe tasks
-       - 'bitbake-layers' handles common layer tasks
-       - 'oe-pkgdata-util' handles common target package tasks
-
-   Among other things, the script creates the :term:`Build Directory`, which is
-   ``build`` in this case and is located in the :term:`Source Directory`.  After
-   the script runs, your current working directory is set to the
-   :term:`Build Directory`. Later, when the build completes, the
-   :term:`Build Directory` contains all the files created during the build.
+      BB_HASHSERVE_UPSTREAM = 'wss://hashserv.yoctoproject.org/ws'
+      SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
 
 #. **Examine Your Local Configuration File:** When you set up the build
    environment, a local configuration file named ``local.conf`` becomes
    available in a ``conf`` subdirectory of the :term:`Build Directory`. For this
-   example, the defaults are set to build for a ``qemux86`` target,
+   example, the defaults are set to build for a ``qemux86-64`` target,
    which is suitable for emulation. The package manager used is set to
    the RPM package manager.
 
@@ -249,13 +272,11 @@ an entire Linux distribution, including the toolchain, from source.
       This is relevant only when your network and the server that you use
       can download these artifacts faster than you would be able to build them.
 
-      To use such mirrors, uncomment the below lines in your ``conf/local.conf``
-      file in the :term:`Build Directory`::
+      To use such mirrors, ``bitbake-setup`` includes the following in your
+	  ``conf/auto.conf`` file (or you can add it to ``conf/local.conf``) in
+	  the :term:`Build Directory`::
 
-         BB_HASHSERVE_UPSTREAM = "wss://hashserv.yoctoproject.org/ws"
-         SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
-         BB_HASHSERVE = "auto"
-         BB_SIGNATURE_HANDLER = "OEEquivHash"
+            OE_FRAGMENTS += "core/yocto/sstate-mirror-cdn"
 
       The hash equivalence server needs the websockets python module version 9.1
       or later. Debian GNU/Linux 12 (Bookworm) and later, Fedora, CentOS Stream
