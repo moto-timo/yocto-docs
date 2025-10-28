@@ -24,19 +24,12 @@ users can read in standardized format.
 :term:`SBOM` information is also critical to performing vulnerability exposure
 assessments, as all the components used in the Software Supply Chain are listed.
 
-The OpenEmbedded build system doesn't generate such information by default,
-though the :term:`Poky` reference distribution has it enabled out of the box.
+The OpenEmbedded build system generates such information by default (by
+inheriting the :ref:`ref-classes-create-spdx` class in :term:`INHERIT_DISTRO`).
 
-To enable it, inherit the :ref:`ref-classes-create-spdx` class from a
-configuration file::
+If needed, it can be disabled from a :term:`configuration file`::
 
-   INHERIT += "create-spdx"
-
-In the :term:`Poky` reference distribution, :term:`SPDX` generation does
-consume some build time resources and thus if needed it can be disabled from a
-:term:`configuration file`::
-
-   INHERIT:remove = "create-spdx"
+   INHERIT_DISTRO:remove = "create-spdx"
 
 Upon building an image, you will then get:
 
