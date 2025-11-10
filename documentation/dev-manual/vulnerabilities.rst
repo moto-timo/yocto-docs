@@ -335,3 +335,202 @@ When analyzing CVEs, it is recommended to:
 -  follow public `open source security mailing lists <https://oss-security.openwall.org/wiki/mailing-lists>`__ for
    discussions and advance notifications of CVE bugs and software releases with fixes.
 
+Linux kernel vulnerabilities
+============================
+
+Since the Linux kernel became a CVE Numbering Authority (CNA), the number of
+associated CVEs has increased dramatically. Security teams must address these
+CVEs to meet regulatory and customer requirements. Automation on identifying
+issues helps to reduce their workload.
+
+:term:`OpenEmbedded-Core (OE-Core)` has two scripts that help to characterize
+and filter CVEs affecting the Linux kernel:
+
+-  ``openembedded-core/meta/recipes-kernel/linux/generate-cve-exclusions.py``
+-  ``openembedded-core/scripts/contrib/improve_kernel_cve_report.py``
+
+``generate-cve-exclusions.py``
+------------------------------
+
+When updating a kernel recipe, a helper script needs to be run manually to
+update the :term:`CVE_STATUS` for the kernel recipe. The script can be used
+for custom kernels.
+
+First we need to get an updated version of the CVE information from the
+`CVE Project`. Run it as follows:
+
+.. code-block:: shell
+
+   $ git clone https://github.com/CVEProject/cvelistV5 ~/cvelistV5
+
+Or if you have already cloned it, you need to pull the latest data:
+
+.. code-block:: shell
+
+   $ git -C ~/cvelistV5 pull
+
+Then, generate the :term:`CVE_STATUS` information for the desired version
+of the kernel:
+
+.. code-block:: shell
+
+   $ ./generate-cve-exclusions.py ~/cvelistV5 <version> > cve-exclusion_<kernel_version>.inc
+
+Example:
+
+.. code-block:: shell
+
+   $ git clone https://github.com/CVEProject/cvelistV5 ~/cvelistV5
+   $ cd openembedded-core/meta/recipes-kernel/linux/
+   $ ./generate-cve-exclusions.py ~/cvelistV5 6.12.27 > ~/meta-custom/recipes-kernel/linux/cve-exclusion_6.12.inc
+
+Don't forget to update your kernel recipe with::
+
+   include cve-exclusion_6.12.inc
+
+Then the CVE information will automatically be added in the
+:ref:`ref-classes-cve-check` or :ref:`ref-classes-vex` report.
+
+``improve_kernel_cve_report.py``
+--------------------------------
+
+The ``openembedded-core/scripts/contrib/improve_kernel_cve_report.py`` script
+leverages CVE kernel metadata and the :term:`SPDX_INCLUDE_COMPILED_SOURCES`
+variable to update a ``cve-summary.json`` file. It reduces CVE false
+positives by 70%-80% and provide detailed responses for all kernel-related
+CVEs by analyzing the files used to build the kernel. The script is decoupled from
+the build and can be run outside of the :term:`BitBake` environment.
+
+The script uses the output from the :ref:`ref-classes-vex` or
+:ref:`ref-classes-cve-check` class as input, together with CVE information from
+the Linux kernel CNA to enrich the ``cve-summary.json`` file with updated CVE
+information.
+
+The file name can be specified as argument. Optionally, it can also use the
+list of compiled files from the kernel :term:`SPDX` to ignore CVEs that are
+not affected because the files are not compiled.
+
+For this, BitBake uses the debug information to extract the sources used to
+build a binary. Therefore, it needs to be configured in the kernel to extract
+the kernel compiled files.
+
+If you are using the ``linux-yocto`` recipe, enable it by adding the following
+in a :term:`configuration file` or in a ``.bbappend``::
+
+   KERNEL_EXTRA_FEATURES:append = " features/debug/debug-kernel.scc"
+
+Or by editing your kernel configuration to include `DWARF4` debug information.
+
+See the :ref:`kernel-dev/common:Changing the Configuration` section of the Yocto
+Project Linux Kernel Development Manual for more information.
+
+For the following example, we will consider that the kernel recipe used is
+``linux-yocto``. Instructions also apply to other kernel recipes named
+differently.
+
+The sources for the kernel are stored under
+``tmp/pkgdata/<MACHINE>/debugsources/linux-yocto-debugsources.json.zstd``. In
+order to include the information into the :term:`SPDX` file to filter out
+source files that are not used to compile the kernel, add the following in a
+:term:`configuration file`::
+
+   SPDX_INCLUDE_COMPILED_SOURCES:pn-linux-yocto = "1"
+
+Finally, store either the ``recipe-linux-yocto.spdx.json`` or the
+``linux-yocto-debugsources.json.zstd`` outside the :term:`build directory`.
+
+The :term:`SPDX` file is under
+``tmp/deploy/spdx/<spdx_version>/<MACHINE>/recipes/recipe-linux-yocto.spdx.json``
+
+Once you have the input data, first you need to clone or fetch the latest CVE
+information from https://git.kernel.org:
+
+.. code-block:: shell
+
+   $ git clone https://git.kernel.org/pub/scm/linux/security/vulns.git ~/vulns
+
+Or if already checked out:
+
+.. code-block:: shell
+
+   $ git -C ~/vulns pull
+
+Finally, run the script by using one of the examples below. The most exact are
+the first two examples, using the old cve-summary.json.
+
+-  Example using ``--old-cve-report`` as input:
+
+   .. code-block:: shell
+
+      $ python3 openembedded-core/scripts/contrib/improve_kernel_cve_report.py \
+         --spdx tmp/deploy/spdx/3.0.1/qemux86_64/recipes/recipe-linux-yocto.spdx.json \
+         --datadir ~/vulns \
+         --old-cve-report build/tmp/log/cve/cve-summary.json
+
+-  Example using ``--debug-sources`` file instead of SPDX kernel file:
+
+   .. code-block:: shell
+
+      $ python3 openembedded-core/scripts/contrib/improve_kernel_cve_report.py \
+         --debug-sources tmp/pkgdata/qemux86_64/debugsources/linux-yocto-debugsources.json.zstd \
+         --datadir ~/vulns \
+         --old-cve-report build/tmp/log/cve/cve-summary.json
+
+-  Example using the ``--kernel-version``:
+
+   .. code-block:: shell
+
+      $ python3 openembedded-core/scripts/contrib/improve_kernel_cve_report.py \
+         --spdx tmp/deploy/spdx/3.0.1/qemux86_64/recipes/recipe-linux-yocto.spdx.json \
+         --kernel-version 6.12.27 \
+         --datadir ~/vulns
+
+Example output for a CVE for which the status was changed to "Ignored" because
+the source files associated to the CVE were not compiled:
+
+.. code-block:: json
+
+   {
+      "id": "CVE-2025-38384",
+      "status": "Ignored",
+      "detail": "not-applicable-config",
+      "summary": "In the Linux kernel, the following vulnerability has been resolved (...)",
+      "description": "Source code not compiled by config. {'drivers/mtd/nand/spi/core.c'}"
+   }
+
+Example of output for a CVE not in range:
+
+.. code-block:: json
+
+   {
+      "id": "CVE-2025-40017",
+      "status": "Patched",
+      "detail": "fixed-version",
+      "summary": "In the Linux kernel, the following vulnerability has been resolved (...)",
+      "description": "only affects 6.15 onwards"
+   }
+
+Example of output for a CVE that is vulnerable:
+
+.. code-block:: json
+
+   {
+      "id": "CVE-2024-58093",
+      "status": "Unpatched",
+      "detail": "version-in-range",
+      "summary": "In the Linux kernel, the following vulnerability has been resolved (...)",
+      "description": "Needs backporting (fixed from 6.15)"
+   }
+
+Example of output for a CVE rejected by the Linux CNA:
+
+.. code-block:: json
+
+   {
+      "id": "CVE-2025-38380",
+      "status": "Ignored",
+      "detail": "rejected",
+      "summary": "In the Linux kernel, the following vulnerability has been resolved (...)",
+      "description": "Rejected by CNA"
+   }
+
