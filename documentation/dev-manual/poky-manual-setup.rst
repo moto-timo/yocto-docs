@@ -16,7 +16,7 @@ document guides through this setup step-by-step.
 Use Git to Clone The Layers
 ===========================
 
-Go to :yocto_wiki:`Releases wiki page </Releases>`, and choose a release
+Go to the :yocto_home:`Releases </development/releases/>` page, and choose a release
 (such as ``&DISTRO_REL_LATEST_TAG;``), corresponding to either the latest stable
 release or a Long Term Support release.
 
