@@ -311,3 +311,7 @@ Miscellaneous changes
 
    Recipes currently using the ``fcntl-lock`` command should replace these by
    ``flock --fcntl``.
+
+-  ``barebox`` has been updated from v2025.02.0 to v2025.09.0. Refer to the
+   `upstream migration guides <https://barebox.org/doc/latest/migration-guides/>`__
+   for migration advice.
