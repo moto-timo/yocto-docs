@@ -45,6 +45,7 @@ $0 OCI_IMAGE [make arguments...]
      - ubuntu:22.04
      - ubuntu:24.04
      - ubuntu:25.04
+     - ubuntu:25.10
 
    [make arguments] is one or more argument to pass to the make command of
    documentation/Makefile, see that file for what's supported. This is typically
@@ -121,7 +122,8 @@ main ()
       ;;
     "ubuntu:22.04"*|\
     "ubuntu:24.04"*|\
-    "ubuntu:25.04"*)
+    "ubuntu:25.04"*|\
+    "ubuntu:25.10"*)
       containerfile=Containerfile.ubuntu
       essential=ubuntu_essential.sh
       docs=ubuntu_docs.sh
