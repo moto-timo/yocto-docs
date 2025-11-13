@@ -79,6 +79,7 @@ supported on the following distributions:
 -  Ubuntu 22.04 (LTS)
 -  Ubuntu 24.04 (LTS)
 -  Ubuntu 25.04
+-  Ubuntu 25.10
 
 The following distribution versions are still tested, even though the
 organizations publishing them no longer make updates publicly available:
