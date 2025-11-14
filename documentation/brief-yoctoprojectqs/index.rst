@@ -97,13 +97,13 @@ the bitbake repository.
 
 .. code-block:: shell
 
-   $ git clone -b &DISTRO_REL_LATEST_TAG; git://git.openembedded.org/bitbake bitbake-setup
+   $ git clone https://git.openembedded.org/bitbake
 
 Setup a build environment with the following command:
 
 .. code-block:: shell
 
-   $ ./bitbake-setup/bin/bitbake-setup init
+   $ ./bitbake/bin/bitbake-setup init
 
 By default, this will setup a top directory in ``$HOME/bitbake-builds``.
 
@@ -112,7 +112,7 @@ current directory, you can set it with the :ref:`bitbake:ref-bbsetup-command-set
 
 .. code-block:: shell
 
-   $ ./bitbake-setup/bin/bitbake-setup settings set --global default top-dir-prefix $PWD
+   $ ./bitbake/bin/bitbake-setup settings set --global default top-dir-prefix $PWD
 
 .. note::
 
