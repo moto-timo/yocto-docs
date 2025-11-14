@@ -127,11 +127,11 @@ differ from the examples below.
    .. code-block:: shell
 
       Available configurations:
-      0. poky-master  Poky - The Yocto Project testing distribution configurations and hardware test platforms
-      1. oe-nodistro  OpenEmbedded - 'nodistro' basic configuration
+      1. poky-master  Poky - The Yocto Project testing distribution configurations and hardware test platforms
+      2. oe-nodistro  OpenEmbedded - 'nodistro' basic configuration
 
       Please select one of the above configurations by its number:
-      0
+      1
 
    Depending on the choice above, new options can be prompted to further specify
    which configuration to use. For example:
@@ -139,37 +139,46 @@ differ from the examples below.
    .. code-block:: shell
 
       Available bitbake configurations:
-      0. poky Poky - The Yocto Project testing distribution
-      1. poky-with-sstate     Poky - The Yocto Project testing distribution with internet sstate acceleration. Use with caution as it requires a completely robust local network with sufficient bandwidth.
+      1. poky Poky - The Yocto Project testing distribution
+      2. poky-with-sstate     Poky - The Yocto Project testing distribution with internet sstate acceleration. Use with caution as it requires a completely robust local network with sufficient bandwidth.
 
       Please select one of the above bitbake configurations by its number:
-      0
+      1
 
 #. Choose a target :term:`MACHINE` (for example, ``qemux86-64``):
 
    .. code-block:: shell
 
       Target machines:
-      0. machine/qemux86-64
-      1. machine/qemuarm64
-      2. machine/qemuriscv64
-      3. machine/genericarm64
-      4. machine/genericx86-64
+      1. machine/qemux86-64
+      2. machine/qemuarm64
+      3. machine/qemuriscv64
+      4. machine/genericarm64
+      5. machine/genericx86-64
 
       Please select one of the above options by its number:
-      0
+      1
 
 #. Choose a :term:`DISTRO` (for example, ``poky``):
 
    .. code-block:: shell
 
       Distribution configuration variants:
-      0. distro/poky
-      1. distro/poky-altcfg
-      2. distro/poky-tiny
+      1. distro/poky
+      2. distro/poky-altcfg
+      3. distro/poky-tiny
 
       Please select one of the above options by its number:
-      0
+      1
+
+#. Choose a :term:`bitbake:setup` directory name:
+
+   .. code-block:: shell
+
+      Enter setup directory name: [poky-master-poky-distro_poky-machine_qemux86-64]
+
+   Press Enter to leave it to the default value shown in the brackets, or type a
+   custom directory name.
 
 .. note::
 
@@ -181,7 +190,7 @@ differ from the examples below.
       $ bitbake-setup init --non-interactive poky-master poky-with-sstate distro/poky machine/qemux86-64
 
 The ``init`` command creates a new :term:`bitbake:Setup` in the
-:term:`bitbake:top directory`. Its name is derived from the selected
+:term:`bitbake:top directory`. The default name is derived from the selected
 configuration above.
 
 For the selected options in the above example, this would be::
