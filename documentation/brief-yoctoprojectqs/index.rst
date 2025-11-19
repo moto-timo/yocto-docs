@@ -105,14 +105,14 @@ Setup a build environment with the following command:
 
    $ ./bitbake/bin/bitbake-setup init
 
-By default, this will setup a top directory in ``$HOME/bitbake-builds``.
+By default, this will setup a top directory in the current directory.
 
-If you prefer to setup your builds in a different top directory, for example the
-current directory, you can set it with the :ref:`bitbake:ref-bbsetup-command-settings` command:
+If you prefer to setup your builds in a different top directory, for example
+``$HOME/bitbake-builds``, you can set it with the :ref:`bitbake:ref-bbsetup-command-settings` command:
 
 .. code-block:: shell
 
-   $ ./bitbake/bin/bitbake-setup settings set --global default top-dir-prefix $PWD
+   $ ./bitbake/bin/bitbake-setup settings set --global default top-dir-prefix $HOME
 
 .. note::
 
