@@ -116,7 +116,8 @@ If you prefer to setup your builds in a different top directory, for example
 
 .. note::
 
-   Use :ref:`bitbake:ref-bbsetup-command-list` to get an overview of the settings.
+   Use :ref:`bitbake-setup settings list <bitbake:ref-bbsetup-command-settings>`
+   to get an overview of the settings.
 
 :ref:`bitbake:ref-bbsetup-command-init` is an interactive program by default and
 will ask you to make some decisions. Depending on your answers, the output may
