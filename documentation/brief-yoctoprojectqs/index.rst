@@ -15,7 +15,9 @@ build a reference embedded OS called Poky.
 .. note::
 
    -  The examples in this paper assume you are using a native Linux
-      system running a recent Ubuntu Linux distribution. If the machine
+      system running a
+      :ref:`supported version of Ubuntu Linux distribution<ref-manual/system-requirements:supported linux distributions>`.
+      If the machine
       you want to use Yocto Project on to build an image
       (:term:`Build Host`) is not
       a native Linux system, you can still perform these steps by using
