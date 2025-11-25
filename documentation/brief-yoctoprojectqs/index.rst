@@ -76,12 +76,7 @@ section in the Yocto Project Reference Manual for information.
 Build Host Packages
 ===================
 
-You must install essential host packages on your build host. The
-following command installs the host packages based on an Ubuntu
-distribution:
-
-.. literalinclude:: ../tools/host_packages_scripts/ubuntu_essential.sh
-   :language: shell
+.. include:: ../ref-manual/ubuntu-debian-host-packages-nodocs.rst
 
 .. note::
 
