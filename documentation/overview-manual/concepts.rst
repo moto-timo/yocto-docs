@@ -1466,58 +1466,53 @@ build images and generally work within the Yocto Project
 environment. When you run
 :term:`BitBake` to create an image, the
 OpenEmbedded build system uses the host ``gcc`` compiler to bootstrap a
-cross-compiler named ``gcc-cross``. The ``gcc-cross`` compiler is what
-BitBake uses to compile source files when creating the target image. You
-can think of ``gcc-cross`` simply as an automatically generated
+cross-compiler named ``gcc-cross`` (or ``clang-cross`` if Clang is used). This
+compiler is what BitBake uses to compile source files when creating the target
+image. You can think of it simply as an automatically generated
 cross-compiler that is used internally within BitBake only.
-
-.. note::
-
-   The extensible SDK does not use ``gcc-cross-canadian``
-   since this SDK ships a copy of the OpenEmbedded build system and the
-   sysroot within it contains ``gcc-cross``.
 
 The chain of events that occurs when the standard toolchain is bootstrapped::
 
-   binutils-cross -> linux-libc-headers -> gcc-cross -> libgcc-initial -> glibc -> libgcc -> gcc-runtime
+   gcc -> virtual/cross-binutils -> linux-libc-headers -> virtual/cross-cc -> libgcc-initial -> virtual/libc -> libgcc -> virtual/compilerlibs
 
--  ``gcc``: The compiler, GNU Compiler Collection (GCC).
+-  ``gcc``: The compiler, GNU Compiler Collection (GCC), provided by the
+   :term:`Build Host`, or by a :term:`buildtools` tarball.
 
--  ``binutils-cross``: The binary utilities needed in order
-   to run the ``gcc-cross`` phase of the bootstrap operation and build the
-   headers for the C library.
+-  ``virtual/cross-binutils``: The binary utilities needed in order
+   to run the ``virtual/cross-cc`` phase of the bootstrap operation and
+   build the headers for the C library.
 
 -  ``linux-libc-headers``: Headers needed for the cross-compiler and C library build.
 
--  ``libgcc-initial``: An initial version of the gcc support library needed
-   to bootstrap ``glibc``.
-
--  ``libgcc``: The final version of the gcc support library which
-   can only be built once there is a C library to link against.
-
--  ``glibc``: The GNU C Library.
-
--  ``gcc-cross``: The final stage of the bootstrap process for the
+-  ``virtual/cross-cc``: The final stage of the bootstrap process for the
    cross-compiler. This stage results in the actual cross-compiler that
    BitBake uses when it builds an image for a targeted device.
 
    This tool is a "native" tool (i.e. it is designed to run on
    the build host).
 
--  ``gcc-runtime``: Runtime libraries resulting from the toolchain
-   bootstrapping process. This tool produces a binary that consists of
-   the runtime libraries need for the targeted device.
+-  ``libgcc-initial``: An initial version of the GCC support library needed
+   to bootstrap ``virtual/libc``.
+
+-  ``virtual/libc``: An provider of the C Standard Library (for example, the GNU C Library).
+
+-  ``libgcc``: The final version of the GCC support library which
+   can only be built once there is a C library to link against.
+
+-  ``virtual/compilerlibs``: Runtime libraries resulting from the toolchain
+   bootstrapping process. This tool produces a binary that consists of the
+   runtime libraries need for the targeted device.
 
 You can use the OpenEmbedded build system to build an installer for the
 relocatable SDK used to develop applications. When you run the
 installer, it installs the toolchain, which contains the development
-tools (e.g., ``gcc-cross-canadian``, ``binutils-cross-canadian``, and
-other ``nativesdk-*`` tools), which are tools native to the SDK (i.e.
-native to :term:`SDK_ARCH`), you need to cross-compile and test your
-software. The figure shows the commands you use to easily build out
-this toolchain. This cross-development toolchain is built to execute on the
-:term:`SDKMACHINE`, which might or might not be the same machine as
-the Build Host.
+tools (e.g., ``gcc-cross-canadian``, ``clang-cross-canadian``,
+``binutils-cross-canadian``, and other ``nativesdk-*`` tools), which are tools
+native to the SDK (i.e. native to :term:`SDK_ARCH`), you need to cross-compile
+and test your software. The figure shows the commands you use to easily build
+out this toolchain. This cross-development toolchain is built to execute on the
+:term:`SDKMACHINE`, which might or might not be the same machine as the Build
+Host.
 
 .. note::
 
@@ -1527,43 +1522,26 @@ the Build Host.
 
 Here is the bootstrap process for the relocatable toolchain::
 
-   gcc -> binutils-crosssdk -> gcc-crosssdk-initial -> linux-libc-headers -> glibc-initial -> nativesdk-glibc -> gcc-crosssdk -> gcc-cross-canadian
+   gcc -> virtual/cross-binutils -> linux-libc-headers -> virtual/cross-cc -> libgcc-initial -> virtual/libc -> gcc-cross-canadian/clang-cross-canadian
 
--  ``gcc``: The build host's GNU Compiler Collection (GCC).
+The chain is the same as the standard toolchain, except for the last item:
+``gcc-cross-canadian`` (or ``clang-cross-canadian``) is the final relocatable
+cross-compiler. When run on the :term:`SDKMACHINE`, this tool produces
+executable code that runs on the target device. Only one cross-canadian compiler
+is produced per architecture since they can be targeted at different processor
+optimizations using configurations passed to the compiler through the compile
+commands. This circumvents the need for multiple compilers and thus reduces the
+size of the toolchains.
 
--  ``binutils-crosssdk``: The bare minimum binary utilities needed in
-   order to run the ``gcc-crosssdk-initial`` phase of the bootstrap
-   operation.
+.. note::
 
--  ``gcc-crosssdk-initial``: An early stage of the bootstrap process for
-   creating the cross-compiler. This stage builds enough of the
-   ``gcc-crosssdk`` and supporting pieces so that the final stage of the
-   bootstrap process can produce the finished cross-compiler. This tool
-   is a "native" binary that runs on the build host.
+   The extensible SDK does not use ``gcc-cross-canadian`` or ``clang-cross-canadian``
+   since this SDK ships a copy of the OpenEmbedded build system and the
+   sysroot within it contains ``gcc-cross``.
 
--  ``linux-libc-headers``: Headers needed for the cross-compiler.
+.. note::
 
--  ``glibc-initial``: An initial version of the Embedded GLIBC needed to
-   bootstrap ``nativesdk-glibc``.
-
--  ``nativesdk-glibc``: The Embedded GLIBC needed to bootstrap the
-   ``gcc-crosssdk``.
-
--  ``gcc-crosssdk``: The final stage of the bootstrap process for the
-   relocatable cross-compiler. The ``gcc-crosssdk`` is a transitory
-   compiler and never leaves the build host. Its purpose is to help in
-   the bootstrap process to create the eventual ``gcc-cross-canadian``
-   compiler, which is relocatable. This tool is also a "native" package
-   (i.e. it is designed to run on the build host).
-
--  ``gcc-cross-canadian``: The final relocatable cross-compiler. When
-   run on the :term:`SDKMACHINE`,
-   this tool produces executable code that runs on the target device.
-   Only one cross-canadian compiler is produced per architecture since
-   they can be targeted at different processor optimizations using
-   configurations passed to the compiler through the compile commands.
-   This circumvents the need for multiple compilers and thus reduces the
-   size of the toolchains.
+   To learn how to use Clang for the SDK, see :term:`PREFERRED_TOOLCHAIN_SDK`.
 
 .. note::
 
