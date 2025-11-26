@@ -14,6 +14,34 @@ Migration notes for |yocto-ver| (|yocto-codename|)
 This section provides migration information for moving to the Yocto
 Project |yocto-ver| Release (codename "|yocto-codename|") from the prior release.
 
+The Poky repository master branch is no longer updated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The master branch of the :yocto_git:`Poky </poky>` repository is no longer being
+updated. This does *not* mean that the :term:`Poky` distribution is deprecated,
+but that the way to clone the base layers and setup the environment for building
+:term:`Poky` has changed.
+
+You can either:
+
+-  Switch to individual clones of :oe_git:`bitbake </bitbake>`,
+   :oe_git:`openembedded-core </openembedded-core>`, :yocto_git:`meta-yocto
+   </meta-yocto>` and :yocto_git:`yocto-docs </yocto-docs>` by following the
+   :doc:`/dev-manual/poky-manual-setup` section of the Yocto Project Development
+   Tasks Manual.
+
+-  Use the new ``bitbake-setup`` tool by following the
+   :doc:`/brief-yoctoprojectqs/index` document.
+
+   See the :doc:`bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup`
+   of the BitBake User Manual for reference documentation on ``bitbake-setup``.
+
+Releases older than Whinlatter will still have their branch on the Poky
+repository updated until they reach end-of-life.
+
+Some further information on the background of this change can be found
+in: https://lists.openembedded.org/g/openembedded-architecture/message/2179
+
 :term:`WORKDIR` changes
 ~~~~~~~~~~~~~~~~~~~~~~~
 

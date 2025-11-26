@@ -29,6 +29,14 @@ New Features / Enhancements in |yocto-ver|
 
 -  BitBake changes:
 
+   -  A new ``bitbake-setup`` tool can be used to clone the initial layers and
+      setup the environment. See the :doc:`/brief-yoctoprojectqs/index` section
+      for instructions on how to build an image that uses the :term:`Poky`
+      distribution with this new tool.
+
+      See the reference documentation of ``bitbake-setup`` at
+      :doc:`bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup`.
+
    -  ``codeparser``: Add function decorators for ``vardeps``
 
       Adds ``bb.parse.vardeps`` and ``bb.parse.excludevardeps`` function
@@ -472,6 +480,12 @@ New Features / Enhancements in |yocto-ver|
 
    -  The QA checks defined in the :term:`OpenEmbedded Build System` were
       gathered in :doc:`/ref-manual/qa-checks`.
+
+   -  A new :doc:`/dev-manual/poky-manual-setup` document was added to instruct
+      how to setup the :term:`Poky` reference distribution manually, after the
+      :ref:`master branch of the Poky repository has stopped being updated
+      <migration-guides/migration-5.3:The Poky repository master branch is no
+      longer updated>`.
 
 -  Core library changes:
 
