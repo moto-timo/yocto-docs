@@ -9000,10 +9000,18 @@ system and gives an overview of their function and contents.
 
          SPDX_INCLUDE_COMPILED_SOURCES = "1"
 
-      According to our tests, building ``core-image-minimal`` for the
-      ``qemux86-64`` machine, enabling this option compared with the
-      :term:`SPDX_INCLUDE_SOURCES` reduces the size of the  ``tmp/deploy/spdx``
-      directory from 2GB to 1.6GB.
+      For SPDX 2.2 format (release 4.1 "langdale"), building
+      ``core-image-minimal`` for the ``qemux86-64`` machine, this option
+      reduced the size of the ``tmp/deploy/spdx`` directory from 2GB to
+      1.6GB compared to :term:`SPDX_INCLUDE_SOURCES`, as it includes only
+      compiled objects without original source files.
+
+      With SPDX 3.0.1 JSON format, enabling this option includes both
+      compiled sources and original source files (same as
+      ``SPDX_INCLUDE_SOURCES = "1"``), which significantly increases
+      the SBOM size. For example, with ``core-image-minimal`` on
+      ``qemux86-64``, the uncompressed SBOM file can grow from hundreds
+      of megabytes to several gigabytes.
 
    :term:`SPDX_INCLUDE_SOURCES`
       This option allows to add a description of the source files used to build
@@ -9017,7 +9025,7 @@ system and gives an overview of their function and contents.
 
          SPDX_INCLUDE_SOURCES = "1"
 
-      According to our tests on release 4.1 "langdale", building
+      For SPDX 2.2 format (release 4.1 "langdale"), building
       ``core-image-minimal`` for the ``qemux86-64`` machine, enabling
       this option multiplied the total size of the ``tmp/deploy/spdx``
       directory by a factor of 3  (+291 MiB for this image),
@@ -9025,6 +9033,33 @@ system and gives an overview of their function and contents.
       ``tmp/deploy/images/MACHINE`` by a factor of 130 (+15 MiB for this
       image), compared to just using the :ref:`ref-classes-create-spdx` class
       with no option.
+
+      With SPDX 3.0.1 JSON format, including source files significantly
+      increases the SBOM size (potentially by several gigabytes for typical
+      images).
+
+   :term:`SPDX_LICENSES`
+      Path to the JSON file containing SPDX license identifier mappings.
+      This file maps common license names to official SPDX license
+      identifiers used during SBOM generation.
+
+      The default value points to a copy of the license mappings defined
+      by SPDX (https://github.com/spdx/license-list-data) stored in
+      :term:`OpenEmbedded-Core (OE-Core)`.
+
+      You can override this variable to use a custom license mapping file
+      if your organization uses different license naming conventions.
+
+   :term:`SPDX_MULTILIB_SSTATE_ARCHS`
+      The list of sstate architectures to consider when collecting SPDX
+      dependencies. This includes multilib architectures when multilib is
+      enabled.
+
+      The default value is set to the value of ``SSTATE_ARCHS``.
+
+      This variable is used internally by the SPDX generation classes to
+      ensure all relevant dependencies are included in the SBOM,
+      regardless of whether multilib is enabled or not.
 
    :term:`SPDX_NAMESPACE_PREFIX`
       This option could be used in order to change the prefix of ``spdxDocument``
@@ -9052,6 +9087,15 @@ system and gives an overview of their function and contents.
       The generated SPDX files are approximately 20% bigger, but
       this option is recommended if you want to inspect the SPDX
       output files with a text editor.
+
+   :term:`SPDX_UUID_NAMESPACE`
+      The namespace used for generating UUIDs in SPDX documents. This
+      should be a domain name or unique identifier for your organization
+      to ensure globally unique SPDX IDs across different builds and
+      organizations.
+
+      The default value is set to a domain managed by the OpenEmbedded
+      project. You can override this to use your organization's domain.
 
    :term:`SPDXLICENSEMAP`
       Maps commonly used license names to their SPDX counterparts found in
