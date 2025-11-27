@@ -126,7 +126,10 @@ differ from the examples below.
 
       Available configurations:
       1. poky-master  Poky - The Yocto Project testing distribution configurations and hardware test platforms
-      2. oe-nodistro  OpenEmbedded - 'nodistro' basic configuration
+      2. oe-nodistro-&DISTRO_NAME_NO_CAP;       OpenEmbedded - 'nodistro' basic configuration, release &DISTRO_RELEASE_SERIES; '&DISTRO_NAME_NO_CAP;'
+      3. poky-&DISTRO_NAME_NO_CAP;      Poky - The Yocto Project testing distribution configurations and hardware test platforms, release &DISTRO_RELEASE_SERIES; '&DISTRO_NAME_NO_CAP;'
+      4. oe-nodistro-master   OpenEmbedded - 'nodistro' basic configuration
+      ...
 
       Please select one of the above configurations by its number:
       1
