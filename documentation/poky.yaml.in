@@ -11,6 +11,8 @@ DISTRO : "5.2"
 # represent the latest HEAD revision on the branch). DISTRO_LATEST_TAG should
 # always point to an existing tag.
 DISTRO_LATEST_TAG : "5.2"
+# The DISTRO_RELEASE_SERIES omits the patch version (so always X.Y).
+DISTRO_RELEASE_SERIES : "5.2"
 DISTRO_NAME_NO_CAP : "walnascar"
 DISTRO_NAME : "Walnascar"
 DISTRO_NAME_NO_CAP_MINUS_ONE : "styhead"

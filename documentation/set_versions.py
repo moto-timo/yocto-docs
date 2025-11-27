@@ -190,6 +190,7 @@ print("Release series calculated to be %s" % ourseries)
 replacements = {
     "DISTRO" : ourversion,
     "DISTRO_LATEST_TAG": latesttag,
+    "DISTRO_RELEASE_SERIES": release_series[ourseries],
     "DISTRO_NAME_NO_CAP" : ourseries,
     "DISTRO_NAME" : ourseries.capitalize(),
     "DISTRO_NAME_NO_CAP_MINUS_ONE" : previousseries[0],
