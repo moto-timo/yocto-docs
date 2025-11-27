@@ -92,13 +92,13 @@ get a copy of the ``bitbake-setup`` tool to setup the :term:`Poky` reference
 distribution on your build host. Use the following commands to clone
 the bitbake repository.
 
-.. code-block:: shell
+.. code-block:: console
 
    $ git clone https://git.openembedded.org/bitbake
 
 Setup a build environment with the following command:
 
-.. code-block:: shell
+.. code-block:: console
 
    $ ./bitbake/bin/bitbake-setup init
 
@@ -107,7 +107,7 @@ By default, this will setup a top directory in the current directory.
 If you prefer to setup your builds in a different top directory, for example
 ``$HOME/bitbake-builds``, you can set it with the :ref:`bitbake:ref-bbsetup-command-settings` command:
 
-.. code-block:: shell
+.. code-block:: console
 
    $ ./bitbake/bin/bitbake-setup settings set --global default top-dir-prefix $HOME
 
@@ -122,7 +122,7 @@ differ from the examples below.
 
 #. Choose a configuration (for example, ``poky-master``):
 
-   .. code-block:: shell
+   .. code-block:: text
 
       Available configurations:
       1. poky-master  Poky - The Yocto Project testing distribution configurations and hardware test platforms
@@ -137,7 +137,7 @@ differ from the examples below.
    Depending on the choice above, new options can be prompted to further specify
    which configuration to use. For example:
 
-   .. code-block:: shell
+   .. code-block:: text
 
       Available bitbake configurations:
       1. poky Poky - The Yocto Project testing distribution
@@ -148,7 +148,7 @@ differ from the examples below.
 
 #. Choose a target :term:`MACHINE` (for example, ``qemux86-64``):
 
-   .. code-block:: shell
+   .. code-block:: text
 
       Target machines:
       1. machine/qemux86-64
@@ -162,7 +162,7 @@ differ from the examples below.
 
 #. Choose a :term:`DISTRO` (for example, ``poky``):
 
-   .. code-block:: shell
+   .. code-block:: text
 
       Distribution configuration variants:
       1. distro/poky
@@ -174,7 +174,7 @@ differ from the examples below.
 
 #. Choose a :term:`bitbake:setup` directory name:
 
-   .. code-block:: shell
+   .. code-block:: text
 
       Enter setup directory name: [poky-master-poky-distro_poky-machine_qemux86-64]
 
@@ -186,7 +186,7 @@ differ from the examples below.
    If you prefer to run non-interactively, you can run a command like the
    following:
 
-   .. code-block:: shell
+   .. code-block:: console
 
       $ bitbake-setup init --non-interactive poky-master poky-with-sstate distro/poky machine/qemux86-64
 
@@ -194,7 +194,9 @@ The ``init`` command creates a new :term:`bitbake:Setup` in the
 :term:`bitbake:top directory`. The default name is derived from the selected
 configuration above.
 
-For the selected options in the above example, this would be::
+For the selected options in the above example, this would be:
+
+   .. code-block:: text
 
    poky-master-poky-distro_poky-machine_qemux86-64
 
@@ -245,7 +247,7 @@ an entire Linux distribution, including the toolchain, from source.
     environment setup script within the :term:`bitbake:BitBake build` directory
     to setup the :term:`BitBake` build environment on your host:
 
-    .. code-block:: shell
+    .. code-block:: console
 
        $ source poky-master-poky-distro_poky-machine_qemux86-64/build/init-build-env
        Poky reference distro build
@@ -258,7 +260,7 @@ an entire Linux distribution, including the toolchain, from source.
     With this tool, list the currently enabled :term:`configuration fragments
     <Configuration Fragment>`:
 
-    .. code-block:: shell
+    .. code-block:: console
 
        $ bitbake-config-build list-fragments
 
@@ -285,7 +287,7 @@ an entire Linux distribution, including the toolchain, from source.
     can be useful for development, you can enable the
     :ref:`ref-fragments-root-login-with-empty-password` fragment:
 
-    .. code-block:: shell
+    .. code-block:: console
 
        $ bitbake-config-build enable-fragment root-login-with-empty-password
 
@@ -315,7 +317,7 @@ an entire Linux distribution, including the toolchain, from source.
 #. **Start the Build:** Continue with the following command to build an OS
    image for the target, which is ``core-image-sato`` in this example:
 
-   .. code-block:: shell
+   .. code-block:: console
 
       $ bitbake core-image-sato
 
@@ -329,7 +331,7 @@ an entire Linux distribution, including the toolchain, from source.
    built, you can start QEMU, which is a Quick EMUlator that ships with
    the Yocto Project:
 
-   .. code-block:: shell
+   .. code-block:: console
 
       $ runqemu qemux86-64
 
@@ -375,7 +377,7 @@ layer>`:
 
     For this, the ``bitbake-layers add-layer`` can be used:
 
-    .. code-block:: shell
+    .. code-block:: console
 
        $ bitbake-layers add-layer ../layers/meta-raspberrypi
 
@@ -390,7 +392,7 @@ layer>`:
     machine, so let's make it the :term:`MACHINE` used for the build with
     ``bitbake-config-build``:
 
-    .. code-block:: shell
+    .. code-block:: console
 
        $ bitbake-config-build enable-fragment machine/raspberrypi5
 
@@ -411,7 +413,7 @@ layer>`:
 #. **Start The Build:** The configuration is now set to build for the Raspberry
    Pi 5. Start the build again:
 
-   .. code-block:: shell
+   .. code-block:: console
 
       $ bitbake core-image-sato
 
@@ -438,7 +440,7 @@ configuration file, a ``recipes-example`` subdirectory that contains an
 The following commands run the tool to create a layer named
 ``meta-mylayer``:
 
-.. code-block:: shell
+.. code-block:: console
 
    $ bitbake-layers create-layer ../layers/meta-mylayer
    NOTE: Starting bitbake server...
