@@ -566,6 +566,14 @@ or both. See the ":ref:`dev-manual/development-shell:using a development shell`"
 Yocto Project Development Tasks Manual for more information about using
 ``devshell``.
 
+.. _ref-tasks-list_image_features:
+
+``do_list_image_features``
+--------------------------
+
+Lists the available features for an image recipe. These features can be set
+in the :term:`IMAGE_FEATURES` variable.
+
 .. _ref-tasks-listtasks:
 
 ``do_listtasks``
