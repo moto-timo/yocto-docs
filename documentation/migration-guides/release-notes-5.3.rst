@@ -965,6 +965,10 @@ Known Issues in |yocto-ver|
 Recipe License changes in |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+..
+   Going through commits on OE-Core filtered by License-Update:
+   git log -U0 --patch --grep "License-Update:" yocto-5.2..origin/master
+
 The following changes have been made to the :term:`LICENSE` values set by recipes:
 
 .. list-table::
@@ -974,9 +978,30 @@ The following changes have been made to the :term:`LICENSE` values set by recipe
    * - Recipe
      - Previous value
      - New value
-   * - ``recipe name``
-     - Previous value
-     - New value
+   * - ``flac``
+     - ``GFDL-1.2 & GPL-2.0-or-later & LGPL-2.1-or-later & BSD-3-Clause``
+     - ``GFDL-1.3 & GPL-2.0-or-later & LGPL-2.1-or-later & BSD-3-Clause``
+   * - ``rust``
+     - ``(MIT | Apache-2.0) & Unicode-TOU``
+     - ``(MIT | Apache-2.0) & Unicode-3.0``
+   * - ``vulkan-validation-layers``
+     - ``Apache-2.0 & MIT``
+     - ``Apache-2.0 & MIT & BSL-1.0``
+   * - ``util-linux``
+     - ``GPL-1.0-or-later & GPL-2.0-only & GPL-2.0-or-later & LGPL-2.1-or-later & BSD-2-Clause & B SD-3-Clause & BSD-4-Clause-UC & MIT``
+     - ``GPL-1.0-or-later & GPL-2.0-only & GPL-2.0-or-later & LGPL-2.1-or-later & BSD-2-Clause & B SD-3-Clause & BSD-4-Clause-UC & MIT & EUPL-1.2``
+   * - ``python3-docutils``
+     - ``CC0-1.0 & ZPL-2.1 & BSD-2-Clause & GPL-3.0-only``
+     - ``CC0-1.0 & BSD-2-Clause & GPL-3.0-only``
+   * - ``tiff``
+     - ``libtiff``
+     - ``libtiff & BSD-4.3TAHOE``
+   * - ``gawk``
+     - ``GPL-3.0-only``
+     - ``GPL-3.0-or-later & AGPL-3.0-or-later``
+   * - ``go-helloworld``
+     - ``MIT``
+     - ``BSD-3-Clause``
 
 Security Fixes in |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
