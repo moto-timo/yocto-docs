@@ -11457,6 +11457,14 @@ system and gives an overview of their function and contents.
       Specifies the timeout in seconds used by the ``watchdog-config`` recipe
       and also by ``systemd`` during reboot. The default is 60 seconds.
 
+   :term:`WESTON_USER`
+      The :term:`WESTON_USER` variable defines the username for the `Weston`
+      user.
+
+   :term:`WESTON_USER_HOME`
+      The :term:`WESTON_USER` variable defines the path to the home directory
+      for the `Weston` user.
+
    :term:`WIC_CREATE_EXTRA_ARGS`
       If the :term:`IMAGE_FSTYPES` variable contains "wic", the build
       will generate a
