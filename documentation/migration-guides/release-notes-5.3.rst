@@ -2188,7 +2188,224 @@ The following recipes have been upgraded:
 Contributors to |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+..
+   List obtained with the following shell snippet:
+
+      authors=""
+      for repo in openembedded-core yocto-docs bitbake meta-yocto; do
+         authors="${authors}\n$(git --no-pager -C $repo log --format="-  %an" yocto-5.2..origin/master)"
+      done
+      echo $authors | sort | uniq
+
+   Email addresses removed.
+
 Thanks to the following people who contributed to this release:
+
+-  Adam Blank
+-  Adam Nilsson
+-  Adrian Freihofer
+-  Ahmad Fatoum
+-  Alejandro Hernandez Samaniego
+-  Aleksandar Nikolic
+-  Alexander Kanavin
+-  Alex Kiernan
+-  Alon Bar-Lev
+-  Alper Ak
+-  Andreas Stergiopoulos
+-  Andrej Valek
+-  Anibal Limon
+-  Ankur Tyagi
+-  Anna-Lena Marx
+-  Antonin Godard
+-  Anuj Mittal
+-  Archana Polampalli
+-  Barne Carstensen
+-  Benjamin Missey
+-  Benjamin Szőke
+-  Bo Sun
+-  Bruce Ashfield
+-  Carlos Sánchez de La Lama
+-  Changqing Li
+-  Chen Qi
+-  Chris Laplante
+-  Christian Lindeberg
+-  Christos Gavros
+-  Daisuke Yamane
+-  Daniel McGregor
+-  Daniel Turull
+-  Daniel Wagenknecht
+-  Dan McGregor
+-  Dario Binacchi
+-  David Reyna
+-  Deepak Rathore
+-  Deepesh Varatharajan
+-  denisova-ok
+-  Denys Dmytriyenko
+-  Diego de los Santos
+-  Diego Sueiro
+-  Divya Chellam
+-  Dixit Parmar
+-  Dmitry Baryshkov
+-  Enrico Jörns
+-  Enrico Scholz
+-  Erick Shepherd
+-  Erik Lindsten
+-  Etienne Cordonnier
+-  Fabio Estevam
+-  Falk Bauer
+-  Gregor Herburger
+-  Guðni Már Gilbert
+-  Gyorgy Sarvari
+-  Haixiao Yan
+-  Harish Sadineni
+-  Hiago De Franco
+-  hongxu
+-  Hongxu Jia
+-  Ines KCHELFI
+-  Isaac True
+-  Jaeyoon Jung
+-  Jamin Lin
+-  Jan Vermaete
+-  Jason M. Bills
+-  Jason Schonberg
+-  Jayasurya Maganuru
+-  Jeroen Hofstee
+-  Jiaying Song
+-  Jimmy Ho
+-  Jinfeng Wang
+-  João Henrique Ferreira de Freitas
+-  Joao Marcos Costa
+-  João Marcos Costa
+-  Johannes Schneider
+-  Jonathan Schnitzler
+-  Jon Mason
+-  Jörg Sommer
+-  Jose Quaresma
+-  Joshua Watt
+-  J. S.
+-  Julian Haller
+-  Kai Kang
+-  Kavinaya S
+-  Keerthivasan Raghavan
+-  Khang D Nguyen
+-  Khem Raj
+-  Koch, Stefan
+-  Koen Kooi
+-  Kyungjik Min
+-  Lamine REHAHLIA
+-  Lee Chee Yang
+-  leimaohui
+-  Lei Maohui
+-  Leon Anavi
+-  Leonard Anderweit
+-  Libo Chen
+-  Liu Yiding
+-  Li Wang
+-  Louis Rannou
+-  Luca Fancellu
+-  Madhu Marri
+-  Manuel Leonhardt
+-  Marco Cavallini
+-  Mark Asselstine
+-  Mark Hatle
+-  Markus Kurz
+-  Markus Volk
+-  Martin Jansa
+-  Martin Siegumfeldt
+-  Mathieu Dubois-Briand
+-  Michael Halstead
+-  Michael Jeanson
+-  Michael Opdenacker
+-  Michael Tretter
+-  Michal Sieron
+-  Mike Crowe
+-  Mike Looijmans
+-  Mikko Rapeli
+-  Ming Liu
+-  Mingli Yu
+-  Moritz Haase
+-  NeilBrown
+-  Nguyen Dat Tho
+-  Nikhil R
+-  Niko Mauno
+-  Ola x Nilsson
+-  Olga Denisova
+-  Osama Abdelkader
+-  Osose Itua
+-  Ovidiu Panait
+-  Patrick Vogelaar
+-  Patrick Williams
+-  Patryk Seregiet
+-  Paul Barker
+-  Paul Gortmaker
+-  Pedro Ferreira
+-  Per x Johansson
+-  Peter Kjellerstedt
+-  Peter Marko
+-  Peter Tatrai
+-  Petr Vorel
+-  Philip Lorenz
+-  Philippe-Alexandre Mathieu
+-  Pierre-Loup GOSSE
+-  Poonam Jadhav
+-  Praveen Kumar
+-  Priyal Doshi
+-  Quentin Schulz
+-  rajmohan r
+-  Randolph Sapp
+-  Randy MacLeod
+-  Raphael Schlarb
+-  Rasmus Villemoes
+-  Ricardo Salveti
+-  Ricardo Simoes
+-  Richard Grünert
+-  Richard Purdie
+-  Robbin Van Damme
+-  Robert P. J. Day
+-  Robert Tiemann
+-  Robert Yang
+-  Rogerio Guerra Borin
+-  Ross Burton
+-  Ryan Eatmon
+-  Samuli Piippo
+-  Sandeep Gundlupet Raju
+-  Saravanan
+-  Siddharth Doshi
+-  Simone Weiß
+-  Soumya Sambu
+-  Stefan Eichenberger
+-  Stefan Koch
+-  Steffen Greber
+-  Steve Sakoman
+-  Talel BELHAJ SALEM
+-  Thomas Perrot
+-  Thune Tran
+-  Tim Orling
+-  Tobias Pistora
+-  Tom Hochstein
+-  Trevor Gamblin
+-  Trevor Woerner
+-  Tudor Ambarus
+-  Uwe Kleine-König
+-  Veeresh Kadasani
+-  Victor Kamensky
+-  Vijay Anusuri
+-  Vincent Davis Jr
+-  Vishwas Udupa
+-  Vivek Puar
+-  Vyacheslav Yurkov
+-  Walter Werner SCHNEIDER
+-  Wang Mingyu
+-  Weisser, Pascal.ext
+-  Yannic Moog
+-  Yash Shinde
+-  Yi Zhao
+-  Yoann Congal
+-  Yogesh Tyagi
+-  Yogita Urade
+-  Zhang Peng
+-  Zoltan Boszormenyi
+-  Zoltán Böszörményi
 
 Repositories / Downloads for Yocto-|yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
