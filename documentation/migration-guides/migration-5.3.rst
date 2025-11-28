@@ -188,21 +188,9 @@ GNU/Linux distributions:
 -  Debian 13 (Trixie)
 -  Fedora 42
 -  Ubuntu 25.04
-
-On the other hand, some earlier distributions are no longer supported:
-
--  XXX
+-  Ubuntu 25.10
 
 See :ref:`all supported distributions <system-requirements-supported-distros>`.
-
-Rust language changes
-~~~~~~~~~~~~~~~~~~~~~
-
-systemd changes
-~~~~~~~~~~~~~~~
-
-Recipe changes
-~~~~~~~~~~~~~~
 
 Removed variables
 ~~~~~~~~~~~~~~~~~
@@ -243,6 +231,9 @@ The following recipes have been removed in this release:
 
 -  ``cwautomacros``: A long-obsolete set of custom :ref:`ref-classes-autotools`
    macros, not used by any other recipe.
+
+-  ``rust-llvm``: removed after the Rust and LLVM recipes were reworked to
+   depend on the ``llvm`` recipe instead.
 
 Removed :term:`PACKAGECONFIG` entries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -308,11 +299,6 @@ The following classes have been removed in this release:
    Mickledore which suggests there are limited numbers of users. It doesn't have
    any automated testing and it would be hard to setup and maintain a testing
    environment for it. The original users/maintainers aren't using it now.
-
-Removed features
-~~~~~~~~~~~~~~~~
-
-The following features have been removed in this release:
 
 Miscellaneous changes
 ~~~~~~~~~~~~~~~~~~~~~

@@ -236,7 +236,18 @@ New Features / Enhancements in |yocto-ver|
       fourth argument of the :term:`UBOOT_CONFIG` variable. See the
       documentation of :ref:`ref-classes-uboot-config` class for more details.
 
+   -  The :term:`WESTON_USER` and :term:`WESTON_USER_HOME` variables can be
+      used to define the username and home directory for the `Weston` user.
+
+-  New core tasks:
+
+   -  The :ref:`ref-tasks-list_image_features` can be used to list the available
+      :term:`IMAGE_FEATURES` for an image recipe.
+
 -  Kernel-related changes:
+
+   -  Support for the 6.17 kernel exists but 6.16 is the default selected one in
+      the :term:`Poky` distro.
 
    -  ``linux/generate-cve-exclusions``: use data from CVEProject instead of
       the archived https://linuxkernelcves.com.
@@ -551,6 +562,10 @@ New Features / Enhancements in |yocto-ver|
       :term:`DEPLOY_DIR_IMAGE` directory into an extra non-rootfs partition. See the
       :term:`IMAGE_EXTRA_PARTITION_FILES` variable for more information.
 
+   -  The ``--diskid`` option was added to allow passing a :wikipedia:`MS-DOS
+      </MS-DOS>` or :wikipedia:`GPT <GUID_Partition_Table>`-formatted
+      disk IDs for a partition (for example: ``deadbeef-cafe-babe-f00d-cec2ea4eface``).
+
 -  SDK-related changes:
 
    -  Include additional information about Meson setting in the SDK environment
@@ -565,6 +580,9 @@ New Features / Enhancements in |yocto-ver|
    -  Image-based SDKs can now include `Zsh` completions by adding the
       ``zsh-completion-pkgs`` feature to the :term:`IMAGE_FEATURES` variable in
       the image recipe.
+
+   -  The SDK build is now part of the :ref:`ref-classes-buildhistory`
+      difference analysis (``buildhistory-diff`` command).
 
 -  Testing-related changes:
 
@@ -748,8 +766,21 @@ New Features / Enhancements in |yocto-ver|
    -  ``openssl``: add FIPS support. This can be enabled through the ``fips``
       :term:`PACKAGECONFIG`.
 
--  :ref:`ref-classes-cve-check` class changes:
+   -  The default :term:`Poky` template configuration
+      (:yocto_git:`local.conf.sample </meta-yocto/commit/meta-poky/conf/templates/default/local.conf.sample?id=b3b659263566c4d2f2813190e72d93f8598a4c47>`)
+      does not define the ``allow-empty-password``, ``empty-root-password``, and
+      ``allow-root-login`` in :term:`EXTRA_IMAGE_FEATURES` anymore.
 
+-  :term:`Toaster` changes:
+
+   -  Adapt it for :doc:`bitbake-setup
+      <bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup>`.
+
+   -  Remove hard dependency on the :term:`Poky` repository, as its :ref:`master
+      branch is no longer updated <migration-guides/migration-5.3:The Poky
+      repository master branch is no longer updated>`.
+
+-  :ref:`ref-classes-cve-check` class changes:
 
    -  ``cve-update-db-native``: FKIE: use Secondary metric if there is no
       Primary metric.
@@ -961,6 +992,8 @@ New Features / Enhancements in |yocto-ver|
 
 Known Issues in |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N/A
 
 Recipe License changes in |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
