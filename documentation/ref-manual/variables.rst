@@ -6307,9 +6307,9 @@ system and gives an overview of their function and contents.
       The :term:`NVD_DB_VERSION` variable allows choosing the CVE feed when
       using the :ref:`ref-classes-cve-check` class. It can be one of:
 
-      -  ``NVD2`` (default): the NVD feed with API version 2
-      -  ``FKIE``: the `FKIE-CAD <https://github.com/fkie-cad/nvd-json-data-feeds>`__
+      -  ``FKIE`` (default): the `FKIE-CAD <https://github.com/fkie-cad/nvd-json-data-feeds>`__
          feed reconstruction
+      -  ``NVD2``: the NVD feed with API version 2
       -  ``NVD1``: the NVD JSON feed (deprecated)
 
       In case of a malformed feed name, the ``NVD2`` feed is selected and an
