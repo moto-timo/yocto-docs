@@ -46,7 +46,6 @@ Yocto Project Development Tasks Manual
    build-quality
    debugging
    licenses
-   security-subjects
    vulnerabilities
    sbom
    error-reporting-tool
