@@ -189,12 +189,12 @@ We therefore have the following criteria and policies for such items:
 
 -  Test results can be submitted as part of the release process if desired.
 
-The Yocto Project :oe_wiki:`Technical Steering Committee (TSC) </TSC>` makes
+The Yocto Project :yocto_wiki:`Technical Steering Committee (TSC) </TSC>` makes
 decisions on features in this status and Autobuilder testing. Such support would
 be dropped if the maintainers/testing were inactive.
 
 If you are interested in providing resources for improving testing please
-contact the :oe_wiki:`Technical Steering Committee (TSC) </TSC>`.
+contact the :yocto_wiki:`Technical Steering Committee (TSC) </TSC>`.
 
 Below is a list of secondary tested features, their maintainer(s) and
 builder(s):
