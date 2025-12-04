@@ -2,6 +2,12 @@
 # Macros used in the documentation
 #
 
+#
+# Automatically replaced by set_versions.py, no manual update required
+# Values below are placeholders to give an idea on how to use them in the
+# documentation.
+#
+
 # The DISTRO variable represents the current docs version. It should be used
 # when referring to the current docs version. See also DISTRO_LATEST_TAG.
 DISTRO : "5.2"
@@ -18,10 +24,15 @@ DISTRO_NAME : "Walnascar"
 DISTRO_NAME_NO_CAP_MINUS_ONE : "styhead"
 DISTRO_NAME_NO_CAP_LTS : "scarthgap"
 YOCTO_DOC_VERSION : "5.2"
-DISTRO_REL_TAG : "yocto-$DISTRO;"
-DISTRO_REL_LATEST_TAG : "yocto-&DISTRO_LATEST_TAG;"
 DOCCONF_VERSION : "dev"
 BITBAKE_SERIES : ""
+
+#
+# Not automatically replaced, manual updates required
+#
+
+DISTRO_REL_TAG : "yocto-$DISTRO;"
+DISTRO_REL_LATEST_TAG : "yocto-&DISTRO_LATEST_TAG;"
 YOCTO_DL_URL : "https://downloads.yoctoproject.org"
 YOCTO_RELEASE_DL_URL : "&YOCTO_DL_URL;/releases/yocto/yocto-&DISTRO;"
 MIN_PYTHON_VERSION : "3.9.0"
