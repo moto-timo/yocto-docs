@@ -33,6 +33,8 @@ $0 OCI_IMAGE [make arguments...]
 
    OCI_IMAGE is an image:tag of an OCI image hosted on hub.docker.com. It is one
    of:
+     - almalinux:8
+     - almalinux:9
      - centos:stream9
      - debian:12
      - debian:13
@@ -87,14 +89,14 @@ main ()
   local repo=docker.io
 
   case $image in
-    # Missing latexmk texlive-gnu-freefont packages at the very least
-    # "almalinux:8"*|\
-    # "almalinux:9"*)
-    #   containerfile=Containerfile.almalinux
-    #   docs=almalinux_docs.sh
-    #   docs_pdf=almalinux_docs_pdf.sh
-    #   pip3=pip3_docs.sh
-    #   ;;
+    "almalinux:8"*|\
+    "almalinux:9"*)
+      containerfile=Containerfile.almalinux
+      essential=almalinux_essential.sh
+      docs=almalinux_docs.sh
+      docs_pdf=tlmgr_docs_pdf.sh
+      pip3=pip3_docs.sh
+      ;;
     "centos:stream9"*)
       containerfile=Containerfile.stream
       essential=centosstream_essential.sh

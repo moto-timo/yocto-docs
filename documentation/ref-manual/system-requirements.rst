@@ -253,18 +253,24 @@ Here are the packages needed to build Project documentation manuals:
 .. literalinclude:: ../tools/host_packages_scripts/pip3_docs.sh
    :language: shell
 
+In addition to the previous packages, the following TeX Live packages
+are needed to build the documentation in PDF format and can be installed with
+the `TeX Live package manager <https://tug.org/texlive/tlmgr.html>`__:
+
+.. literalinclude:: ../tools/host_packages_scripts/tlmgr_docs_pdf.sh
+   :language: shell
+
 .. warning::
 
-   Unlike Fedora or OpenSUSE, AlmaLinux does not provide the packages
-   ``texlive-collection-fontsextra``, ``texlive-collection-lang*`` and
-   ``texlive-collection-latexextra``, so you may run into issues. These may be
-   installed using `tlmgr <https://tug.org/texlive/tlmgr.html>`_.
+   The Tex Live installation above is only valid for `x86_64` hosts.
 
-In addition to the previous packages, here are the packages needed to build the
-documentation in PDF format:
+Before building the documentation PDF, setup the ``PATH`` to use the installed
+packages (with ``${textooldir}`` pointing to the TeX Live installation from the
+previous step):
 
-.. literalinclude:: ../tools/host_packages_scripts/almalinux_docs_pdf.sh
-   :language: shell
+.. code-block:: console
+
+   $ export PATH="${PATH}:${textooldir}/tl/bin/x86_64-linux"
 
 CentOS Stream Packages
 ----------------------
