@@ -7,6 +7,9 @@ ARG DOCS=fedora_docs.sh
 ARG DOCS_PDF=fedora_docs_pdf.sh
 ARG PIP3=pip3_docs.sh
 
+ENV TEXTOOLDIR=/opt/docs-build-tex-tools
+ENV PATH="$PATH:$TEXTOOLDIR/tl/bin/x86_64-linux"
+
 # relative to the location of the dockerfile
 COPY --chmod=777 ${ESSENTIAL} /temp/host_packages_essential.sh
 COPY --chmod=777 ${DOCS} /temp/host_packages_docs.sh
