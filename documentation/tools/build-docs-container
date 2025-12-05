@@ -44,6 +44,8 @@ $0 OCI_IMAGE [make arguments...]
      - fedora:42
      - leap:15.5
      - leap:15.6
+     - rockylinux:8
+     - rockylinux:9
      - ubuntu:22.04
      - ubuntu:24.04
      - ubuntu:25.04
@@ -131,6 +133,14 @@ main ()
       essential=opensuse_essential.sh
       docs=opensuse_docs.sh
       docs_pdf=opensuse_docs_pdf.sh
+      pip3=pip3_docs.sh
+      ;;
+    "rockylinux:8"*|\
+    "rockylinux:9"*)
+      containerfile=Containerfile.rocky
+      essential=rockylinux_essential.sh
+      docs=rockylinux_docs.sh
+      docs_pdf=tlmgr_docs_pdf.sh
       pip3=pip3_docs.sh
       ;;
     "ubuntu:22.04"*|\

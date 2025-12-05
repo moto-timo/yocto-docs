@@ -308,6 +308,55 @@ previous step):
 
    $ export PATH="${PATH}:${textooldir}/tl/bin/x86_64-linux"
 
+RockyLinux Packages
+-------------------
+
+Here are the packages needed to build an image on a headless system
+with a supported RockyLinux distribution:
+
+.. literalinclude:: ../tools/host_packages_scripts/rockylinux_essential.sh
+   :language: shell
+
+.. note::
+
+   -  Extra Packages for Enterprise Linux (i.e. ``epel-release``) is
+      a collection of packages from Fedora built on RHEL/CentOS for
+      easy installation of packages not included in enterprise Linux
+      by default. You need to install these packages separately.
+
+   -  The ``PowerTools/CRB`` repo provides additional packages such as
+      ``rpcgen`` and ``texinfo``.
+
+   -  The ``makecache`` command consumes additional Metadata from
+      ``epel-release``.
+
+Here are the packages needed to build Project documentation manuals:
+
+.. literalinclude:: ../tools/host_packages_scripts/rockylinux_docs.sh
+   :language: shell
+
+.. literalinclude:: ../tools/host_packages_scripts/pip3_docs.sh
+   :language: shell
+
+In addition to the previous packages, the following TeX Live packages
+are needed to build the documentation in PDF format and can be installed with
+the `TeX Live package manager <https://tug.org/texlive/tlmgr.html>`__:
+
+.. literalinclude:: ../tools/host_packages_scripts/tlmgr_docs_pdf.sh
+   :language: shell
+
+.. warning::
+
+   The Tex Live installation above is only valid for `x86_64` hosts.
+
+Before building the documentation PDF, setup the ``PATH`` to use the installed
+packages (with ``${textooldir}`` pointing to the TeX Live installation from the
+previous step):
+
+.. code-block:: console
+
+   $ export PATH="${PATH}:${textooldir}/tl/bin/x86_64-linux"
+
 .. _system-requirements-buildtools:
 
 Required Git, tar, Python, make and gcc Versions
