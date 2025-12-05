@@ -23,7 +23,6 @@ set -eu -o pipefail
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 CONTAINERCMD=${CONTAINERCMD:-docker}
 DOCS_DIR="$SCRIPT_DIR/../.."
-SH_DIR="$SCRIPT_DIR/host_packages_scripts"
 INCLUDE_ESSENTIAL_PACKAGES=${INCLUDE_ESSENTIAL_PACKAGES:-0}
 
 function usage()
@@ -140,12 +139,12 @@ main ()
     --tag "yocto-docs-$sanitized_dockername:latest" \
     --build-arg ARG_FROM="docker.io/$image" \
     --build-arg INCLUDE_ESSENTIAL_PACKAGES="${INCLUDE_ESSENTIAL_PACKAGES}" \
-    --build-arg ESSENTIAL="$essential" \
-    --build-arg DOCS="$docs" \
-    --build-arg DOCS_PDF="$docs_pdf" \
-    --build-arg PIP3="${pip3:-}" \
-    --file "$SCRIPT_DIR/$containerfile" \
-    "$SH_DIR/"
+    --build-arg ESSENTIAL="host_packages_scripts/$essential" \
+    --build-arg DOCS="host_packages_scripts/$docs" \
+    --build-arg DOCS_PDF="host_packages_scripts/$docs_pdf" \
+    --build-arg PIP3="host_packages_scripts/${pip3:-}" \
+    --file "$SCRIPT_DIR/containerfiles/$containerfile" \
+    "$SCRIPT_DIR"
 
   local -a args_run=(
     --rm
