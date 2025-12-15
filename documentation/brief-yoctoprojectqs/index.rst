@@ -196,7 +196,7 @@ configuration above.
 
 For the selected options in the above example, this would be:
 
-   .. code-block:: text
+.. code-block:: text
 
    poky-master-poky-distro_poky-machine_qemux86-64
 
