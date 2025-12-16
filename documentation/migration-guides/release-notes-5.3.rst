@@ -8,6 +8,9 @@
 Release notes for |yocto-ver| (|yocto-codename|)
 ------------------------------------------------
 
+This release does have significant changes which people need to be aware of. See
+:doc:`the migration guide </migration-guides/migration-5.3>` for more information.
+
 New Features / Enhancements in |yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -511,13 +514,8 @@ New Features / Enhancements in |yocto-ver|
 
 -  Rust changes:
 
-   -  ``rust-llvm``:
-
-      -  Compile LLVM to use dynamic libraries. This reduces the
-         size of ``llvm-rust`` to about a third.
-
-      -  Disable the following feature through configuration
-         (:ref:`ref-tasks-configure`): libedit, benchmarks.
+   - The rust-llvm recipe has been removed, and the rust recipe now uses the
+     same llvm recipe as clang.
 
    -  Add the ``has-thread-local`` option to the
       :ref:`ref-classes-rust-target-config` class.
@@ -2442,3 +2440,75 @@ Thanks to the following people who contributed to this release:
 
 Repositories / Downloads for Yocto-|yocto-ver|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+yocto-docs
+
+-  Repository Location: :yocto_git:`/yocto-docs`
+-  Branch: :yocto_git:`whinlatter </yocto-docs/log/?h=whinlatter>`
+-  Tag:  :yocto_git:`yocto-5.3 </yocto-docs/log/?h=yocto-5.3>`
+-  Git Revision: :yocto_git:`79cd33b06e87c04e4f873a5afd9d53714bc5047f </yocto-docs/commit/?id=79cd33b06e87c04e4f873a5afd9d53714bc5047f>`
+-  Release Artefact: yocto-docs-79cd33b06e87c04e4f873a5afd9d53714bc5047f
+-  sha: f2a353847243370d6924ea83542b055ee8098c51d4875b6a9b2cee79b98c0f29
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/yocto-docs-79cd33b06e87c04e4f873a5afd9d53714bc5047f.tar.bz2 
+
+   https://mirrors.kernel.org/yocto/yocto/yocto-5.3/yocto-docs-79cd33b06e87c04e4f873a5afd9d53714bc5047f.tar.bz2
+
+openembedded-core
+
+-  Repository Location: :oe_git:`/openembedded-core`
+-  Branch: :oe_git:`whinlatter </openembedded-core/log/?h=whinlatter>`
+-  Tag:  :oe_git:`yocto-5.3 </openembedded-core/log/?h=yocto-5.3>`
+-  Git Revision: :oe_git:`8519978592483bb096ed5192fff7af6c887b799e </openembedded-core/commit/?id=8519978592483bb096ed5192fff7af6c887b799e>`
+-  Release Artefact: oecore-8519978592483bb096ed5192fff7af6c887b799e
+-  sha: 3b23d8a56a2f6e3872ec01272a76e3551ac1eab001f81c9abc680ce415aa888d
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/oecore-8519978592483bb096ed5192fff7af6c887b799e.tar.bz2
+
+   https://mirrors.kernel.org/yocto/yocto/yocto-5.3/oecore-8519978592483bb096ed5192fff7af6c887b799e.tar.bz2
+
+meta-yocto
+
+-  Repository Location: :yocto_git:`/meta-yocto`
+-  Branch: :yocto_git:`whinlatter </meta-yocto/log/?h=whinlatter>`
+-  Tag:  :yocto_git:`yocto-5.3 </meta-yocto/log/?h=yocto-5.3>`
+-  Git Revision: :yocto_git:`d02d3faaf4d6075ea03e9eb47654ec7639f929a0 </meta-yocto/commit/?id=d02d3faaf4d6075ea03e9eb47654ec7639f929a0>`
+-  Release Artefact: meta-yocto-d02d3faaf4d6075ea03e9eb47654ec7639f929a0
+-  sha: e2a69bf93466cd010fd14e4f1b2bb5f45da165b00eb1fbf7987541d7a9378d47
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/meta-yocto-d02d3faaf4d6075ea03e9eb47654ec7639f929a0.tar.bz2
+
+   https://mirrors.kernel.org/yocto/yocto/yocto-5.3/meta-yocto-d02d3faaf4d6075ea03e9eb47654ec7639f929a0.tar.bz2
+
+meta-mingw
+
+-  Repository Location: :yocto_git:`/meta-mingw`
+-  Branch: :yocto_git:`whinlatter </meta-mingw/log/?h=whinlatter>`
+-  Tag:  :yocto_git:`yocto-5.3 </meta-mingw/log/?h=yocto-5.3>`
+-  Git Revision: :yocto_git:`	 </meta-mingw/commit/?id=00323de97e397d4f6734ef2191806616989f5e10>`
+-  Release Artefact: meta-mingw-00323de97e397d4f6734ef2191806616989f5e10
+-  sha: c9a70539b12c0642596fde6a2766d4a6a8fec8b2a366453fb6473363127a1c77
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/meta-mingw-00323de97e397d4f6734ef2191806616989f5e10.tar.bz2
+
+   https://mirrors.kernel.org/yocto/yocto/yocto-5.3/meta-mingw-00323de97e397d4f6734ef2191806616989f5e10.tar.bz2
+
+bitbake
+
+-  Repository Location: :oe_git:`/bitbake`
+-  Branch: :oe_git:`2.14 </bitbake/log/?h=2.14>`
+-  Tag:  :oe_git:`yocto-5.3 </bitbake/log/?h=yocto-5.3>`
+-  Git Revision: :oe_git:`720df1a53452983c1c832f624490e255cf389204 </bitbake/commit/?id=720df1a53452983c1c832f624490e255cf389204>`
+-  Release Artefact: bitbake-720df1a53452983c1c832f624490e255cf389204
+-  sha: 08a5d8914b59e904a805fbf0e76058dfeddd49f4a022298a3c1485b98233db24
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/bitbake-720df1a53452983c1c832f624490e255cf389204.tar.bz2
+
+   https://mirrors.kernel.org/yocto/yocto/yocto-5.3/bitbake-720df1a53452983c1c832f624490e255cf389204.tar.bz2
+
+
