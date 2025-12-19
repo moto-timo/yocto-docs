@@ -58,6 +58,9 @@ Removed classes
 
 The following classes have been removed in this release:
 
+-  ``oelint``: remove as most of the checks done by this class are done in other
+   areas of code now, making this class obsolete.
+
 Removed features
 ----------------
 

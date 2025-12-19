@@ -1901,20 +1901,6 @@ For information on how to create NPM packages, see the
 ":ref:`dev-manual/packages:creating node package manager (npm) packages`"
 section in the Yocto Project Development Tasks Manual.
 
-.. _ref-classes-oelint:
-
-``oelint``
-==========
-
-The :ref:`ref-classes-oelint` class is an obsolete lint checking tool available in
-``meta/classes`` in the :term:`Source Directory`.
-
-There are some classes that could be generally useful in OE-Core but
-are never actually used within OE-Core itself. The :ref:`ref-classes-oelint` class is
-one such example. However, being aware of this class can reduce the
-proliferation of different versions of similar classes across multiple
-layers.
-
 .. _ref-classes-overlayfs:
 
 ``overlayfs``
