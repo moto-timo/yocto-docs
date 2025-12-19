@@ -1,1 +1,1 @@
-sudo pip3 install sphinx sphinx_rtd_theme pyyaml
+sudo pip3 install sphinx sphinx_rtd_theme pyyaml sphinx-copybutton

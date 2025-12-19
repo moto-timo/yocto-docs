@@ -9,6 +9,7 @@ verify_ssl = true
 sphinx = "*"
 sphinx-rtd-theme = "*"
 pyyaml = "*"
+sphinx-copybutton = "*"
 
 [requires]
 python_version = "3"
