@@ -22,6 +22,8 @@ System` core repositories.
    :doc:`/dev-manual/creating-fragments` section of the Yocto Project Development
    Tasks Manual.
 
+.. _ref-bitbake-config-build-qf:
+
 ``bitbake-config-build`` Quick Reference
 ========================================
 

@@ -51,32 +51,9 @@ The following figure and list overviews the build process:
    Yocto Project*: See the ":doc:`/dev-manual/start`" section for options on how to get a
    build host ready to use the Yocto Project.
 
-#. *Initialize the Build Environment:* Initialize the build environment
-   by sourcing the build environment script (i.e.
-   :ref:`structure-core-script`)::
-
-      $ source oe-init-build-env [build_dir]
-
-   When you use the initialization script, the OpenEmbedded build system
-   uses ``build`` as the default :term:`Build Directory` in your current work
-   directory. You can use a `build_dir` argument with the script to
-   specify a different :term:`Build Directory`.
-
-   .. note::
-
-      A common practice is to use a different :term:`Build Directory` for
-      different targets; for example, ``~/build/x86`` for a ``qemux86``
-      target, and ``~/build/arm`` for a ``qemuarm`` target. In any
-      event, it's typically cleaner to locate the :term:`Build Directory`
-      somewhere outside of your source directory.
-
-#. *Make Sure Your* ``local.conf`` *File is Correct*: Ensure the
-   ``conf/local.conf`` configuration file, which is found in the
-   :term:`Build Directory`, is set up how you want it. This file defines many
-   aspects of the build environment including the target machine architecture
-   through the :term:`MACHINE` variable, the packaging format used during
-   the build (:term:`PACKAGE_CLASSES`), and a centralized tarball download
-   directory through the :term:`DL_DIR` variable.
+#. *Make Sure Your Configuration is Correct*: Use :ref:`bitbake-config-build <ref-bitbake-config-build-qf>` to
+   define the :term:`MACHINE` or :term:`DISTRO`, and open your
+   :ref:`structure-build-conf-site.conf` file to set site-specific settings.
 
 #. *Build the Image:* Build the image using the ``bitbake`` command::
 
@@ -88,8 +65,8 @@ The following figure and list overviews the build process:
 
    The target is the name of the recipe you want to build. Common
    targets are the images in ``meta/recipes-core/images``,
-   ``meta/recipes-sato/images``, and so forth all found in the
-   :term:`Source Directory`. Alternatively, the target
+   ``meta/recipes-sato/images``, and so forth all found in
+   :term:`OpenEmbedded-Core (OE-Core)`. Alternatively, the target
    can be the name of a recipe for a specific piece of software such as
    BusyBox. For more details about the images the OpenEmbedded build
    system supports, see the
@@ -127,7 +104,7 @@ Follow these steps to create an :term:`Initramfs` image:
 
 #. *Create the Initramfs Image Recipe:* You can reference the
    ``core-image-minimal-initramfs.bb`` recipe found in the
-   ``meta/recipes-core`` directory of the :term:`Source Directory`
+   ``meta/recipes-core`` directory in :term:`OpenEmbedded-Core (OE-Core)`
    as an example from which to work. The ``core-image-minimal-initramfs`` recipe
    is based on the :ref:`initramfs-framework <dev-manual/building:Customizing an
    Initramfs using \`\`initramfs-framework\`\`>` recipe described below.
@@ -366,9 +343,8 @@ memory used for decompressing the kernel and for the ``__init__``
 functions.
 
 To help you see where you currently are with kernel and root filesystem
-sizes, you can use two tools found in the :term:`Source Directory`
-in the
-``scripts/tiny/`` directory:
+sizes, you can use two tools found in :term:`OpenEmbedded-Core (OE-Core)`
+in the ``scripts/tiny/`` directory:
 
 -  ``ksize.py``: Reports component sizes for the kernel build objects.
 
