@@ -50,9 +50,10 @@ more secure:
 -  Regularly scan and apply fixes for CVE security issues affecting
    all software components in the product, see ":ref:`security-manual/vulnerabilities:checking for vulnerabilities`".
 
--  Regularly update your version of Poky and OE-Core from their upstream
-   developers, e.g. to apply updates and security fixes from stable
-   and :term:`LTS` branches.
+-  Regularly update your version of :term:`BitBake` and your layers (e.g.
+   :term:`OpenEmbedded-Core (OE-Core)`, :yocto_git:`meta-yocto </meta-yocto/>`,
+   ...), e.g. to apply updates and security fixes from stable and :term:`LTS`
+   branches.
 
 -  Ensure you remove or disable debugging functionality before producing
    the final image. For information on how to do this, see the
@@ -72,7 +73,7 @@ Security Flags
 The Yocto Project has security flags that you can enable that help make
 your build output more secure. The security flags are in the
 ``meta/conf/distro/include/security_flags.inc`` file in your
-:term:`Source Directory` (e.g. ``poky``).
+:term:`OpenEmbedded-Core (OE-Core)`.
 
 .. note::
 
