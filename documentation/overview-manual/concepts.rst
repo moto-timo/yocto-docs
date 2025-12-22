@@ -336,7 +336,7 @@ figure <overview-manual/concepts:openembedded build system concepts>`:
    "BSP Layer" in the following figure) providing machine-specific
    configurations. This type of information is specific to a particular
    target architecture. A good example of a BSP layer from the
-   :ref:`overview-manual/yp-intro:reference distribution (poky)` is the
+   :ref:`overview-manual/yp-intro:reference embedded distribution (Poky)` is the
    :yocto_git:`meta-yocto-bsp </meta-yocto/tree/meta-yocto-bsp>`
    layer.
 
