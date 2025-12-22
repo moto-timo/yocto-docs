@@ -191,7 +191,7 @@ that either directly or indirectly depend on the installed files (e.g.
 
    -  The ``tar`` command with the ``--no-same-owner`` option. See the
       ``bin_package.bbclass`` file in the ``meta/classes-recipe``
-      subdirectory of the :term:`Source Directory` for an example.
+      subdirectory of :term:`OpenEmbedded-Core (OE-Core)` for an example.
 
 .. _ref-tasks-install_ptest_base:
 
@@ -288,14 +288,14 @@ to locate and apply patch files to the source code.
 Patch files, by default, are ``*.patch`` and ``*.diff`` files created
 and kept in a subdirectory of the directory holding the recipe file. For
 example, consider the
-:yocto_git:`bluez5 </poky/tree/meta/recipes-connectivity/bluez5>`
-recipe from the OE-Core layer (i.e. ``poky/meta``)::
+:oe_git:`bluez5 </openembedded-core/tree/meta/recipes-connectivity/bluez5>`
+recipe from the :term:`OpenEmbedded-Core (OE-Core)` layer::
 
-   poky/meta/recipes-connectivity/bluez5
+   meta/recipes-connectivity/bluez5
 
 This recipe has two patch files located here::
 
-   poky/meta/recipes-connectivity/bluez5/bluez5
+   meta/recipes-connectivity/bluez5/bluez5
 
 In the ``bluez5`` recipe, the :term:`SRC_URI` statements point to the source
 and patch files needed to build the package.
