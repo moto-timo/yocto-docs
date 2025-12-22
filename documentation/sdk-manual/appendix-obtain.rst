@@ -166,7 +166,7 @@ build the SDK installer. Follow these steps:
 
    .. code-block:: console
 
-      $ cd poky/build/tmp/deploy/sdk
+      $ cd bitbake-builds/build/tmp/deploy/sdk
       $ ./poky-glibc-x86_64-core-image-sato-core2-64-toolchain-ext-&DISTRO;.sh
 
    During execution of the script, you choose the root location for the
