@@ -15,8 +15,8 @@ your changes in the form of patches.
 During a build, the unpacked temporary source code used by recipes to
 build packages is available in the :term:`Build Directory` as defined by the
 :term:`S` variable. Below is the default value for the :term:`S` variable as
-defined in the ``meta/conf/bitbake.conf`` configuration file in the
-:term:`Source Directory`::
+defined in the ``meta/conf/bitbake.conf`` configuration file in
+:term:`OpenEmbedded-Core (OE-Core)`::
 
    S = "${UNPACKDIR}/${BP}"
 
