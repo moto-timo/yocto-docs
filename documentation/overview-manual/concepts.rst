@@ -211,62 +211,28 @@ figure <overview-manual/concepts:openembedded build system concepts>`:
 BitBake needs some basic configuration files in order to complete a
 build. These files are ``*.conf`` files. The minimally necessary ones
 reside as example files in the ``build/conf`` directory of the
-:term:`Source Directory`. For simplicity,
-this section refers to the Source Directory as the "Poky Directory."
+:term:`Build Directory`.
 
-When you clone the :term:`Poky` Git repository
-or you download and unpack a Yocto Project release, you can set up the
-Source Directory to be named anything you want. For this discussion, the
-cloned repository uses the default name ``poky``.
+When you :ref:`initialize the build environment <dev-manual/start:Initializing
+the Build Environment>`, you can specify which directory will be the
+:term:`Source Directory`.
 
-.. note::
-
-   The Poky repository is primarily an aggregation of existing
-   repositories. It is not a canonical upstream source.
-
-The ``meta-poky`` layer inside Poky contains a ``conf`` directory that
-has example configuration files. These example files are used as a basis
-for creating actual configuration files when you source
-:ref:`structure-core-script`, which is the
-build environment script.
-
-Sourcing the build environment script creates a :term:`Build Directory`
+Setting up the build environment creates a :term:`Build Directory`
 if one does not already exist. BitBake uses the :term:`Build Directory`
 for all its work during builds. The Build Directory has a ``conf`` directory
 that contains default versions of your ``local.conf`` and ``bblayers.conf``
-configuration files. These default configuration files are created only
-if versions do not already exist in the :term:`Build Directory` at the time you
-source the build environment setup script.
+configuration files. These default :term:`configuration files <Configuration
+File>` are created only if they do not already exist in the :term:`Build
+Directory` at the time you source the build environment setup script.
 
-Because the Poky repository is fundamentally an aggregation of existing
-repositories, some users might be familiar with running the
-:ref:`structure-core-script` script in the context of separate
-:term:`OpenEmbedded-Core (OE-Core)` and BitBake
-repositories rather than a single Poky repository. This discussion
-assumes the script is executed from within a cloned or unpacked version
-of Poky.
+:term:`Configuration files <Configuration File>` provide many basic variables
+that define a build environment. To show a list of possible variables to
+configure from :term:`configuration files <Configuration File>`, see the
+:yocto_git:`local.conf.sample
+</meta-yocto/tree/meta-poky/conf/templates/default/local.conf.sample>` in the
+``meta-poky`` layer:
 
-Depending on where the script is sourced, different sub-scripts are
-called to set up the :term:`Build Directory` (Yocto or OpenEmbedded).
-Specifically, the script ``scripts/oe-setup-builddir`` inside the poky
-directory sets up the :term:`Build Directory` and seeds the directory (if
-necessary) with configuration files appropriate for the Yocto Project
-development environment.
-
-.. note::
-
-   The
-   ``scripts/oe-setup-builddir``
-   script uses the
-   ``$TEMPLATECONF``
-   variable to determine which sample configuration files to locate.
-
-The ``local.conf`` file provides many basic variables that define a
-build environment. Here is a list of a few. To see the default
-configurations in a ``local.conf`` file created by the build environment
-script, see the
-:yocto_git:`local.conf.sample </poky/tree/meta-poky/conf/templates/default/local.conf.sample>`
-in the ``meta-poky`` layer:
+Here is a non-exhaustive list:
 
 -  *Target Machine Selection:* Controlled by the
    :term:`MACHINE` variable.
@@ -371,18 +337,18 @@ figure <overview-manual/concepts:openembedded build system concepts>`:
    configurations. This type of information is specific to a particular
    target architecture. A good example of a BSP layer from the
    :ref:`overview-manual/yp-intro:reference distribution (poky)` is the
-   :yocto_git:`meta-yocto-bsp </poky/tree/meta-yocto-bsp>`
+   :yocto_git:`meta-yocto-bsp </meta-yocto/tree/meta-yocto-bsp>`
    layer.
 
 -  *Policy Configuration:* Distribution Layers (i.e. "Distro Layer" in
    the following figure) providing top-level or general policies for the
    images or SDKs being built for a particular distribution. For
    example, in the Poky Reference Distribution the distro layer is the
-   :yocto_git:`meta-poky </poky/tree/meta-poky>`
+   :yocto_git:`meta-poky </meta-yocto/tree/meta-poky>`
    layer. Within the distro layer is a ``conf/distro`` directory that
    contains distro configuration files (e.g.
-   :yocto_git:`poky.conf </poky/tree/meta-poky/conf/distro/poky.conf>`
-   that contain many policy configurations for the Poky distribution.
+   :yocto_git:`poky.conf </meta-yocto/tree/meta-poky/conf/distro/poky.conf>`
+   that contain many policy configurations for the :term:`Poky` distribution.
 
 The following figure shows an expanded representation of these three
 layers from the :ref:`general workflow figure
@@ -840,7 +806,7 @@ This step in the build process consists of the following tasks:
    :term:`PACKAGECONFIG_CONFARGS`
    variables. For information on how this variable works within that
    class, see the :ref:`ref-classes-autotools` class
-   :yocto_git:`here </poky/tree/meta/classes-recipe/autotools.bbclass>`.
+   :oe_git:`here </openembedded-core/tree/meta/classes-recipe/autotools.bbclass>`.
 
 -  *do_compile*: Once a configuration task has been satisfied,
    BitBake compiles the source using the
