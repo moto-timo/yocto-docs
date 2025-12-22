@@ -16,6 +16,19 @@ and directories.
    names that contain spaces. Be sure that the Source Directory you use
    does not contain these types of names.
 
+For the following sections, we assume the core components of the :term:`Source
+Directory` are organized as follows:
+
+.. code-block:: text
+
+   ├── build/
+   │   └── ...
+   └── layers/
+       ├── bitbake/
+       ├── meta-yocto/
+       ├── openembedded-core/
+       └── yocto-docs/
+
 .. _structure-core:
 
 Top-Level Core Components
@@ -67,8 +80,10 @@ about the contents of the :term:`Build Directory`.
 
 .. _handbook:
 
-``documentation/``
-------------------
+``layers/yocto-docs/``
+----------------------
+
+The Yocto documentation repository is hosted at :yocto_git:`/yocto-docs`.
 
 This directory holds the source for the Yocto Project documentation as
 well as templates and tools that allow you to generate PDF and HTML
@@ -76,37 +91,28 @@ versions of the manuals. Each manual is contained in its own sub-folder;
 for example, the files for this reference manual reside in the
 ``ref-manual/`` directory.
 
+This directory is not mandatory for building with :term:`BitBake`.
+
+``layers/openembedded-core/``
+-----------------------------
+
+The :term:`OpenEmbedded-Core (OE-Core)` repository is hosted at
+:oe_git:`/openembedded-core`.
+
 .. _structure-core-meta:
 
 ``meta/``
----------
+~~~~~~~~~
 
-This directory contains the minimal, underlying OpenEmbedded-Core
-metadata. The directory holds recipes, common classes, and machine
+This directory contains the minimal, underlying :term:`OpenEmbedded-Core
+(OE-Core)` metadata. The directory holds recipes, common classes, and machine
 configuration for strictly emulated targets (``qemux86``, ``qemuarm``,
 and so forth.)
-
-.. _structure-core-meta-poky:
-
-``meta-poky/``
---------------
-
-Designed above the ``meta/`` content, this directory adds just enough
-metadata to define the Poky reference distribution.
-
-.. _structure-core-meta-yocto-bsp:
-
-``meta-yocto-bsp/``
--------------------
-
-This directory contains the Yocto Project reference hardware Board
-Support Packages (BSPs). For more information on BSPs, see the
-:doc:`/bsp-guide/index`.
 
 .. _structure-meta-selftest:
 
 ``meta-selftest/``
-------------------
+~~~~~~~~~~~~~~~~~~
 
 This directory adds additional recipes and append files used by the
 OpenEmbedded selftests to verify the behavior of the build system. You
@@ -116,14 +122,14 @@ want to run the selftests.
 .. _structure-meta-skeleton:
 
 ``meta-skeleton/``
-------------------
+~~~~~~~~~~~~~~~~~~
 
 This directory contains template recipes for BSP and kernel development.
 
 .. _structure-core-scripts:
 
 ``scripts/``
-------------
+~~~~~~~~~~~~
 
 This directory contains various integration scripts that implement extra
 functionality in the Yocto Project environment (e.g. QEMU scripts). The
@@ -137,7 +143,7 @@ back to the Yocto Project, such as ``create-pull-request`` and
 .. _structure-core-script:
 
 ``oe-init-build-env``
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 This script sets up the OpenEmbedded build environment. Running this
 script with the ``source`` command in a shell makes changes to ``PATH``
@@ -166,16 +172,27 @@ targets to build. Here is an example::
 
    You can also run generated QEMU images with a command like 'runqemu qemux86-64'
 
+.. note::
+
+   When using :doc:`bitbake-setup <bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup>`,
+   this script is indirectly sourced when sourcing the ``init-build-env``
+   located in the :term:`bitbake:Setup`'s build directory. However, compared to
+   ``oe-init-build-env``, the bitbake-setup ``init-build-env`` does not take any
+   argument, as it is already located in a :term:`Build Directory`.
+
+   See :doc:`bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup`
+   for more information.
+
 The default output of the ``oe-init-build-env`` script is from the
-``conf-summary.txt`` and ``conf-notes.txt`` files, which are found in the ``meta-poky`` directory
-within the :term:`Source Directory`. If you design a
-custom distribution, you can include your own versions of these
-configuration files where you can provide a brief summary and detailed usage
-notes, such as a list of the targets defined by your distribution.
-See the
-":ref:`dev-manual/custom-template-configuration-directory:creating a custom template configuration directory`"
-section in the Yocto Project Development Tasks Manual for more
-information.
+``conf-summary.txt`` and ``conf-notes.txt`` files, which are found in the
+``meta/conf/templates/default`` directory of :term:`OpenEmbedded-Core
+(OE-Core)`. If you design a custom distribution, you can include your own
+versions of these configuration files where you can provide a brief summary and
+detailed usage notes, such as a list of the targets defined by your
+distribution. See the
+":ref:`dev-manual/custom-template-configuration-directory:creating a custom
+template configuration directory`" section in the Yocto Project Development
+Tasks Manual for more information.
 
 By default, running this script without a :term:`Build Directory` argument
 creates the ``build/`` directory in your current working directory. If
@@ -188,8 +205,8 @@ your choice. For example, the following command creates a
    $ source oe-init-build-env ~/mybuilds
 
 The OpenEmbedded build system uses the template configuration files, which
-are found by default in the ``meta-poky/conf/templates/default`` directory in the Source
-Directory. See the
+are found by default in the ``meta/conf/templates/default`` directory in
+:term:`OpenEmbedded-Core (OE-Core)`. See the
 ":ref:`dev-manual/custom-template-configuration-directory:creating a custom template configuration directory`"
 section in the Yocto Project Development Tasks Manual for more
 information.
@@ -198,17 +215,35 @@ information.
 
    The OpenEmbedded build system does not support file or directory
    names that contain spaces. If you attempt to run the ``oe-init-build-env``
-   script from a Source Directory that contains spaces in either the
+   script from a :term:`Source Directory` that contains spaces in either the
    filenames or directory names, the script returns an error indicating
-   no such file or directory. Be sure to use a Source Directory free of
+   no such file or directory. Be sure to use a :term:`Source Directory` free of
    names containing spaces.
 
-.. _structure-basic-top-level:
+``layers/meta-yocto/``
+----------------------
 
-``LICENSE, README, and README.hardware``
-----------------------------------------
+The ``meta-yocto`` repository is hosted at :yocto_git:`/meta-yocto`.
 
-These files are standard top-level files.
+.. _structure-core-meta-poky:
+
+``meta-poky/``
+~~~~~~~~~~~~~~
+
+Dependent on the :term:`OpenEmbedded-Core (OE-Core)` metadata, this directory
+adds just enough metadata to define the Poky reference distribution.
+
+Namely, it contains the distro :term:`configuration file` for Poky:
+``conf/distro/poky.conf``.
+
+.. _structure-core-meta-yocto-bsp:
+
+``meta-yocto-bsp/``
+~~~~~~~~~~~~~~~~~~~
+
+This directory contains the Yocto Project reference hardware Board
+Support Packages (BSPs). For more information on BSPs, see the
+:doc:`/bsp-guide/index`.
 
 .. _structure-build:
 
@@ -257,7 +292,7 @@ This directory should not be shared between builds.
    you need to share the :ref:`overview-manual/concepts:Hash Equivalence`
    database, don't share this file and instead refer to the
    :doc:`/dev-manual/hashequivserver` document of the Yocto Project Development
-   Tasks Manual to setup Hash Equivalence server.
+   Tasks Manual to setup a Hash Equivalence server.
 
 .. _structure-build-conf-local.conf:
 
@@ -275,14 +310,14 @@ file, it is recommended to put them into a distro :term:`configuration file`, or
 to create layer :term:`configuration fragments <Configuration Fragment>` from
 changes made here.
 
-The :term:`OpenEmbedded Build System` can create it from a ``local.conf.sample``
-file when you ``source`` the top-level build environment setup script
-:ref:`structure-core-script`.
+The :term:`OpenEmbedded Build System` can create the ``local.conf`` file from a
+``local.conf.sample`` file when you ``source`` the top-level build environment
+setup script :ref:`structure-core-script`.
 
 The source ``local.conf.sample`` file used depends on the
-:term:`TEMPLATECONF` script variable, which defaults to ``meta-poky/conf/templates/default``
+:term:`TEMPLATECONF` script variable, which defaults to ``layers/meta-yocto/meta-poky/conf/templates/default``
 when you are building from the Yocto Project development environment,
-and to ``meta/conf/templates/default`` when you are building from the OpenEmbedded-Core
+and to ``layers/openembedded-core/meta/conf/templates/default`` when you are building from the OpenEmbedded-Core
 environment. Because the script variable points to the source of the
 ``local.conf.sample`` file, this implies that you can configure your
 build environment from any layer by setting the variable in the
@@ -298,9 +333,9 @@ file, it uses ``sed`` to substitute final
 .. note::
 
    You can see how the :term:`TEMPLATECONF` variable is used by looking at the
-   ``scripts/oe-setup-builddir`` script in the :term:`Source Directory`.
-   You can find the Yocto Project version of the ``local.conf.sample`` file in
-   the ``meta-poky/conf/templates/default`` directory.
+   ``layers/openembedded-core/scripts/oe-setup-builddir`` script in :term:`OpenEmbedded-Core (OE-Core)`.
+   You can find the :term:`Poky` version of the ``local.conf.sample`` file in
+   the ``layers/meta-yocto/meta-poky/conf/templates/default`` directory.
 
 .. _structure-build-conf-bblayers.conf:
 
@@ -319,9 +354,9 @@ when you ``source`` the top-level build environment setup script (i.e.
 
 As with the :ref:`structure-build-conf-local.conf` file, the source ``bblayers.conf.sample``
 file used depends on the :term:`TEMPLATECONF` script variable, which
-defaults to ``meta-poky/conf/templates/default`` when you are building from the Yocto
-Project development environment, and to ``meta/conf/templates/default`` when you are
-building from the OpenEmbedded-Core environment. Because the script
+defaults to ``meta-poky/conf/templates/default`` when you are building using the
+:term:`Poky` reference distro, and to ``meta/conf/templates/default`` when you are
+building from the OpenEmbedded-Core environment (default). Because the script
 variable points to the source of the ``bblayers.conf.sample`` file, this
 implies that you can base your build from any layer by setting the
 variable in the top-level build environment setup script as follows::
@@ -329,13 +364,13 @@ variable in the top-level build environment setup script as follows::
    TEMPLATECONF=your_layer/conf/templates/your_template_name
 
 Once the build process gets the sample file, it uses ``sed`` to substitute final
-``${``\ :term:`OEROOT`\ ``}`` values for all ``##OEROOT##`` values.
+``${``\ :term:`OEROOT`\ ``}`` values for all ``##OEROOT##`` occurrences.
 
 .. note::
 
    You can see how the :term:`TEMPLATECONF` variable is defined by the ``scripts/oe-setup-builddir``
-   script in the :term:`Source Directory`. You can find the Yocto Project
-   version of the ``bblayers.conf.sample`` file in the ``meta-poky/conf/templates/default``
+   script in :term:`OpenEmbedded-Core (OE-Core)`. You can find the :term:`Poky`
+   version of the ``bblayers.conf.sample`` file in the ``layers/meta-yocto/meta-poky/conf/templates/default``
    directory.
 
 .. _structure-build-conf-site.conf:
@@ -351,8 +386,9 @@ You could for example edit this file to limit the number of threads used by
 want to access downloaded files (:term:`DL_DIR`).
 
 This file can be shared for multiple build directories. For example,
-``bitbake-setup`` makes the :ref:`structure-build-conf-site.conf` file a
-symbolic link to a common ``site.conf`` file::
+:doc:`bitbake-setup <bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup>`
+makes the :ref:`structure-build-conf-site.conf` file a symbolic link to a common
+``site.conf`` file::
 
    ├── poky-master-poky-distro_poky-machine_qemux86-64/
    │   └── build/
@@ -757,11 +793,12 @@ space if they were to be shared with the standard :term:`Sysroot` mechanism.
 
 .. _structure-meta:
 
-The Metadata --- ``meta/``
-==========================
+The OpenEmbedded-Core (OE-Core) Metadata --- ``meta/``
+======================================================
 
-As mentioned previously, :term:`Metadata` is the core of the
-Yocto Project. Metadata has several important subdivisions:
+As mentioned previously, the :term:`OpenEmbedded-Core (OE-Core)`
+:term:`metadata` is the core of the Yocto Project. This metadata has several
+important subdivisions:
 
 .. _structure-meta-classes:
 

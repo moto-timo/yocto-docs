@@ -81,7 +81,7 @@ directory of that Layer. This directory is what you add to the
 ``conf/bblayers.conf`` file found in your
 :term:`Build Directory`, which is
 established after you run the OpenEmbedded build environment setup
-script (i.e. :ref:`ref-manual/structure:``oe-init-build-env```).
+script (i.e. :ref:`structure-core-script`).
 Adding the root directory allows the :term:`OpenEmbedded Build System`
 to recognize the BSP
 layer and from it build an image. Here is an example::
@@ -221,7 +221,7 @@ section.
       Checking connectivity... done.
 
 #. *Initialize the Build Environment:* While in the :term:`Source Directory`,
-   run the :ref:`ref-manual/structure:``oe-init-build-env``` environment setup
+   run the :ref:`structure-core-script` environment setup
    script located in :term:`OpenEmbedded-Core (OE-Core)` to define the OpenEmbedded
    build environment on your build host. ::
 
