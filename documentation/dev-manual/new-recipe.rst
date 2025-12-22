@@ -224,14 +224,23 @@ is to use the ``bitbake-getvar`` utility::
 
    $ bitbake-getvar -r basename WORKDIR
 
-As an example, assume a Source Directory
-top-level folder named ``poky``, a default :term:`Build Directory` at
-``poky/build``, and a ``qemux86-poky-linux`` machine target system.
+As an example, assume a :term:`Source Directory`
+top-level folder named ``bitbake-builds``, a default :term:`Build Directory` at
+``bitbake-builds/build``, a ``cortexa57`` :term:`PACKAGE_ARCH`, ``poky``
+:term:`DISTRO` and ``linux`` as :term:`TARGET_OS`.
+
 Furthermore, suppose your recipe is named ``foo_1.3.0.bb``. In this
 case, the work directory the build system uses to build the package
 would be as follows::
 
-   poky/build/tmp/work/qemux86-poky-linux/foo/1.3.0-r0
+   bitbake-builds/build/tmp/work/cortexa57-poky-linux/foo/1.3.0
+
+.. note::
+
+   This covers the case when the :term:`PACKAGE_ARCH` variable is set to its
+   default value, :term:`TUNE_PKGARCH`. This variable is sometimes set to
+   :term:`MACHINE_ARCH`. See the documentation of the :term:`PACKAGE_ARCH`
+   variable for more information.
 
 Inside this directory you can find sub-directories such as ``image``,
 ``packages-split``, and ``temp``. After the build, you can examine these
@@ -240,7 +249,7 @@ to determine how well the build went.
 .. note::
 
    You can find log files for each task in the recipe's ``temp``
-   directory (e.g. ``poky/build/tmp/work/qemux86-poky-linux/foo/1.3.0-r0/temp``).
+   directory (e.g. ``bitbake-builds/build/tmp/work/cortexa57-poky-linux/foo/1.3.0/temp``).
    Log files are named ``log.taskname`` (e.g. ``log.do_configure``,
    ``log.do_fetch``, and ``log.do_compile``).
 
@@ -830,7 +839,7 @@ different ways:
 
    To enable a service using systemd, your recipe needs to inherit the
    :ref:`ref-classes-systemd` class. See the ``systemd.bbclass`` file
-   located in your :term:`Source Directory` section for more information.
+   located in :term:`OpenEmbedded-Core (OE-Core)` section for more information.
 
 Packaging
 =========
@@ -974,8 +983,8 @@ being able to provide the ``virtual/kernel`` item.
 Now comes the time to actually build an image and you need a kernel
 recipe, but which one? You can configure your build to call out the
 kernel recipe you want by using the :term:`PREFERRED_PROVIDER` variable. As
-an example, consider the :yocto_git:`x86-base.inc
-</poky/tree/meta/conf/machine/include/x86/x86-base.inc>` include file, which is a
+an example, consider the :oe_git:`x86-base.inc
+</openembedded-core/tree/meta/conf/machine/include/x86/x86-base.inc>` include file, which is a
 machine (i.e. :term:`MACHINE`) configuration file. This include file is the
 reason all x86-based machines use the ``linux-yocto`` kernel. Here are the
 relevant lines from the include file::
