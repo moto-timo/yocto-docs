@@ -338,8 +338,8 @@ You can start the tests automatically or manually:
 
       bitbake -c testimage image
 
-All test files reside in ``meta/lib/oeqa/runtime/cases`` in the
-:term:`Source Directory`. A test name maps
+All test files reside in ``meta/lib/oeqa/runtime/cases`` in
+:term:`OpenEmbedded-Core (OE-Core)`. A test name maps
 directly to a Python module. Each test module may contain a number of
 individual tests. Tests are usually grouped together by the area tested
 (e.g tests for systemd reside in ``meta/lib/oeqa/runtime/cases/systemd.py``).
