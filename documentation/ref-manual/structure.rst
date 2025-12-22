@@ -10,11 +10,6 @@ contents is key to using the Yocto Project effectively. This chapter
 describes the Source Directory and gives information about those files
 and directories.
 
-For information on how to establish a local Source Directory on your
-development system, see the
-":ref:`dev-manual/start:locating yocto project source files`"
-section in the Yocto Project Development Tasks Manual.
-
 .. note::
 
    The OpenEmbedded build system does not support file or directory

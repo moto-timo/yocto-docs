@@ -94,35 +94,10 @@ As an alternative to locating and downloading an SDK installer, you can
 build the SDK installer. Follow these steps:
 
 #. *Set Up the Build Environment:* Be sure you are set up to use BitBake
-   in a shell. See the ":ref:`dev-manual/start:preparing the build host`" section
+   in a shell. See the ":doc:`/dev-manual/start`" section
    in the Yocto Project Development Tasks Manual for information on how
    to get a build host ready that is either a native Linux machine or a
    machine that uses CROPS.
-
-#. *Clone the ``poky`` Repository:* You need to have a local copy of the
-   Yocto Project :term:`Source Directory`
-   (i.e. a local
-   ``poky`` repository). See the ":ref:`dev-manual/start:cloning the \`\`poky\`\` repository`" and
-   possibly the ":ref:`dev-manual/start:checking out by branch in poky`" and
-   ":ref:`dev-manual/start:checking out by tag in poky`" sections
-   all in the Yocto Project Development Tasks Manual for information on
-   how to clone the ``poky`` repository and check out the appropriate
-   branch for your work.
-
-#. *Initialize the Build Environment:* While in the root directory of
-   the Source Directory (i.e. ``poky``), run the
-   :ref:`structure-core-script` environment
-   setup script to define the OpenEmbedded build environment on your
-   build host:
-
-   .. code-block:: console
-
-      $ source oe-init-build-env
-
-   Among other things, the script creates the :term:`Build Directory`, which
-   is ``build`` in this case and is located in the Source Directory. After
-   the script runs, your current working directory is set to the ``build``
-   directory.
 
 #. *Make Sure You Are Building an Installer for the Correct Machine:*
    Check to be sure that your :term:`MACHINE` variable in the ``local.conf``

@@ -22,21 +22,13 @@ Preparing the Build Host to Work on the Kernel
 Before you can do any kernel development, you need to be sure your build
 host is set up to use the Yocto Project. For information on how to get
 set up, see the ":doc:`/dev-manual/start`" section in
-the Yocto Project Development Tasks Manual. Part of preparing the system
-is creating a local Git repository of the
-:term:`Source Directory` (``poky``) on your system. Follow the steps in the
-":ref:`dev-manual/start:cloning the \`\`poky\`\` repository`"
-section in the Yocto Project Development Tasks Manual to set up your
-Source Directory.
+the Yocto Project Development Tasks Manual.
 
 .. note::
 
    Be sure you check out the appropriate development branch or you
    create your local branch by checking out a specific tag to get the
-   desired version of Yocto Project. See the
-   ":ref:`dev-manual/start:checking out by branch in poky`" and
-   ":ref:`dev-manual/start:checking out by tag in poky`"
-   sections in the Yocto Project Development Tasks Manual for more information.
+   desired version of Yocto Project.
 
 Kernel development is best accomplished using
 :ref:`devtool <sdk-manual/extensible:using \`\`devtool\`\` in your sdk workflow>`
@@ -158,28 +150,8 @@ this procedure leaves you ready to make modifications to the kernel
 source as described in the ":ref:`kernel-dev/common:using traditional kernel development to patch the kernel`"
 section:
 
-#. *Initialize the BitBake Environment:* Before you can do anything
-   using BitBake, you need to initialize the BitBake build environment
-   by sourcing the build environment script (i.e.
-   :ref:`structure-core-script`).
-   Also, for this example, be sure that the local branch you have
-   checked out for ``poky`` is the Yocto Project &DISTRO_NAME; branch. If
-   you need to checkout out the &DISTRO_NAME; branch, see the
-   ":ref:`dev-manual/start:checking out by branch in poky`"
-   section in the Yocto Project Development Tasks Manual::
-
-      $ cd poky
-      $ git branch
-      master
-      * &DISTRO_NAME_NO_CAP;
-      $ source oe-init-build-env
-
-   .. note::
-
-      The previous commands assume the
-      :ref:`overview-manual/development-environment:yocto project source repositories`
-      (i.e. ``poky``) have been cloned using Git and the local repository is named
-      "poky".
+#. *Initialize the BitBake Environment:* Follow the steps in the
+   :doc:`/dev-manual/start` section of the Yocto Project Development Tasks Manual.
 
 #. *Prepare Your local.conf File:* By default, the :term:`MACHINE` variable is
    set to "qemux86-64", which is fine if you are building for the QEMU emulator

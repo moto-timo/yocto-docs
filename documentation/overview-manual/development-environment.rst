@@ -184,15 +184,6 @@ development:
    .. image:: figures/source-repos.png
       :width: 100%
 
-   For steps on how to view and access these upstream Git repositories,
-   see the ":ref:`dev-manual/start:accessing source repositories`"
-   Section in the Yocto Project Development Tasks Manual.
-
--  :yocto_dl:`Yocto release archives: </releases/yocto>` This is where you can
-   download tarballs corresponding to each Yocto Project release. Downloading
-   and extracting these files does not produce a local copy of a Git repository
-   but rather a snapshot corresponding to a particular release.
-
 -  :yocto_home:`DOWNLOADS page </software-overview/downloads/>`:
    The :yocto_home:`Yocto Project website <>` includes a "DOWNLOADS" page accessible
    through the "SOFTWARE" menu that allows you to download any Yocto
@@ -202,10 +193,6 @@ development:
 
    .. image:: figures/yp-download.png
       :width: 100%
-
-   For steps on how to use the "DOWNLOADS" page, see the
-   ":ref:`dev-manual/start:using the downloads page`"
-   section in the Yocto Project Development Tasks Manual.
 
 Git Workflows and the Yocto Project
 ===================================
@@ -372,10 +359,6 @@ commands.
       Ubuntu, use the Ubuntu Software feature). For the Git download
       page, see https://git-scm.com/download.
 
-   -  For information beyond the introductory nature in this section,
-      see the ":ref:`dev-manual/start:locating yocto project source files`"
-      section in the Yocto Project Development Tasks Manual.
-
 Repositories, Tags, and Branches
 --------------------------------
 
@@ -403,9 +386,7 @@ You can create a local copy of any repository by "cloning" it with the
 ``git clone`` command. When you clone a Git repository, you end up with
 an identical copy of the repository on your development system. Once you
 have a local copy of a repository, you can take steps to develop
-locally. For examples on how to clone Git repositories, see the
-":ref:`dev-manual/start:locating yocto project source files`"
-section in the Yocto Project Development Tasks Manual.
+locally.
 
 It is important to understand that Git tracks content change and not
 files. Git uses "branches" to organize different development efforts.

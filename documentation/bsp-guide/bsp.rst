@@ -72,7 +72,7 @@ For information on typical BSP development workflow, see the
 section. For more
 information on how to set up a local copy of source files from a Git
 repository, see the
-:ref:`dev-manual/start:locating yocto project source files`
+:doc:`/dev-manual/poky-manual-setup`
 section in the Yocto Project Development Tasks Manual.
 
 The BSP layer's base directory (``meta-bsp_root_name``) is the root
@@ -204,10 +204,7 @@ section.
       .. note::
 
          To see the available branch names in a cloned repository, use the ``git
-         branch -a`` command. See the
-         ":ref:`dev-manual/start:checking out by branch in poky`"
-         section in the Yocto Project Development Tasks Manual for more
-         information.
+         branch -a`` command.
 
 #. *Optionally Set Up an Alternative BSP Layer:* If your hardware can be
    more closely leveraged to an existing BSP not within the
