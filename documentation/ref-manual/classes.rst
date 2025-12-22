@@ -9,12 +9,13 @@ amongst multiple recipe (``.bb``) files. To use a class file, you simply
 make sure the recipe inherits the class. In most cases, when a recipe
 inherits a class it is enough to enable its features. There are cases,
 however, where in the recipe you might need to set variables or override
-some default behavior.
+some default behavior. A class can also be inherited globally (in every recipe)
+with the :term:`INHERIT` variable.
 
 Any :term:`Metadata` usually found in a recipe can also be
 placed in a class file. Class files are identified by the extension
-``.bbclass`` and are usually placed in one of a set of subdirectories
-beneath the ``meta*/`` directory found in the :term:`Source Directory`:
+``.bbclass`` and are usually placed in one of the following subdirectories
+of a :term:`layer`:
 
   - ``classes-recipe/`` - classes intended to be inherited by recipes
     individually
@@ -28,9 +29,9 @@ in :term:`BBPATH` using the same method by which ``.conf``
 files are searched.
 
 This chapter discusses only the most useful and important classes. Other
-classes do exist within the ``meta/classes*`` directories in the Source
-Directory. You can reference the ``.bbclass`` files directly for more
-information.
+classes do exist within the ``meta/classes*`` directories of
+:term:`OpenEmbedded-Core (OE-Core)`. You can refer to the ``.bbclass`` files
+directly for more information.
 
 .. _ref-classes-allarch:
 
@@ -338,8 +339,8 @@ The :ref:`ref-classes-cargo_c` class can be inherited by a recipe to generate
 a Rust library that can be called by C/C++ code. The recipe which inherits this
 class has to only replace ``inherit cargo`` by ``inherit cargo_c``.
 
-See the :yocto_git:`rust-c-lib-example_git.bb
-</poky/tree/meta-selftest/recipes-devtools/rust/rust-c-lib-example_git.bb>`
+See the :oe_git:`rust-c-lib-example_git.bb
+</openembedded-core/tree/meta-selftest/recipes-devtools/rust/rust-c-lib-example_git.bb>`
 example recipe.
 
 .. _ref-classes-cargo_common:
@@ -602,8 +603,9 @@ inherited globally from a configuration file::
 
    INHERIT += "cve-check"
 
-To filter out obsolete CVE database entries which are known not to impact software from Poky and OE-Core,
-add following line to the build configuration file::
+To filter out obsolete CVE database entries which are known not to impact
+software from :term:`OpenEmbedded-Core (OE-Core)`, add the following line to the
+build configuration file::
 
    include cve-extra-exclusions.inc
 
@@ -827,7 +829,7 @@ See these variables for more information:
 :term:`PV`,
 
 For more information on the :ref:`ref-classes-externalsrc` class, see the comments in
-``meta/classes/externalsrc.bbclass`` in the :term:`Source Directory`.
+``meta/classes/externalsrc.bbclass`` in :term:`OpenEmbedded-Core (OE-Core)`.
 For information on how to use the :ref:`ref-classes-externalsrc` class, see the
 ":ref:`dev-manual/building:building software from an external source`"
 section in the Yocto Project Development Tasks Manual.
@@ -1009,7 +1011,7 @@ this class is controlled by the mandatory :term:`GO_IMPORT` variable, and
 by the optional :term:`GO_INSTALL` and :term:`GO_INSTALL_FILTEROUT` ones.
 
 To build a Go program with the Yocto Project, you can use the
-:yocto_git:`go-helloworld_0.1.bb </poky/tree/meta/recipes-extended/go-examples/go-helloworld_0.1.bb>`
+:oe_git:`go-helloworld_0.1.bb </openembedded-core/tree/meta/recipes-extended/go-examples/go-helloworld_0.1.bb>`
 recipe as an example.
 
 .. _ref-classes-go-mod:
@@ -3471,10 +3473,10 @@ is one reason we don't use static linking for our :ref:`ref-classes-native`
 binaries.
 
 With this class enabled, a tarball containing a pre-built C library is
-downloaded at the start of the build. In the Poky reference distribution this is
+downloaded at the start of the build. In :term:`OpenEmbedded-Core (OE-Core)` this is
 enabled by default through :oe_git:`meta/conf/distro/include/yocto-uninative.inc
 </openembedded-core/tree/meta/conf/distro/include/yocto-uninative.inc>`. Other distributions that do
-not derive from Poky can also "``require conf/distro/include/yocto-uninative.inc``"
+not derive from :term:`Poky` can also "``require conf/distro/include/yocto-uninative.inc``"
 to use this. Alternatively if you prefer, you can build the uninative-tarball
 recipe yourself, publish the resulting tarball (e.g. via HTTP) and set
 :term:`UNINATIVE_URL` and :term:`UNINATIVE_CHECKSUM` appropriately. For an
@@ -3516,7 +3518,7 @@ To use this class, you need to define a number of variables:
 These variables list alternative commands needed by a package, provide
 pathnames for links, default links for targets, and so forth. For
 details on how to use this class, see the comments in the
-:yocto_git:`update-alternatives.bbclass </poky/tree/meta/classes-recipe/update-alternatives.bbclass>`
+:oe_git:`update-alternatives.bbclass </openembedded-core/tree/meta/classes-recipe/update-alternatives.bbclass>`
 file.
 
 .. note::
@@ -3549,7 +3551,7 @@ that contain system services that should be run under their own user or
 group, you can use these classes to enable creation of the user or
 group. The :oe_git:`meta-skeleton/recipes-skeleton/useradd/useradd-example.bb
 </openembedded-core/tree/meta-skeleton/recipes-skeleton/useradd/useradd-example.bb>`
-recipe in the :term:`Source Directory` provides a simple
+recipe in :term:`OpenEmbedded-Core (OE-Core)` provides a simple
 example that shows how to add three users and groups to two packages.
 
 The :ref:`useradd_base <ref-classes-useradd>` class provides basic functionality for user or
