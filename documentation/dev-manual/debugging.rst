@@ -439,7 +439,7 @@ the build system to run the task again.
 
    For an example of a commit that makes a cosmetic change to invalidate
    shared state, see this
-   :yocto_git:`commit </poky/commit/meta/classes/package.bbclass?id=737f8bbb4f27b4837047cb9b4fbfe01dfde36d54>`.
+   :oe_git:`commit </openembedded-core/commit/meta/classes/package.bbclass?id=30064a98dc9049db4a37f119d15fbb59aa3c8377>`.
 
 Running Specific Tasks
 ======================
@@ -522,7 +522,7 @@ task dependency mechanisms.
 
    .. code-block:: none
 
-      WARNING: /home/ulf/poky/meta/recipes-sato/matchbox-desktop/matchbox-desktop_2.1.bb.do_compile is tainted from a forced run
+      WARNING: /home/ulf/openembedded-core/meta/recipes-sato/matchbox-desktop/matchbox-desktop_2.1.bb.do_compile is tainted from a forced run
 
 
    The purpose of the warning is to let you know that the work directory
@@ -615,7 +615,7 @@ The same logging functions are also available in shell functions, under
 the names ``bbplain``, ``bbnote``, ``bbdebug``, ``bbwarn``, ``bberror``,
 and ``bbfatal``. The :ref:`ref-classes-logging` class
 implements these functions. See that class in the ``meta/classes``
-folder of the :term:`Source Directory` for information.
+folder of :term:`OpenEmbedded-Core (OE-Core)` for information.
 
 Logging With Python
 -------------------
@@ -852,10 +852,10 @@ patch::
    Refreshed patch patches/parallelmake.patch
 
 Once the patch file is created, you need to add it back to the originating
-recipe folder. Here is an example assuming a top-level
-:term:`Source Directory` named ``poky``::
+recipe folder. Here is an example assuming :term:`OpenEmbedded-Core (OE-Core)`
+is named ``openembedded-core``::
 
-   $ cp patches/parallelmake.patch poky/meta/recipes-connectivity/neard/neard
+   $ cp patches/parallelmake.patch openembedded-core/meta/recipes-connectivity/neard/neard
 
 The final thing you need to do to implement the fix in the build is to
 update the "neard" recipe (i.e. ``neard-0.14.bb``) so that the
@@ -940,7 +940,9 @@ debug symbols from the server.
 To run a ``debuginfod`` server, you need to do the following:
 
 -  Ensure that ``debuginfod`` is present in :term:`DISTRO_FEATURES`
-   (it already is in ``OpenEmbedded-core`` defaults and ``poky`` reference distribution).
+   (it already is in :term:`OpenEmbedded-Core (OE-Core)` defaults and
+   :term:`Poky` reference distribution).
+
    If not, set in your distro config file or in ``local.conf``::
 
       DISTRO_FEATURES:append = " debuginfod"
