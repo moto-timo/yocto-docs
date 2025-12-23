@@ -424,8 +424,8 @@ universal, the list includes them just in case:
       recipes. The result is a tightly controlled and an quality-assured
       core set of recipes.
 
-      You can see the Metadata in the ``meta`` directory of the Yocto
-      Project :yocto_git:`Source Repositories </poky>`.
+      You can browse the source of :term:`OpenEmbedded-Core (OE-Core)` at
+      :oe_git:`openembedded-core </openembedded-core>`.
 
    :term:`Package`
       In the context of the Yocto Project, this term refers to a
