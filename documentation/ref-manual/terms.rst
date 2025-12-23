@@ -526,20 +526,36 @@ universal, the list includes them just in case:
       a software bill of materials`" section of the Development Tasks manual.
 
    :term:`Source Directory`
-     This term refers to the directory structure
-     created as a result of creating a local copy of the ``poky`` Git
-     repository ``git://git.yoctoproject.org/poky`` or expanding a
-     released ``poky`` tarball.
+     This term refers to the directory structure created as a result of setting
+     up your environment to build images with the Yocto Project, which can be
+     done in two ways:
 
-     .. note::
+     -  Using the ``bitbake-setup`` command-line utility (see :doc:`Setting Up
+        The Environment With bitbake-setup
+        <bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup>`).
 
-        Creating a local copy of the
-        poky
-        Git repository is the recommended method for setting up your
-        Source Directory.
+     -  Or manually setting up the :term:`Layers <Layer>` (see
+        :doc:`/dev-manual/poky-manual-setup`).
 
-     Sometimes you might hear the term "poky directory" used to refer to
-     this directory structure.
+     In either case, the result will be a set of :term:`Layers <Layer>` and a
+     :term:`Build Directory`: this is the Source Directory for your build. The
+     documentation usually denotes this directory with the name "bitbake-builds".
+
+     A typical layout for the :term:`Source Directory` would be:
+
+     .. code-block:: text
+
+        bitbake-builds/
+        ├── build/
+        └── layers/
+
+     Where the ``layers/`` directory corresponds to the directory containing
+     :term:`layers <Layer>` for your project, and the ``build/`` directory
+     corresponds to the :term:`Build Directory`.
+
+     We present a :term:`Source Directory` structure and its components in
+     details in the :doc:`/ref-manual/structure` section of the Yocto Project
+     Reference Manual.
 
      .. note::
 
@@ -547,43 +563,12 @@ universal, the list includes them just in case:
         names that contain spaces. Be sure that the Source Directory you
         use does not contain these types of names.
 
-     The Source Directory contains BitBake, Documentation, Metadata and
-     other files that all support the Yocto Project. Consequently, you
-     must have the Source Directory in place on your development system in
-     order to do any development using the Yocto Project.
+     The :term:`Source Directory` contains :term:`BitBake`,
+     :term:`OpenEmbedded-Core (OE-Core)`, and other files that all support the
+     Yocto Project.
 
-     When you create a local copy of the Git repository, you can name the
-     repository anything you like. Throughout much of the documentation,
-     "poky" is used as the name of the top-level folder of the local copy
-     of the poky Git repository. So, for example, cloning the ``poky`` Git
-     repository results in a local Git repository whose top-level folder
-     is also named "poky".
-
-     While it is not recommended that you use tarball extraction to set up
-     the Source Directory, if you do, the top-level directory name of the
-     Source Directory is derived from the Yocto Project release tarball.
-     For example, downloading and unpacking poky tarballs from
-     :yocto_dl:`/releases/yocto/&DISTRO_REL_LATEST_TAG;/`
-     results in a Source Directory whose root folder is named poky.
-
-
-     It is important to understand the differences between the Source
-     Directory created by unpacking a released tarball as compared to
-     cloning ``git://git.yoctoproject.org/poky``. When you unpack a
-     tarball, you have an exact copy of the files based on the time of
-     release --- a fixed release point. Any changes you make to your local
-     files in the Source Directory are on top of the release and will
-     remain local only. On the other hand, when you clone the ``poky`` Git
-     repository, you have an active development repository with access to
-     the upstream repository's branches and tags. In this case, any local
-     changes you make to the local Source Directory can be later applied
-     to active development branches of the upstream ``poky`` Git
-     repository.
-
-     For more information on concepts related to Git repositories,
-     branches, and tags, see the
-     ":ref:`overview-manual/development-environment:repositories, tags, and branches`"
-     section in the Yocto Project Overview and Concepts Manual.
+     Consequently, you must have the :term:`Source Directory` in place on your
+     development system in order to do any development using the Yocto Project.
 
    :term:`SPDX`
       This term means *Software Package Data Exchange*, and is used as an open
