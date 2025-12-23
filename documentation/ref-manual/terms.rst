@@ -63,36 +63,39 @@ universal, the list includes them just in case:
       This term refers to the area used by the OpenEmbedded build system for
       builds. The area is created when you ``source`` the setup environment
       script that is found in the Source Directory
-      (i.e. :ref:`ref-manual/structure:``oe-init-build-env```). The
+      (i.e. :ref:`ref-manual/structure:``oe-init-build-env```, or
+      ``init-build-env`` when using :doc:`bitbake-setup
+      <bitbake:bitbake-user-manual/bitbake-user-manual-environment-setup>`). The
       :term:`TOPDIR` variable points to the :term:`Build Directory`.
 
-      You have a lot of flexibility when creating the :term:`Build Directory`.
+      When setting up the build manually (see :doc:`/dev-manual/poky-manual-setup`),
+      you have a lot of flexibility when creating the :term:`Build Directory`.
       Here are some examples that show how to create the directory.  The
-      examples assume your :term:`Source Directory` is named ``poky``:
+      examples assume your :term:`Source Directory` is named ``bitbake-builds``:
 
-         -  Create the :term:`Build Directory` inside your Source Directory and let
-            the name of the :term:`Build Directory` default to ``build``:
+      -  Create the :term:`Build Directory` inside your Source Directory and let
+         the name of the :term:`Build Directory` default to ``build``:
 
-            .. code-block:: shell
+         .. code-block:: console
 
-               $ cd poky
-               $ source oe-init-build-env
+            $ cd bitbake-builds
+            $ source layers/openembedded-core/oe-init-build-env
 
-         -  Create the :term:`Build Directory` inside your home directory and
-            specifically name it ``test-builds``:
+      -  Or provide a path to the :term:`Build Directory` when sourcing
+         ``oe-init-build-env``. Any intermediate folders in the pathname must
+         exist. This next example creates a :term:`Build Directory` named
+         ``YP-&DISTRO;`` within the existing directory ``mybuilds``:
 
-            .. code-block:: shell
+         .. code-block:: console
 
-               $ source poky/oe-init-build-env test-builds
+            $ source bitbake-builds/layers/openembedded-core/oe-init-build-env mybuilds/YP-&DISTRO;
 
-         -  Provide a directory path and specifically name the
-            :term:`Build Directory`. Any intermediate folders in the pathname
-            must exist.  This next example creates a :term:`Build Directory`
-            named ``YP-&DISTRO;`` within the existing directory ``mybuilds``:
+         This path can also be an absolute path and be outside of the current
+         working directory:
 
-            .. code-block:: shell
+         .. code-block:: console
 
-               $ source poky/oe-init-build-env mybuilds/YP-&DISTRO;
+            $ source bitbake-builds/layers/openembedded-core/oe-init-build-env /opt/mybuilds/YP-&DISTRO;
 
       .. note::
 
@@ -100,9 +103,10 @@ universal, the list includes them just in case:
          temporary directory the build system uses for its work. :term:`TMPDIR` cannot
          be under NFS. Thus, by default, the :term:`Build Directory` cannot be under
          NFS. However, if you need the :term:`Build Directory` to be under NFS, you can
-         set this up by setting :term:`TMPDIR` in your ``local.conf`` file to use a local
-         drive. Doing so effectively separates :term:`TMPDIR` from :term:`TOPDIR`, which is the
-         :term:`Build Directory`.
+         set this up by setting :term:`TMPDIR` in your
+         :ref:`structure-build-conf-site.conf` file to use a local drive. Doing
+         so effectively separates :term:`TMPDIR` from :term:`TOPDIR`, which is
+         the :term:`Build Directory`.
 
    :term:`Build Host`
       The system used to build images in a Yocto Project Development
