@@ -361,8 +361,9 @@ package. It is also perfectly acceptable to call ``do_split_packages``
 multiple times if you have more than one set of modules to package.
 
 For more examples that show how to use ``do_split_packages``, see the
-``connman.inc`` file in the ``meta/recipes-connectivity/connman/``
-directory of the ``poky`` :ref:`source repository <overview-manual/development-environment:yocto project source repositories>`. You can
+``connman.inc`` file in the :oe_git:`meta/recipes-connectivity/connman/
+</openembedded-core/tree/meta/recipes-connectivity/connman/>`
+directory of :term:`OpenEmbedded-Core (OE-Core)`. You can
 also find examples in ``meta/classes-recipe/kernel.bbclass``.
 
 Here is a reference that shows ``do_split_packages`` mandatory and
@@ -543,7 +544,7 @@ to use. In your configuration, you use the
 variable to specify the format:
 
 #. Open the ``local.conf`` file inside your :term:`Build Directory` (e.g.
-   ``poky/build/conf/local.conf``).
+   ``bitbake-builds/build/conf/local.conf``).
 
 #. Select the desired package format as follows::
 
@@ -637,10 +638,10 @@ Lighttpd, or Nginx), take the appropriate steps to do so.
 
 From within the :term:`Build Directory` where you have built an image based on
 your packaging choice (i.e. the :term:`PACKAGE_CLASSES` setting), simply start
-the server. The following example assumes a :term:`Build Directory` of ``poky/build``
+the server. The following example assumes a :term:`Build Directory` of ``bitbake-builds/build``
 and a :term:`PACKAGE_CLASSES` setting of ":ref:`ref-classes-package_rpm`"::
 
-   $ cd poky/build/tmp/deploy/rpm
+   $ cd bitbake-builds/build/tmp/deploy/rpm
    $ python3 -m http.server
 
 Target Setup
