@@ -60,8 +60,9 @@ contact us with other suggestions.
    layers, on the other hand, helps keep simplify future customizations and
    reuse.
 
-#. **Never modify the POKY layer. Never. Ever. When you update to the next
-   release, you'll lose all of your work. ALL OF IT.**
+#. **Never modify the core layers** (:term:`BitBake`, :term:`OpenEmbedded-Core
+   (OE-Core)` and possibly :yocto_git:`meta-yocto </meta-yocto>`). Never. Ever.
+   When you update to the next release, you'll lose all of your work. ALL OF IT.**
 
 #. **Don't be fooled by documentation searching results:**
    Yocto Project documentation is always being updated. Unfortunately, when you
