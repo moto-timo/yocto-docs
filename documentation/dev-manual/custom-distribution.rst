@@ -3,8 +3,10 @@
 Creating Your Own Distribution
 ******************************
 
-When you build an image using the Yocto Project and do not alter any
-distribution :term:`Metadata`, you are using the Poky distribution.
+When you build an image using the Yocto Project and follow the default setup
+showcased in :doc:`/dev-manual/start`, you are using the :term:`Poky` reference
+distribution.
+
 Poky is explicitly a *reference* distribution for testing and
 development purposes. It enables most hardware and software features
 so that they can be tested, but this also means that from a security
