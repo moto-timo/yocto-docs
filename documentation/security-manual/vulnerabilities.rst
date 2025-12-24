@@ -3,8 +3,8 @@
 Checking for Vulnerabilities
 ****************************
 
-Vulnerabilities in Poky and OE-Core
-===================================
+Vulnerabilities in OpenEmbedded-Core (OE-Core)
+==============================================
 
 The Yocto Project has an infrastructure to track and address unfixed
 known security vulnerabilities, as tracked by the public
@@ -13,15 +13,15 @@ database.
 
 The Yocto Project maintains a `list of known vulnerabilities
 <https://valkyrie.yocto.io/pub/non-release/patchmetrics/>`__
-for packages in Poky and OE-Core, tracking the evolution of the number of
+for packages in :term:`OpenEmbedded-Core (OE-Core)`, tracking the evolution of the number of
 unpatched CVEs and the status of patches. Such information is available for
 the current development version and for each supported release.
 
 Security is a process, not a product, and thus at any time, a number of security
-issues may be impacting Poky and OE-Core. It is up to the maintainers, users,
+issues may be impacting :term:`OpenEmbedded-Core (OE-Core)`. It is up to the maintainers, users,
 contributors and anyone interested in the issues to investigate and possibly fix them by
 updating software components to newer versions or by applying patches to address them.
-It is recommended to work with Poky and OE-Core upstream maintainers and submit
+It is recommended to work with :term:`OpenEmbedded-Core (OE-Core)` upstream maintainers and submit
 patches to fix them, see ":doc:`/contributor-guide/submit-changes`" for details.
 
 Vulnerability check at build time
@@ -34,7 +34,7 @@ add the following setting to your configuration::
    INHERIT += "cve-check"
 
 The CVE database contains some old incomplete entries which have been
-deemed not to impact Poky or OE-Core. These CVE entries can be excluded from the
+deemed not to impact :term:`OpenEmbedded-Core (OE-Core)`. These CVE entries can be excluded from the
 check using build configuration::
 
    include conf/distro/include/cve-extra-exclusions.inc
@@ -167,7 +167,7 @@ the :term:`CVE_VERSION` variable.
 
 Note that if the CVE entries in the NVD database contain bugs or have missing or incomplete
 information, it is recommended to fix the information there directly instead of working
-around the issues possibly for a long time in Poky and OE-Core side recipes. Feedback to
+around the issues possibly for a long time in :term:`OpenEmbedded-Core (OE-Core)` side recipes. Feedback to
 NVD about CVE entries can be provided through the `NVD contact form <https://nvd.nist.gov/info/contact-form>`__.
 
 Fixing vulnerabilities in recipes
@@ -175,7 +175,7 @@ Fixing vulnerabilities in recipes
 
 Suppose a CVE security issue impacts a software component. In that case, it can
 be fixed by updating to a newer version, by applying a patch, or by marking it
-as patched via :term:`CVE_STATUS` variable flag. For Poky and OE-Core master
+as patched via :term:`CVE_STATUS` variable flag. For OE-Core master
 branches, updating to a more recent software component release with fixes is
 the best option, but patches can be applied if releases are not yet available.
 
@@ -276,8 +276,8 @@ The entry should have the format like::
    CVE_STATUS[CVE-2016-10642] = "cpe-incorrect: This is specific to the npm package that installs cmake, so isn't relevant to OpenEmbedded"
 
 As mentioned previously, if data in the CVE database is wrong, it is recommended
-to fix those issues in the CVE database (NVD in the case of OE-core and Poky)
-directly.
+to fix those issues in the CVE database (NVD in the case of
+:term:`OpenEmbedded-Core (OE-Core)`) directly.
 
 Note that if there are many CVEs with the same status and reason, those can be
 shared by using the :term:`CVE_STATUS_GROUPS` variable.
