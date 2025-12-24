@@ -81,10 +81,10 @@ it always depends upon the paths it is built in.
 
 .. note::
 
-   Only BitBake and :term:`OpenEmbedded-Core (OE-Core)`, which is the ``meta``
-   layer in Poky, guarantee complete reproducibility. The moment you add
-   another layer, this warranty is voided, because of additional configuration
-   files, ``bbappend`` files, overridden classes, etc.
+   Only BitBake and :term:`OpenEmbedded-Core (OE-Core)` guarantee complete
+   reproducibility. The moment you add another layer, this warranty is voided,
+   because of additional configuration files, ``bbappend`` files, overridden
+   classes, etc.
 
 To run our automated selftest, as we use in our CI on the Autobuilder, you can
 run::
