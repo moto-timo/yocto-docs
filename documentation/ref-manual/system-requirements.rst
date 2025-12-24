@@ -405,8 +405,8 @@ installer and automatically installs the tools for you:
 
 #. Execute the ``install-buildtools`` script. Here is an example::
 
-      $ cd poky
-      $ scripts/install-buildtools \
+      $ cd /path/to/bitbake-builds
+      $ ./layers/openembedded-core/scripts/install-buildtools \
         --without-extended-buildtools \
         --base-url &YOCTO_DL_URL;/releases/yocto \
         --release yocto-&DISTRO; \
@@ -420,26 +420,26 @@ installer and automatically installs the tools for you:
    To avoid the need of ``sudo`` privileges, the ``install-buildtools``
    script will by default tell the installer to install in::
 
-      /path/to/poky/buildtools
+      /path/to/bitbake-builds/buildtools
 
    If your host development system needs the additional tools provided
    in the :term:`buildtools-extended` tarball, you can instead execute the
    ``install-buildtools`` script with the default parameters::
 
-      $ cd poky
+      $ cd /path/to/bitbake-builds
       $ scripts/install-buildtools
 
    Alternatively if your host development system has a broken ``make``
    version such that you only need a known good version of ``make``,
    you can use the ``--make-only`` option::
 
-      $ cd poky
+      $ cd /path/to/bitbake-builds
       $ scripts/install-buildtools --make-only
 
 #. Source the tools environment setup script by using a command like the
    following::
 
-      $ source /path/to/poky/buildtools/environment-setup-x86_64-pokysdk-linux
+      $ source /path/to/bitbake-builds/buildtools/environment-setup-x86_64-pokysdk-linux
 
    After you have sourced the setup script, the tools are added to
    ``PATH`` and any other environment variables required to run the
