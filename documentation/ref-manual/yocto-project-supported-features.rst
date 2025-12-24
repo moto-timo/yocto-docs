@@ -59,7 +59,7 @@ Below is a list of primary tested features, their maintainer(s) and builder(s):
        qemuarm64-ptest,
        qemuarm64-tc,
        qemuarmv5
-   * - :yocto_git:`Beaglebone </poky/tree/meta-yocto-bsp/conf/machine/beaglebone-yocto.conf>`
+   * - :yocto_git:`Beaglebone </meta-yocto/tree/meta-yocto-bsp/conf/machine/beaglebone-yocto.conf>`
      - Beaglebone image and SDK build testing
      - Collective effort
      - beaglebone,
