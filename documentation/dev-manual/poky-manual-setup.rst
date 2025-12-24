@@ -22,7 +22,16 @@ release or a Long Term Support release.
 
 Once you complete the setup instructions for your machine (see the
 :doc:`/ref-manual/system-requirements` section of the Yocto Project Reference
-Manual), you need to get a copy of the different :term:`layers <Layer>` needed
+Manual), create a :term:`Source Directory`: the base directory for your project.
+Throughout the documentation, we will use ``bitbake-builds`` as the name of the
+:term:`Source Directory`. Here's how to create it:
+
+.. code-block:: console
+
+   $ mkdir bitbake-builds
+   $ cd bitbake-builds
+
+You need to get a copy of the different :term:`layers <Layer>` needed
 to setup the :term:`Poky` reference distribution on your build host. Use the
 following commands:
 
