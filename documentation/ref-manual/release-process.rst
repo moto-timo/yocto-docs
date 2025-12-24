@@ -232,10 +232,12 @@ efficiently.
 
 The Yocto Project's main :yocto_ab:`Autobuilder <>` publicly tests each Yocto
 Project release's code in the :oe_git:`openembedded-core </openembedded-core>`,
-:yocto_git:`poky </poky>` and :oe_git:`bitbake </bitbake>` repositories. The
+:yocto_git:`meta-yocto </meta-yocto>` and :oe_git:`bitbake </bitbake>` repositories. The
 testing occurs for both the current state of the "master" branch and also for
 submitted patches. Testing for submitted patches usually occurs in the
-in the "master-next" branch in the :yocto_git:`poky </poky>` repository.
+in the "master-next" branch in the :oe_git:`openembedded-core
+</openembedded-core>`, :yocto_git:`meta-yocto </meta-yocto>` and
+:oe_git:`bitbake </bitbake>` repository.
 
 .. note::
 
