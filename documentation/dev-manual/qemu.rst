@@ -53,12 +53,13 @@ available. Follow these general steps to run QEMU:
 #. *Setting Up the Environment:* How you set up the QEMU environment
    depends on how you installed QEMU:
 
-   -  If you cloned the ``poky`` repository or you downloaded and
-      unpacked a Yocto Project release tarball, you can source the build
-      environment script (i.e. :ref:`structure-core-script`)::
+   -  If you followed :doc:`/dev-manual/start`, either use ``bitbake-setup`` or source
+      the environment setup script manually::
 
-         $ cd poky
-         $ source oe-init-build-env
+      .. code-block:: console
+
+         $ cd bitbake-builds
+         $ source layers/openembedded-core/oe-init-build-env
 
    -  If you installed a cross-toolchain, you can run the script that
       initializes the toolchain. For example, the following commands run
