@@ -28,7 +28,7 @@ a particular feature is contained or not is to ``grep`` through the
 discovers the recipes whose build is potentially changed based on a
 given feature::
 
-   $ cd poky
+   $ cd openembedded-core
    $ git grep 'contains.*MACHINE_FEATURES.*feature'
 
 .. _ref-features-machine:
