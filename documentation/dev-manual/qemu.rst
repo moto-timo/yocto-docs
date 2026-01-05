@@ -119,6 +119,17 @@ available. Follow these general steps to run QEMU:
 
          $ runqemu qemux86-64 core-image-minimal ext4
 
+   -  This example starts QEMU in a temporary root filesystem ("snapshot") with
+      no graphical environment ("nographic"), meaning QEMU is started in the
+      current shell:
+
+      .. code-block:: console
+
+         $ runqemu qemux86-64 snapshot nographic
+
+      Running in "snapshot" mode means that changes in root filesystem will not
+      remain after quitting QEMU.
+
    -  This example specifies to boot an :term:`Initramfs` image and to
       enable audio in QEMU. For this case, ``runqemu`` sets the internal
       variable ``FSTYPE`` to ``cpio.gz``. Also, for audio to be enabled,
