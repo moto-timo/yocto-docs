@@ -320,7 +320,7 @@ the vulnerabilities using the SPDX document as input.
 These third-party tools have the responsibility of providing support for
 integrating with the Yocto Project SBOMs.
 
-Also see the :doc:`/dev-manual/vulnerabilities` section of the Yocto Project
+Also see the :doc:`/security-manual/vulnerabilities` section of the Yocto Project
 Development Tasks Manual for more information on dealing with vulnerabilities.
 
 Customizing generated images

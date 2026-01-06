@@ -33,7 +33,6 @@ Yocto Project Development Tasks Manual
    external-toolchain
    wic
    bmaptool
-   securing-images
    custom-distribution
    custom-template-configuration-directory
    disk-space
@@ -42,11 +41,9 @@ Yocto Project Development Tasks Manual
    init-manager
    device-manager
    external-scm
-   read-only-rootfs
    build-quality
    debugging
    licenses
-   vulnerabilities
    sbom
    error-reporting-tool
    wayland

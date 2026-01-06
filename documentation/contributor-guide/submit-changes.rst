@@ -711,7 +711,7 @@ follows:
 #. *Identify the bug or CVE to be fixed:* This information should be
    collected so that it can be included in your submission.
 
-   See :ref:`dev-manual/vulnerabilities:checking for vulnerabilities`
+   See :ref:`security-manual/vulnerabilities:checking for vulnerabilities`
    for details about CVE tracking.
 
 #. *Check if the fix is already present in the master branch:* This will

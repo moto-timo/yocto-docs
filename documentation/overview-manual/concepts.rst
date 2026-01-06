@@ -1041,7 +1041,7 @@ stage of package installation, post installation scripts that are part
 of the packages are run. Any scripts that fail to run on the build host
 are run on the target when the target system is first booted. If you are
 using a
-:ref:`read-only root filesystem <dev-manual/read-only-rootfs:creating a read-only root filesystem>`,
+:ref:`read-only root filesystem <security-manual/read-only-rootfs:creating a read-only root filesystem>`,
 all the post installation scripts must succeed on the build host during
 the package installation phase since the root filesystem on the target
 is read-only.

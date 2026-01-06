@@ -659,7 +659,7 @@ These can only be detected by reviewing the details of the issues and iterating 
 and following what happens in other Linux distributions and in the greater open source community.
 
 You will find some more details in the
-":ref:`dev-manual/vulnerabilities:checking for vulnerabilities`"
+":ref:`security-manual/vulnerabilities:checking for vulnerabilities`"
 section in the Development Tasks Manual.
 
 .. _ref-classes-cython:

@@ -11,6 +11,9 @@ Yocto Project Security Manual
    :numbered:
 
    intro
+   securing-images
+   vulnerabilities
+   read-only-rootfs
 
 .. include:: /boilerplate.rst
 

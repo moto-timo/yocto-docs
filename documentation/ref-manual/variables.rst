@@ -2070,7 +2070,7 @@ system and gives an overview of their function and contents.
 
       It has the format "reason: description" and the description is optional.
       The Reason is mapped to the final CVE state by mapping via
-      :term:`CVE_CHECK_STATUSMAP`. See :ref:`dev-manual/vulnerabilities:fixing vulnerabilities in recipes`
+      :term:`CVE_CHECK_STATUSMAP`. See :ref:`security-manual/vulnerabilities:fixing vulnerabilities in recipes`
       for details.
 
    :term:`CVE_STATUS_GROUPS`
@@ -2919,7 +2919,7 @@ system and gives an overview of their function and contents.
           useful if you want to develop against the libraries in the image.
         - "read-only-rootfs" --- creates an image whose root filesystem is
           read-only. See the
-          ":ref:`dev-manual/read-only-rootfs:creating a read-only root filesystem`"
+          ":ref:`security-manual/read-only-rootfs:creating a read-only root filesystem`"
           section in the Yocto Project Development Tasks Manual for more
           information
         - "tools-debug" --- adds debugging tools such as gdb and strace.

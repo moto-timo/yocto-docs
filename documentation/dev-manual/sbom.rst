@@ -6,7 +6,7 @@ Creating a Software Bill of Materials
 Once you are able to build an image for your project, once the licenses for
 each software component are all identified (see
 ":ref:`dev-manual/licenses:working with licenses`") and once vulnerability
-fixes are applied (see ":ref:`dev-manual/vulnerabilities:checking
+fixes are applied (see ":ref:`security-manual/vulnerabilities:checking
 for vulnerabilities`"), the OpenEmbedded build system can generate
 a description of all the components you used, their licenses, their dependencies,
 their sources, the changes that were applied to them and the known

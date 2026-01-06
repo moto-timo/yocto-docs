@@ -64,7 +64,7 @@ more secure:
    especially applies when your device is network-enabled.
 
 -  Regularly scan and apply fixes for CVE security issues affecting
-   all software components in the product, see ":ref:`dev-manual/vulnerabilities:checking for vulnerabilities`".
+   all software components in the product, see ":ref:`security-manual/vulnerabilities:checking for vulnerabilities`".
 
 -  Regularly update your version of Poky and OE-Core from their upstream
    developers, e.g. to apply updates and security fixes from stable
@@ -72,7 +72,7 @@ more secure:
 
 -  Ensure you remove or disable debugging functionality before producing
    the final image. For information on how to do this, see the
-   ":ref:`dev-manual/securing-images:considerations specific to the openembedded build system`"
+   ":ref:`security-manual/securing-images:considerations specific to the openembedded build system`"
    section.
 
 -  Ensure you have no network services listening that are not needed.

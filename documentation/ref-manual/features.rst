@@ -333,7 +333,7 @@ The image features available for all images are:
 
 -  *read-only-rootfs:* Creates an image whose root filesystem is
    read-only. See the
-   ":ref:`dev-manual/read-only-rootfs:creating a read-only root filesystem`"
+   ":ref:`security-manual/read-only-rootfs:creating a read-only root filesystem`"
    section in the Yocto Project Development Tasks Manual for more
    information.
 
