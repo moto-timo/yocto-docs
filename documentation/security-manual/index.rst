@@ -1,0 +1,16 @@
+.. SPDX-License-Identifier: CC-BY-SA-2.0-UK
+
+=============================
+Yocto Project Security Manual
+=============================
+
+|
+
+.. toctree::
+   :caption: Table of Contents
+   :numbered:
+
+   intro
+
+.. include:: /boilerplate.rst
+

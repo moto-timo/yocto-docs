@@ -30,6 +30,7 @@ Welcome to the Yocto Project Documentation
    Board Support Package (BSP) Developer's guide <bsp-guide/index>
    Development Tasks Manual <dev-manual/index>
    Linux Kernel Development Manual <kernel-dev/index>
+   Security Manual <security-manual/index>
    Profile and Tracing Manual <profile-manual/index>
    Application Development and the Extensible SDK (eSDK) <sdk-manual/index>
    Toaster Manual <toaster-manual/index>
