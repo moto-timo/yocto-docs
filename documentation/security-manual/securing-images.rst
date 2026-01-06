@@ -3,22 +3,6 @@
 Making Images More Secure
 *************************
 
-Security is of increasing concern for embedded devices. Consider the
-issues and problems discussed in just this sampling of work found across
-the Internet:
-
--  *"*\ `Security Risks of Embedded
-   Systems <https://www.schneier.com/blog/archives/2014/01/security_risks_9.html>`__\ *"*
-   by Bruce Schneier
-
--  *"*\ `Internet Census
-   2012 <http://census2012.sourceforge.net/paper.html>`__\ *"* by Carna
-   Botnet
-
--  *"*\ `Security Issues for Embedded
-   Devices <https://elinux.org/images/6/6f/Security-issues.pdf>`__\ *"*
-   by Jake Edge
-
 When securing your image is of concern, there are steps, tools, and
 variables that you can consider to help you reach the security goals you
 need for your particular device. Not all situations are identical when
