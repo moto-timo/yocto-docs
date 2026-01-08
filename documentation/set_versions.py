@@ -72,8 +72,8 @@ release_series["laverne"] = "0.9"
 
 
 bitbake_mapping = {
-    "wrynose" : "2.16",
-    "whinlatter" : "2.14",
+    "wrynose" : "2.18",
+    "whinlatter" : "2.16",
     "walnascar" : "2.12",
     "styhead" : "2.10",
     "scarthgap" : "2.8",

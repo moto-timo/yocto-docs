@@ -2500,7 +2500,7 @@ meta-mingw
 bitbake
 
 -  Repository Location: :oe_git:`/bitbake`
--  Branch: :oe_git:`2.14 </bitbake/log/?h=2.14>`
+-  Branch: :oe_git:`2.16 </bitbake/log/?h=2.16>`
 -  Tag:  :oe_git:`yocto-5.3 </bitbake/log/?h=yocto-5.3>`
 -  Git Revision: :oe_git:`720df1a53452983c1c832f624490e255cf389204 </bitbake/commit/?id=720df1a53452983c1c832f624490e255cf389204>`
 -  Release Artefact: bitbake-720df1a53452983c1c832f624490e255cf389204
