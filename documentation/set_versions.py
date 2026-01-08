@@ -263,35 +263,7 @@ print("switchers.js generated from switchers.js.in")
 
 # generate releases.rst
 
-# list missing tags in yocto-docs
-missing_tags = [
-        'yocto-0.9',
-        'yocto-1.0', 'yocto-1.0.1',
-        'yocto-1.1', 'yocto-1.1.1',
-        'yocto-1.2',
-        'yocto-1.4.4', 'yocto-1.4.5',
-        'yocto-1.5', 'yocto-1.5.2', 'yocto-1.5.3', 'yocto-1.5.4',
-        'yocto-1.6', 'yocto-1.6.1', 'yocto-1.6.2',
-        'yocto-1.7', 'yocto-1.7.1',
-        'yocto-1.9',
-        'yocto-2.5.3',
-        'yocto-3.1', 'yocto-3.1.1', 'yocto-3.1.2', 'yocto-3.1.3',
-        ]
-
-semver = re.compile(r'yocto-(\d+)\.(\d+)(?:\.)?(\d*)')
-
-# git is able to properly order semver versions but not python
-# instead of adding a dependency on semver module, let's convert the version
-# into a decimal number, e.g. 11.23.1 will be 112301 and 1.5 will be 010500 so
-# it can be used as a key for the sorting algorithm.
-# This can be removed once all the old tags are re-created.
-def tag_to_semver_like(v):
-    v_semver = semver.search(v)
-    v_maj, v_min, v_patch = v_semver.groups('0')
-    return int("{:0>2}{:0>2}{:0>2}".format(v_maj, v_min, v_patch), 10)
-
-yocto_tags = subprocess.run(["git", "tag", "--list", "--sort=version:refname", "yocto-*"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True).stdout
-yocto_tags = sorted(yocto_tags.split() + missing_tags, key=tag_to_semver_like)
+yocto_tags = subprocess.run(["git", "tag", "--list", "--sort=version:refname", "yocto-*"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True).stdout.split()
 tags = [tag[6:] for tag in yocto_tags]
 
 with open('releases.rst', 'w') as f:
