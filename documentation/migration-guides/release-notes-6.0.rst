@@ -71,6 +71,12 @@ New Features / Enhancements in |yocto-ver|
 
 -  :ref:`ref-classes-sanity` class changes:
 
+-  U-boot related changes:
+
+   -  :ref:`ref-classes-uboot-config`: Add support for generating the U-Boot
+      initial environment in binary format using
+      :term:`UBOOT_INITIAL_ENV_BINARY`.
+
 -  Miscellaneous changes:
 
 Known Issues in |yocto-ver|
