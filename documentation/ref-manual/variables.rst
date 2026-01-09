@@ -10974,6 +10974,52 @@ system and gives an overview of their function and contents.
 
       See the :ref:`ref-classes-uboot-sign` class for details.
 
+   :term:`UBOOT_INITIAL_ENV_BINARY`
+      This variable enables the generation of the U-Boot initial environment in
+      binary format.
+
+      Its default value is "0", set it to "1" to enable this functionality::
+
+         UBOOT_INITIAL_ENV_BINARY = "1"
+
+      If set to "1", you must also set the size of the environment with
+      :term:`UBOOT_INITIAL_ENV_BINARY_SIZE`.
+
+      This variable is used in the :ref:`ref-classes-uboot-config` class.
+
+      The resulting binary can be flashed using :doc:`WIC </dev-manual/wic>` or
+      any other flashing method at the environment offset, overriding any
+      existing environment if one is present. Below is an example of a WKS file
+      to flash the binary::
+
+         part --source rawcopy --sourceparams="file=u-boot-initial-env-sd.bin" --ondisk sda --no-table --offset 4096k
+
+      In this example, the U-Boot initial environment binary
+      `u-boot-initial-env-sd.bin` is flashed at offset 4096 kibibyte.
+
+   :term:`UBOOT_INITIAL_ENV_BINARY_REDUND`
+      If redundant environment support is enabled in U-boot's configuration,
+      this variable should be set to properly generate the redundant environment
+      in the output U-boot environment binary file.
+
+      Its default value is "0", set it to "1" to enable this functionality::
+
+         UBOOT_INITIAL_ENV_BINARY_REDUND = "1"
+
+      The :term:`UBOOT_INITIAL_ENV_BINARY` must also be set to "1" if
+      :term:`UBOOT_INITIAL_ENV_BINARY_REDUND` is enabled.
+
+      This variable is used in the :ref:`ref-classes-uboot-config` class.
+
+   :term:`UBOOT_INITIAL_ENV_BINARY_SIZE`
+      This variable sets the binary size (in bytes) of the U-Boot initial
+      environment. Both hexadecimal and decimal values are supported and can be
+      set as follows::
+
+         UBOOT_INITIAL_ENV_BINARY_SIZE = "0x4000"
+
+      This variable is used in the :ref:`ref-classes-uboot-config` class.
+
    :term:`UBOOT_LOADADDRESS`
       Specifies the load address for the U-Boot image. During U-Boot image
       creation, the :term:`UBOOT_LOADADDRESS` variable is passed as a
