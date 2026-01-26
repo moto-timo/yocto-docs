@@ -465,12 +465,8 @@ layers are used to patch, compile, package, or modify (in any way)
 any open source software included in your released images, you might be
 required to release those layers under section 3 of GPLv2 or section 1
 of GPLv3. One way of doing that is with a clean checkout of the version
-of the Yocto Project and layers used during your build. Removing the Git
-objects can be done like so:
-
-.. code-block:: console
-
-   $ find . -name ".git" -type d -exec rm -rf {} \;
+of the Yocto Project and layers used during your build. Archiving a Git
+repository can be done with the :manpage:`git-archive <git-archive(1)>` command.
 
 One thing a development organization might want to consider for end-user
 convenience is to modify
