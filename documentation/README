@@ -244,12 +244,12 @@ content:
   .. code-block::
       $ mkdir bitbake-builds-&DISTRO;
       or
-      $ git clone &YOCTO_GIT_URL;/git/yocto-docs -b &DISTRO_NAME_NO_CAP;
+      $ git clone https://git.yoctoproject.org/yocto-docs -b &DISTRO_NAME_NO_CAP;
 
 Variables can be nested, like it was the case for DocBook:
 
-  YOCTO_HOME_URL : "https://www.yoctoproject.org"
-  YOCTO_DOCS_URL : "&YOCTO_HOME_URL;/docs"
+  DISTRO : "5.2"
+  DISTRO_REL_TAG : "yocto-$DISTRO;"
 
 Note directive
 ==============
