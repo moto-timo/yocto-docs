@@ -427,14 +427,14 @@ installer and automatically installs the tools for you:
    ``install-buildtools`` script with the default parameters::
 
       $ cd /path/to/bitbake-builds
-      $ scripts/install-buildtools
+      $ ./layers/openembedded-core/scripts/install-buildtools
 
    Alternatively if your host development system has a broken ``make``
    version such that you only need a known good version of ``make``,
    you can use the ``--make-only`` option::
 
       $ cd /path/to/bitbake-builds
-      $ scripts/install-buildtools --make-only
+      $ ./layers/openembedded-core/scripts/install-buildtools --make-only
 
 #. Source the tools environment setup script by using a command like the
    following::
