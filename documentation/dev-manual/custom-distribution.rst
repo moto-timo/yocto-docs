@@ -27,7 +27,7 @@ layer. The following steps provide some more detail:
    just placing configurations in a ``local.conf`` configuration file
    makes it easier to reproduce the same build configuration when using
    multiple build machines. See the
-   ":ref:`dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`"
+   ":ref:`dev-manual/layers:Creating Your Own Layer`"
    section for information on how to quickly set up a layer.
 
 -  *Create the distribution configuration file:* The distribution

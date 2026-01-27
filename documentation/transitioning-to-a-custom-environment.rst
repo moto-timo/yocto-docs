@@ -56,8 +56,7 @@ Transitioning to a custom environment for systems development
 #. **Add a new layer for any custom recipes and metadata you create**.
    Use the ``bitbake-layers create-layer`` command. The ``bitbake-layers`` tool
    also provides a number of other useful layer-related commands. See
-   :ref:`dev-manual/layers:creating a general layer using the
-   \`\`bitbake-layers\`\` script` section.
+   :ref:`dev-manual/layers:Creating Your Own Layer` section.
 
 #. **Create your own layer for the BSP you're going to use**.
    It is not common that you would need to create an entire BSP from scratch

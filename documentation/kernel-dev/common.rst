@@ -95,7 +95,7 @@ section:
       Support (BSP) Developer's Guide, respectively. For information on how to
       use the ``bitbake-layers create-layer`` command to quickly set up a layer,
       see the
-      ":ref:`dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`"
+      ":ref:`dev-manual/layers:Creating Your Own Layer`"
       section in the Yocto Project Development Tasks Manual.
 
 #. *Inform the BitBake Build Environment About Your Layer:* As directed
@@ -190,7 +190,7 @@ section:
       Support (BSP) Developer's Guide, respectively. For information on how to
       use the ``bitbake-layers create-layer`` command to quickly set up a layer,
       see the
-      ":ref:`dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`"
+      ":ref:`dev-manual/layers:Creating Your Own Layer`"
       section in the Yocto Project Development Tasks Manual.
 
 #. *Inform the BitBake Build Environment About Your Layer:* As directed
@@ -276,7 +276,7 @@ section in the Yocto Project Development Tasks Manual.
    The Yocto Project comes with many tools that simplify tasks you need
    to perform. One such tool is the ``bitbake-layers create-layer``
    command, which simplifies creating a new layer. See the
-   ":ref:`dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`"
+   ":ref:`dev-manual/layers:Creating Your Own Layer`"
    section in the Yocto Project Development Tasks Manual for
    information on how to use this script to quick set up a new layer.
 

@@ -452,7 +452,7 @@ The following commands run the tool to create a layer named
 
 For more information
 on layers and how to create them, see the
-:ref:`dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`
+:ref:`dev-manual/layers:Creating Your Own Layer`
 section in the Yocto Project Development Tasks Manual.
 
 Where To Go Next
