@@ -290,7 +290,7 @@ following list:
    repository that use the ``meta-layer_name`` format.
 
 -  *Group Your Layers Locally:* Clone your repository alongside other
-   cloned ``meta`` directories from the :term:`Source Directory`.
+   layers in your :term:`Source Directory`.
 
 Making Sure Your Layer is Compatible With Yocto Project
 =======================================================
@@ -529,10 +529,10 @@ possible.
 Overlaying a File Using Your Layer
 ----------------------------------
 
-As an example, consider the main formfactor recipe and a corresponding
-formfactor append file both from the :term:`Source Directory`.
+As an example, consider the main ``formfactor`` recipe and a corresponding
+``formfactor`` append file both from :term:`OpenEmbedded-Core (OE-Core)`.
 Here is the main
-formfactor recipe, which is named ``formfactor_0.0.bb`` and located in
+``formfactor`` recipe, which is named ``formfactor_0.0.bb`` and located in
 the "meta" layer at ``meta/recipes-bsp/formfactor``::
 
    SUMMARY = "Device formfactor information"
@@ -609,8 +609,8 @@ Installing Additional Files Using Your Layer
 --------------------------------------------
 
 As another example, consider the main ``xserver-xf86-config`` recipe and a
-corresponding ``xserver-xf86-config`` append file both from the :term:`Source
-Directory`.  Here is the main ``xserver-xf86-config`` recipe, which is named
+corresponding ``xserver-xf86-config`` append file both from
+:term:`OpenEmbedded-Core (OE-Core)`.  Here is the main ``xserver-xf86-config`` recipe, which is named
 ``xserver-xf86-config_0.1.bb`` and located in the "meta" layer at
 ``meta/recipes-graphics/xorg-xserver``::
 
@@ -897,7 +897,9 @@ Add your layer by using the ``bitbake-layers add-layer`` command::
 Here is an example that adds a
 layer named ``meta-scottrif`` to the configuration file. Following the
 command that adds the layer is another ``bitbake-layers`` command that
-shows the layers that are in your ``bblayers.conf`` file::
+shows the layers that are in your ``bblayers.conf`` file:
+
+.. code-block:: console
 
    $ bitbake-layers add-layer meta-scottrif
    NOTE: Starting bitbake server...
@@ -905,14 +907,13 @@ shows the layers that are in your ``bblayers.conf`` file::
    Parsing of 1441 .bb files complete (0 cached, 1441 parsed). 2055 targets, 56 skipped, 0 masked, 0 errors.
    $ bitbake-layers show-layers
    NOTE: Starting bitbake server...
-   layer                 path                                      priority
-   ==========================================================================
-   meta                  /home/scottrif/poky/meta                  5
-   meta-poky             /home/scottrif/poky/meta-poky             5
-   meta-yocto-bsp        /home/scottrif/poky/meta-yocto-bsp        5
-   workspace             /home/scottrif/poky/build/workspace       99
-   meta-scottrif         /home/scottrif/poky/build/meta-scottrif   6
-
+   layer                 path                                                            priority
+   ==============================================================================================
+   meta                  /home/scottrif/bitbake-builds/layers/openembedded-core/meta           5
+   meta-poky             /home/scottrif/bitbake-builds/layers/meta-yocto/meta-poky             5
+   meta-yocto-bsp        /home/scottrif/bitbake-builds/layers/meta-yocto/meta-yocto-bsp        5
+   workspace             /home/scottrif/bitbake-builds/build/workspace                         99
+   meta-scottrif         /home/scottrif/bitbake-builds/build/meta-scottrif                     6
 
 Adding the layer to this file
 enables the build system to locate the layer during the build.
