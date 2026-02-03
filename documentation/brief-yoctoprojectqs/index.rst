@@ -372,7 +372,7 @@ layer>`:
       git clone -b &DISTRO_NAME_NO_CAP; https://git.yoctoproject.org/meta-raspberrypi ../layers/meta-raspberrypi
 
 #.  **Add Your Layer to the Layer Configuration File:** Before you can use
-    it, you must add the layer and its dependencies it to your ``bblayers.conf``
+    it, you must add the layer and its dependencies to your ``bblayers.conf``
     file, which is found in the :term:`Build Directory` (``conf/``) directory.
 
     For this, the ``bitbake-layers add-layer`` can be used:
