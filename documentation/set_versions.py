@@ -101,6 +101,14 @@ ourbranch = None
 bitbakeversion = None
 docconfver = None
 
+# Test that we are building from a Git repository
+try:
+    subprocess.run(["git", "rev-parse", "--is-inside-work-tree"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+except subprocess.CalledProcessError:
+    sys.exit("Building yocto-docs must be done from its Git repository.\n"
+             "Clone the documentation repository with the following command:\n"
+             "git clone https://git.yoctoproject.org/yocto-docs ")
+
 # Test tags exist and inform the user to fetch if not
 try:
     subprocess.run(["git", "show", "yocto-%s" % release_series[activereleases[0]]], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
