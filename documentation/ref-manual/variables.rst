@@ -6535,6 +6535,14 @@ system and gives an overview of their function and contents.
       default by setting the variable in a custom distribution
       configuration file.
 
+   :term:`OPENSSH_HOST_KEY_DIR`
+      Specifies the directory where OpenSSH host keys are stored. Default
+      is ``/etc/ssh``.
+
+   :term:`OPENSSH_HOST_KEY_DIR_READONLY_CONFIG`
+      Specifies the directory where OpenSSH host keys are stored when the
+      device uses a read-only filesystem. Default is ``/var/run/ssh``.
+
    :term:`OPKG_MAKE_INDEX_EXTRA_PARAMS`
       Specifies extra parameters for the ``opkg-make-index`` command.
 

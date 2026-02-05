@@ -23,6 +23,14 @@ New Features / Enhancements in |yocto-ver|
 
 -  New variables:
 
+   - The :term:`OPENSSH_HOST_KEY_DIR_READONLY_CONFIG` variable can be used to
+     specify the directory where OpenSSH host keys are stored when the device
+     uses a read-only filesystem. The default value is ``/var/run/ssh``.
+
+   - The :term:`OPENSSH_HOST_KEY_DIR` variable can be used to specify the
+     directory where OpenSSH host keys are stored. The default value is
+     ``/etc/ssh``.
+
 -  Kernel-related changes:
 
 -  New core recipes:
