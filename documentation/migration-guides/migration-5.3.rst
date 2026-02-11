@@ -172,6 +172,48 @@ overridden if unlicensed firmware is needed. See :oe_git:`the recipe
 </openembedded-core/tree/meta/recipes-kernel/linux-firmware>` for a complete
 overview of the removed firmware.
 
+``*FLAGS`` variables behavior change for :ref:`ref-classes-native` and :ref:`ref-classes-nativesdk` classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :term:`CPPFLAGS`, :term:`CFLAGS`, :term:`CXXFLAGS` and :term:`LDFLAGS`
+variables used to have hard assignments in the :ref:`ref-classes-native` and
+:ref:`ref-classes-nativesdk` classes, respectively::
+
+   CPPFLAGS = "${BUILD_CPPFLAGS}"
+   CFLAGS = "${BUILD_CFLAGS}"
+   CXXFLAGS = "${BUILD_CXXFLAGS}"
+   LDFLAGS = "${BUILD_LDFLAGS}"
+
+and::
+
+   CPPFLAGS = "${BUILDSDK_CPPFLAGS}"
+   CFLAGS = "${BUILDSDK_CFLAGS}"
+   CXXFLAGS = "${BUILDSDK_CXXFLAGS}"
+   LDFLAGS = "${BUILDSDK_LDFLAGS}"
+
+This caused races when recipes tried to append to any of these variables using
+the ``+=`` operator, so recipes could use ``:append`` instead if they wanted the
+change to apply to the target, :ref:`ref-classes-native` and
+:ref:`ref-classes-nativesdk` contexts.
+
+Recipes can now safely use the ``+=`` operator to achieve this.
+
+What this change also means is that previous assignments using the ``+=``
+operator, which only used to apply to the target context, **now apply to all
+three**: target, :ref:`ref-classes-native` and :ref:`ref-classes-nativesdk`
+contexts.
+
+Recipes that unknowingly relied on this behavior should change these assignments
+to use ``TARGET_`` variables instead, for example::
+
+   CFLAGS += "something"
+
+to::
+
+   TARGET_CFLAGS += "something"
+
+See :oe_git:`/openembedded-core/commit/?id=a157b2f9d93428ca21265cc860a3b58b3698b3aa`.
+
 Supported kernel versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
