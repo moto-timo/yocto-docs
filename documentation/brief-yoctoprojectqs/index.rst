@@ -88,7 +88,7 @@ Use Git to Clone bitbake-setup
 ==============================
 
 Once you complete the setup instructions for your machine, you need to
-get a copy of the ``bitbake-setup`` tool to setup the :term:`Poky` reference
+get a copy of the ``bitbake-setup`` tool to set up the :term:`Poky` reference
 distribution on your build host. Use the following commands to clone
 the bitbake repository.
 
@@ -102,9 +102,9 @@ Setup a build environment with the following command:
 
    $ ./bitbake/bin/bitbake-setup init
 
-By default, this will setup a top directory in the current directory.
+By default, this will set up a top directory in the current directory.
 
-If you prefer to setup your builds in a different top directory, for example
+If you prefer to set up your builds in a different top directory, for example
 ``$HOME/bitbake-builds``, you can set it with the :ref:`bitbake:ref-bbsetup-command-settings` command:
 
 .. code-block:: console
@@ -219,7 +219,7 @@ This directory contains:
 
 .. note::
 
-   It is also possible to setup the :term:`Poky` reference distro manually. For
+   It is also possible to set up the :term:`Poky` reference distro manually. For
    that refer to the :doc:`/dev-manual/poky-manual-setup` section of the Yocto
    Project Development Tasks Manual.
 
@@ -245,7 +245,7 @@ an entire Linux distribution, including the toolchain, from source.
 
 #.  **Initialize the Build Environment:** Source the ``init-build-env``
     environment setup script within the :term:`bitbake:BitBake build` directory
-    to setup the :term:`BitBake` build environment on your host:
+    to set up the :term:`BitBake` build environment on your host:
 
     .. code-block:: console
 
@@ -279,7 +279,7 @@ an entire Linux distribution, including the toolchain, from source.
 
        These set up the environment similar to what was previously in the local
        configuration file :ref:`local.conf <structure-build-conf-local.conf>`,
-       which is now largely empty. To setup the build how it was done
+       which is now largely empty. To set up the build how it was done
        previously, see the :doc:`/dev-manual/poky-manual-setup` section of the
        Yocto Project Development Tasks Manual.
 
