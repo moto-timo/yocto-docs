@@ -340,11 +340,11 @@ Users currently using the ``cve-check`` class are advised to switch to
       report in the same format as the one deployed by the ``cve-check`` class.
 
    -  A file ending with ``.sbom-cve-check.spdx.json``: this is an output SPDX
-      report annonated with vulnerable CVEs.
+      report annotated with vulnerable CVEs.
 
 -  The ``cve-check`` class output summary file (deployed in the
    :term:`DEPLOY_DIR_IMAGE`) ending with ``.cve.txt`` is no longer
-   deployed by default but can be added back by adding the following statement
+   deployed by default but can be brought back by adding the following statement
    to a configuration file::
 
       SBOM_CVE_CHECK_EXPORT_VARS:append = " SBOM_CVE_CHECK_EXPORT_SUMMARY"
