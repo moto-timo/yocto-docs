@@ -3542,7 +3542,7 @@ The variables used by this class are:
 -  :term:`UKI_SB_CERT`: optional UEFI secureboot certificate matching the
    private key
 -  :term:`UKI_SB_KEY`: optional UEFI secureboot private key to sign UKI with
--  :term:`UKI_DEVICETREE`: list of device tree blobs to include to the UKI
+-  :term:`UKI_DEVICETREE`: list of device tree blobs to include in the UKI
 
 For examples on how to use this class see oeqa selftest
 :oe_git:`meta/lib/oeqa/selftest/cases/uki.py

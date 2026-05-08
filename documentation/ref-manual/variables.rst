@@ -11865,7 +11865,7 @@ system and gives an overview of their function and contents.
 
    :term:`UKI_DEVICETREE`
       When inheriting the :ref:`ref-classes-uki` class, the :term:`UKI_DEVICETREE`
-      variable holds the list of device tree blobs to include to the `Unified
+      variable holds the list of device tree blobs to include in the `Unified
       Kernel Image (UKI) <https://uapi-group.org/specifications/specs/unified_kernel_image/>`__.
 
    :term:`UKI_FILENAME`
