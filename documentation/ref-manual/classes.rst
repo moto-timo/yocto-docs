@@ -2694,7 +2694,7 @@ usually determines whether to include this class.
 ==================
 
 The :ref:`ref-classes-sbom-cve-check` class uses the `sbom-cve-check
-<github.com/bootlin/sbom-cve-check>`__ command-line tool for post-build CVE
+<https://github.com/bootlin/sbom-cve-check>`__ command-line tool for post-build CVE
 analysis. It relies on the :ref:`ref-classes-create-spdx` class as SPDX files
 are the input of this tool.
 
@@ -2719,7 +2719,7 @@ configure the behavior of this class.
 =========================
 
 The :ref:`ref-classes-sbom-cve-check-recipe` class uses the `sbom-cve-check
-<github.com/bootlin/sbom-cve-check>`__ command-line tool for post-build CVE
+<https://github.com/bootlin/sbom-cve-check>`__ command-line tool for post-build CVE
 analysis of a recipe. It relies on the :ref:`ref-classes-create-spdx` class as
 SPDX files are the input of this tool.
 
