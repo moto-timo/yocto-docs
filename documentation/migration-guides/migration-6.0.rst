@@ -177,11 +177,8 @@ The configuration templates located in ``meta-poky/conf/templates/default`` have
 been removed as they are now provided in a single location:
 :term:`OpenEmbedded-Core (OE-Core)` :oecore_path:`meta/conf/templates/default`.
 
-These files were duplicating themselves but were mostly similar.
-
 See commit :meta_yocto_rev:`ac300baea7314ea3c80f2330b2a993f729f32150` for more
-information on the differences there are between the two sets of default
-templates.
+information on the differences between the two sets of default templates.
 
 :ref:`ref-classes-native` and :ref:`ref-classes-cross` classes :term:`DEBUG_BUILD` change
 -----------------------------------------------------------------------------------------
