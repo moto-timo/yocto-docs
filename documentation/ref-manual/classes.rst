@@ -2725,7 +2725,7 @@ SPDX files are the input of this tool.
 
 This class can be inherited in any recipe. Compared to the
 :class:`ref-classes-sbom-cve-check` class, this class only uses the SBOM of the
-recipe (after the ``create_recipe_sbom`` is run) to determine which is the
+recipe (after the ``create_recipe_sbom`` task is run) to determine which is the
 underlying software and do the analysis, meaning that building the recipe itself
 isn't necessary.
 
