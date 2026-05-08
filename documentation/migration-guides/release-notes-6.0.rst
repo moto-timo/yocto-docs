@@ -263,7 +263,7 @@ New Features / Enhancements in |yocto-ver|
 
    -  The documentation build now fetches the list of active and inactive
       version of the documentation from the remote `releases.json
-      <dashboard.yoctoproject.org/releases.json>`__ file. This also applies to
+      <https://dashboard.yoctoproject.org/releases.json>`__ file. This also applies to
       the :term:`BitBake` documentation.
 
 -  Go changes:
