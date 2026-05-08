@@ -9379,7 +9379,7 @@ system and gives an overview of their function and contents.
       See also :term:`SPDX_INCLUDE_SOURCES`.
 
    :term:`SPDX_GIT_PURL_MAPPINGS`
-      A space separated list of ``domain:purl_type`` mappings to configure PURL
+      A space-separated list of ``domain:purl_type`` mappings to configure PURL
       (Package URLs) generation for Git source downloads.
 
       For example, adding ``gitlab.example.com:pkg:gitlab`` to this variable
