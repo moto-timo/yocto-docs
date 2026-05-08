@@ -259,9 +259,9 @@ See commit :oecore_rev:`68d2d38483efada7bc2409e10508b03a7431caff` for more infor
 ------------------------------------------------------------
 
 Image recipes that inherit the :ref:`ref-classes-vex` class have an extra JSON
-document generated which was previous ending with the ``.json`` suffix. For
+document generated which was previously ending with the ``.json`` suffix. For
 example, a build for the ``core-image-minimal`` image recipe with this class
-would have resulted in a file named::
+inherited would have resulted in a file named::
 
    core-image-minimal-qemuarm64.rootfs.json
 
