@@ -84,7 +84,7 @@ Build Host Packages
    see the :ref:`ref-manual/system-requirements:required packages for the build host`
    section in the Yocto Project Reference Manual.
 
-Use Git to Clone bitbake-setup
+Use Git to clone bitbake-setup
 ==============================
 
 Once you complete the setup instructions for your machine, you need to
@@ -352,7 +352,7 @@ development environment.
 
 In general, layers are repositories that contain related sets of
 instructions and configurations that tell the Yocto Project what to do.
-Isolating related metadata into functionally specific layers facilitates
+Isolating related metadata into functionally-specific layers facilitates
 modular development and makes it easier to reuse the layer metadata.
 
 .. note::
@@ -367,7 +367,7 @@ layer>`:
     adds the :yocto_git:`meta-raspberrypi </meta-raspberrypi>` BSP
     layer.
 
-    First, clone the layer next the other layers::
+    First, clone the layer next to the other layers::
 
       git clone -b &DISTRO_NAME_NO_CAP; https://git.yoctoproject.org/meta-raspberrypi ../layers/meta-raspberrypi
 
@@ -375,7 +375,7 @@ layer>`:
     it, you must add the layer and its dependencies to your ``bblayers.conf``
     file, which is found in the :term:`Build Directory` (``conf/``) directory.
 
-    For this, the ``bitbake-layers add-layer`` can be used:
+    For this, the ``bitbake-layers add-layer`` command can be used:
 
     .. code-block:: console
 
@@ -387,8 +387,8 @@ layer>`:
 
 #.  **Change the Configuration to Build for a Specific Machine:** The
     :term:`MACHINE` variable is defined by the :ref:`ref-fragments-builtin-core-machine`
-    fragment. For this example, the meta-raspberrypi layer provides the
-    :yocto_git:`raspberrypi5 </meta-yocto/tree/meta-yocto-bsp/conf/machine/beaglebone-yocto.conf>`
+    fragment. For this example, the ``meta-raspberrypi`` layer provides the
+    :yocto_git:`raspberrypi5 </meta-raspberrypi/tree/conf/machine/raspberrypi5.conf>`
     machine, so let's make it the :term:`MACHINE` used for the build with
     ``bitbake-config-build``:
 
