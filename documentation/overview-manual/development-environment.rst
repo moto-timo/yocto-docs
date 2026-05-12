@@ -568,9 +568,19 @@ descriptions and strategies on how to use these commands:
    This report lists all commits regardless of whether you have pushed
    them upstream or not.
 
+-  *git grep:* Looks for specified patterns in the tracked files in the
+   working tree, blobs registered in the working tree, or blobs in given
+   tree objects.
+
 -  *git diff:* Displays line-by-line differences between a local
    working file and the same file as understood by Git. This command is
    useful to see what you have changed in any given file.
+
+-  *git clean:* Cleans the working tree by recursively removing files
+   that are not under version control, starting from the current
+   directory.
+
+-  *git reset:* Resets the current HEAD to the specified state.
 
 Licensing
 =========
