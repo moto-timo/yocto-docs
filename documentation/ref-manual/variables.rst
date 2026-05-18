@@ -841,8 +841,9 @@ system and gives an overview of their function and contents.
       previous link.
 
    :term:`BBFILES_DYNAMIC`
-      Activates content when identified layers are present. You identify
-      the layers by the collections that the layers define.
+      Activates content when identified layers are present. This mechanism
+      is commonly referred to as "dynamic layers". You identify the layers
+      by the collections that the layers define.
 
       Use the :term:`BBFILES_DYNAMIC` variable to avoid ``.bbappend`` files
       whose corresponding ``.bb`` file is in a layer that attempts to
@@ -856,8 +857,8 @@ system and gives an overview of their function and contents.
       filename patterns::
 
          BBFILES_DYNAMIC += " \
-            clang-layer:${LAYERDIR}/bbappends/meta-clang/*/*/*.bbappend \
-            core:${LAYERDIR}/bbappends/openembedded-core/meta/*/*/*.bbappend \
+            clang-layer:${LAYERDIR}/dynamic-layers/meta-clang/*/*/*.bbappend \
+            core:${LAYERDIR}/dynamic-layers/openembedded-core/meta/*/*/*.bbappend \
             "
 
       This next example shows an error message that occurs because invalid
@@ -866,8 +867,8 @@ system and gives an overview of their function and contents.
       .. code-block:: none
 
          ERROR: BBFILES_DYNAMIC entries must be of the form <collection name>:<filename pattern>, not:
-             /work/my-layer/bbappends/meta-security-isafw/*/*/*.bbappend
-             /work/my-layer/bbappends/openembedded-core/meta/*/*/*.bbappend
+             /work/my-layer/dynamic-layers/meta-security-isafw/*/*/*.bbappend
+             /work/my-layer/dynamic-layers/openembedded-core/meta/*/*/*.bbappend
 
    :term:`BBINCLUDED`
       See :term:`bitbake:BBINCLUDED` in the BitBake manual.
