@@ -2223,3 +2223,74 @@ Thanks to the following people who contributed to this release:
 
 Repositories / Downloads for Yocto-|yocto-ver|
 ----------------------------------------------
+
+yocto-docs
+
+-  Repository Location: :yocto_git:`/yocto-docs`
+-  Branch: :yocto_git:`wrynose </yocto-docs/log/?h=wrynose>`
+-  Tag:  :yocto_git:`yocto-6.0 </yocto-docs/log/?h=yocto-6.0>`
+-  Git Revision: :yocto_git:`eb74fdfd9e5e579a65e8872d1a73b51e77b14f63 </yocto-docs/commit/?id=eb74fdfd9e5e579a65e8872d1a73b51e77b14f63>`
+-  Release Artefact: yocto-docs-eb74fdfd9e5e579a65e8872d1a73b51e77b14f63
+-  sha: 50d7391b4b4d169649a5628a8f367443eb03fb78faa813b9c20d5214e49ce782
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-6.0/yocto-docs-eb74fdfd9e5e579a65e8872d1a73b51e77b14f63.tar.bz2
+
+   https://mirrors.edge.kernel.org/yocto/yocto/yocto-6.0/yocto-docs-eb74fdfd9e5e579a65e8872d1a73b51e77b14f63.tar.bz2
+
+openembedded-core
+
+-  Repository Location: :oe_git:`/openembedded-core`
+-  Branch: :oe_git:`wrynose </openembedded-core/log/?h=wrynose>`
+-  Tag:  :oe_git:`yocto-6.0 </openembedded-core/log/?h=yocto-6.0>`
+-  Git Revision: :oe_git:`42fa856a00ac16b2a7a83d7ecfa60a5be192b16c </openembedded-core/commit/?id=42fa856a00ac16b2a7a83d7ecfa60a5be192b16c>`
+-  Release Artefact: oecore-42fa856a00ac16b2a7a83d7ecfa60a5be192b16c
+-  sha: 14abd19071d1b31737f5d3946182f21825e0a7121468054bbaa68f207b018fb6
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-6.0/oecore-42fa856a00ac16b2a7a83d7ecfa60a5be192b16c.tar.bz2
+
+   https://mirrors.edge.kernel.org/yocto/yocto/yocto-6.0/oecore-42fa856a00ac16b2a7a83d7ecfa60a5be192b16c.tar.bz2
+
+meta-yocto
+
+-  Repository Location: :yocto_git:`/meta-yocto`
+-  Branch: :yocto_git:`wrynose </meta-yocto/log/?h=wrynose>`
+-  Tag:  :yocto_git:`yocto-6.0 </meta-yocto/log/?h=yocto-6.0>`
+-  Git Revision: :yocto_git:`904846ae078ee20de073040ebb77c86e19250f56 </meta-yocto/commit/?id=904846ae078ee20de073040ebb77c86e19250f56>`
+-  Release Artefact: meta-yocto-904846ae078ee20de073040ebb77c86e19250f56
+-  sha: d3470939772339d2d70a2bbdd4e01563357c376fdb496d5515a1f96bce4e2ea2
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-6.0/meta-yocto-904846ae078ee20de073040ebb77c86e19250f56.tar.bz2
+
+   https://mirrors.edge.kernel.org/yocto/yocto/yocto-6.0/meta-yocto-904846ae078ee20de073040ebb77c86e19250f56.tar.bz2
+
+meta-mingw
+
+-  Repository Location: :yocto_git:`/meta-mingw`
+-  Branch: :yocto_git:`wrynose </meta-mingw/log/?h=wrynose>`
+-  Tag:  :yocto_git:`yocto-6.0 </meta-mingw/log/?h=yocto-6.0>`
+-  Git Revision: :yocto_git:`a4ba674d6a0a17e4c0bc4c11bbb9d0ea9de2b315 </meta-mingw/commit/?id=a4ba674d6a0a17e4c0bc4c11bbb9d0ea9de2b315>`
+-  Release Artefact: meta-mingw-a4ba674d6a0a17e4c0bc4c11bbb9d0ea9de2b315
+-  sha: cea731150cd3caedd90ca6a82bf050a00c3705cea166d24a6077d07b1b7b2404
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-6.0/meta-mingw-a4ba674d6a0a17e4c0bc4c11bbb9d0ea9de2b315.tar.bz2
+
+   https://mirrors.edge.kernel.org/yocto/yocto/yocto-6.0/meta-mingw-a4ba674d6a0a17e4c0bc4c11bbb9d0ea9de2b315.tar.bz2
+
+bitbake
+
+-  Repository Location: :oe_git:`/bitbake`
+-  Branch: :oe_git:`2.18 </bitbake/log/?h=2.18>`
+-  Tag:  :oe_git:`yocto-6.0 </bitbake/log/?h=yocto-6.0>`
+-  Git Revision: :oe_git:`33581c84f3a85008239acbd940501a35de48dc91 </bitbake/commit/?id=33581c84f3a85008239acbd940501a35de48dc91>`
+-  Release Artefact: bitbake-33581c84f3a85008239acbd940501a35de48dc91
+-  sha: 8a0b0243b50b6e004f3350824628f69ee66be0d3a28bc25f3d96b35406015ba7
+-  Download Locations:
+
+   https://downloads.yoctoproject.org/releases/yocto/yocto-6.0/bitbake-33581c84f3a85008239acbd940501a35de48dc91.tar.bz2
+
+   https://mirrors.edge.kernel.org/yocto/yocto/yocto-6.0/bitbake-33581c84f3a85008239acbd940501a35de48dc91.tar.bz2
+
