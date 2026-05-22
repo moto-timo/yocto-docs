@@ -1222,22 +1222,30 @@ Project Development Tasks Manual.
 BSP Machine Configuration Example
 ---------------------------------
 
-As mentioned earlier in this section, the existence of a machine
+As mentioned earlier in this section, the existence of at least one machine
 configuration file is what makes a layer a BSP layer as compared to a
 general or kernel layer.
 
-There are one or more machine configuration files in the
-``bsp_layer/conf/machine/`` directory of the layer::
+As an actual example, consider the relevant content from the
+:yocto_git:`/meta-yocto/tree/meta-yocto-bsp/conf/
+</meta-yocto/tree/meta-yocto-bsp/conf/>` directory of the
+``meta-yocto-bsp`` BSP layer:
 
-   bsp_layer/conf/machine/machine1\.conf
-   bsp_layer/conf/machine/machine2\.conf
-   bsp_layer/conf/machine/machine3\.conf
-   ... more ...
+.. code-block:: console
 
-For example, the machine configuration file for the `BeagleBone and
-BeagleBone Black development boards <https://beagleboard.org/bone>`__ is
-located in :yocto_git:`/meta-yocto/tree/meta-yocto-bsp/conf/machine/beaglebone-yocto.conf
-</meta-yocto/tree/meta-yocto-bsp/conf/machine/beaglebone-yocto.conf>`.
+   $ tree -F conf
+   conf/
+   ├── layer.conf
+   └── machine/
+       ├── beaglebone-yocto.conf
+       ├── genericarm64.conf
+       ├── genericx86-64.conf
+       ├── genericx86.conf
+       └── include/
+           └── genericx86-common.inc
+
+showing four machine configuration files along with a lower-level
+tuning configuration file.
 
 The variables used to configure the machine define machine-specific properties; for
 example, machine-dependent packages, machine tunings, the type of kernel
