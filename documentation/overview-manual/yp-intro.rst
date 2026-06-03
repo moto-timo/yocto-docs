@@ -42,7 +42,8 @@ Here are features and advantages of the Yocto Project:
    :yocto_home:`Yocto Project <>` home page.
 
 -  *Architecture Agnostic:* Yocto Project supports Intel, ARM, MIPS, AMD, PPC,
-   RISC-V and other architectures. Most ODMs, OSVs, and chip vendors create and
+   RISC-V and other architectures. Most Original Design Manufacturers (ODMs),
+   Operating System Vendors (OSVs), and chip vendors create and
    supply BSPs that support their hardware. If you have custom silicon, you can
    create a BSP that supports that architecture. See
    :doc:`/ref-manual/yocto-project-supported-features` for details on the level
