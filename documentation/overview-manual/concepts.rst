@@ -218,7 +218,7 @@ figure <overview-manual/concepts:openembedded build system concepts>`:
 
 BitBake needs some basic configuration files in order to complete a
 build. These files are ``*.conf`` files. The minimally necessary ones
-reside as example files in the ``build/conf`` directory of the
+reside as example files in the ``conf`` subdirectory of the
 :term:`Build Directory`.
 
 When you :ref:`initialize the build environment <dev-manual/start:Initializing
@@ -227,7 +227,7 @@ the Build Environment>`, you can specify which directory will be the
 
 Setting up the build environment creates a :term:`Build Directory`
 if one does not already exist. BitBake uses the :term:`Build Directory`
-for all its work during builds. The Build Directory has a ``conf`` directory
+for all its work during builds. The Build Directory has a ``conf`` subdirectory
 that contains default versions of your ``local.conf`` and ``bblayers.conf``
 configuration files. These default :term:`configuration files <Configuration
 File>` are created only if they do not already exist in the :term:`Build
