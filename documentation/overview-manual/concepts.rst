@@ -1320,7 +1320,7 @@ SDK (e.g. ``bitbake -c populate_sdk_ext`` imagename) or a standard SDK
 (e.g. ``bitbake -c populate_sdk`` imagename). This section takes a
 closer look at this output:
 
-.. image:: figures/sdk.png
+.. image:: svg/sdk.*
    :width: 100%
 
 The specific form of this output is a set of files that includes a
