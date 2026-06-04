@@ -1262,9 +1262,9 @@ the :ref:`general workflow figure
 output, in part, consists of images. This section takes a closer look at
 this output:
 
-.. image:: figures/images.png
+.. image:: svg/images.*
    :align: center
-   :width: 75%
+   :width: 100%
 
 .. note::
 
