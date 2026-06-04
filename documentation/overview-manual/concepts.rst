@@ -1088,7 +1088,7 @@ The OpenEmbedded build system uses BitBake to generate the Software
 Development Kit (SDK) installer scripts for both the standard SDK and
 the extensible SDK (eSDK):
 
-.. image:: figures/sdk-generation.png
+.. image:: svg/sdk-generation.*
    :width: 100%
 
 .. note::
