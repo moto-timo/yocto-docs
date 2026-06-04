@@ -361,9 +361,8 @@ The following figure shows an expanded representation of these three
 layers from the :ref:`general workflow figure
 <overview-manual/concepts:openembedded build system concepts>`:
 
-.. image:: figures/layer-input.png
-   :align: center
-   :width: 70%
+.. image:: svg/layer-input.*
+   :width: 100%
 
 In general, all layers have a similar structure. They all contain a
 licensing file (e.g. ``COPYING.MIT``) if the layer is to be distributed,
