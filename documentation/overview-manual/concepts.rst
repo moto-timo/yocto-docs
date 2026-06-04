@@ -972,7 +972,7 @@ Image Generation
 Once packages are split and stored in the Package Feeds area, the build
 system uses BitBake to generate the root filesystem image:
 
-.. image:: figures/image-generation.png
+.. image:: svg/image-generation.*
    :width: 100%
 
 The image generation process consists of several stages and depends on
