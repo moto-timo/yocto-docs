@@ -213,7 +213,7 @@ The following figure shows an expanded representation of the "User
 Configuration" box of the :ref:`general workflow
 figure <overview-manual/concepts:openembedded build system concepts>`:
 
-.. image:: figures/user-configuration.png
+.. image:: svg/user-configuration.*
    :width: 100%
 
 BitBake needs some basic configuration files in order to complete a
