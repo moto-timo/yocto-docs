@@ -590,7 +590,7 @@ shows this package feeds area in the upper-right corner.
 This section looks a little closer into the package feeds area used by
 the build system. Here is a more detailed look at the area:
 
-.. image:: figures/package-feeds.png
+.. image:: svg/package-feeds.*
    :width: 100%
 
 Package feeds are an intermediary step in the build process. The
