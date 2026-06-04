@@ -514,7 +514,7 @@ The remainder of this section provides a deeper look into the source
 files and the mirrors. Here is a more detailed look at the source file
 area of the :ref:`general workflow figure <overview-manual/concepts:openembedded build system concepts>`:
 
-.. image:: figures/source-input.png
+.. image:: svg/source-input.*
    :align: center
    :width: 70%
 
