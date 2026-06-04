@@ -1437,7 +1437,7 @@ creates these necessary toolchains for you.
 The following figure shows a high-level build environment regarding
 toolchain construction and use.
 
-.. image:: figures/cross-development-toolchains.png
+.. image:: svg/cross-development-toolchains.*
    :width: 100%
 
 Most of the work occurs on the Build Host. This is the machine used to
