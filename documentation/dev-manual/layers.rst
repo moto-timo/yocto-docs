@@ -59,7 +59,7 @@ Follow these general steps to create your layer without using tools:
    configuration.
 
    As an example, the following command creates a layer named ``meta-scottrif``
-   in your home directory:
+   in your current directory:
 
    .. code-block:: console
 
