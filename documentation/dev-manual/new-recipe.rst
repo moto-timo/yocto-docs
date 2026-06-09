@@ -315,7 +315,7 @@ fetched from a remote server other than a version control system,
 BitBake attempts to verify the files against checksums defined in your
 recipe to ensure they have not been tampered with or otherwise modified
 since the recipe was written. Multiple checksums are supported:
-``SRC_URI[md5sum]``, ``SRC_URI[sha1sum]``, ``SRC_URI[sha256sum]``.
+``SRC_URI[md5sum]``, ``SRC_URI[sha1sum]``, ``SRC_URI[sha256sum]``,
 ``SRC_URI[sha384sum]`` and ``SRC_URI[sha512sum]``, but only
 ``SRC_URI[sha256sum]`` is commonly used.
 
