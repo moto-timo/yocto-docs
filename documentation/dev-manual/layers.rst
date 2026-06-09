@@ -11,6 +11,13 @@ see the
 ":ref:`overview-manual/yp-intro:the yocto project layer model`"
 section in the Yocto Project Overview and Concepts Manual.
 
+Note well that to properly call the ``bitbake-layers`` command explained
+below, you must first
+:ref:`initialize the build environment <dev-manual/start:Initializing the Build Environment>`
+using your project's environment setup script.
+Without an initialized environment, your shell would not
+know where to find the command or your build configuration.
+
 Creating Your Own Layer
 =======================
 
