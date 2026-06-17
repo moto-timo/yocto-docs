@@ -3674,6 +3674,30 @@ Three variables control this class: :term:`INITSCRIPT_PACKAGES`,
 :term:`INITSCRIPT_NAME` and :term:`INITSCRIPT_PARAMS`. See the variable links
 for details.
 
+.. _ref-classes-upstream-stable-release-point:
+
+``upstream-stable-release-point``
+=================================
+
+The :ref:`ref-classes-upstream-stable-release-point` class automatically
+generates the :term:`UPSTREAM_STABLE_RELEASE_REGEX` variable for recipes
+whose version uses a dot-separated scheme. This enables stable point release
+upgrades — version upgrades constrained to the same stable series (e.g.
+``1.4.2`` to ``1.4.3`` but not to ``1.5.0``).
+
+The class uses the :term:`STABLE_VERSION_PARTS` variable (defaults to ``"2"``)
+to determine how many leading dot-separated parts of :term:`PV` constitute the
+stable prefix. For example:
+
+-  With ``PV = "1.4.2"`` and ``STABLE_VERSION_PARTS = "2"`` (default), the
+   generated regex is ``^1\.4(\.\d+)*$``.
+-  With ``PV = "259.5"`` and ``STABLE_VERSION_PARTS = "1"`` (e.g. systemd), the
+   generated regex is ``^259(\.\d+)*$``.
+
+For recipes whose stable version part is not dot-separated (e.g. openssh uses
+``10.2p1``), set :term:`UPSTREAM_STABLE_RELEASE_REGEX` directly instead of
+inheriting this class.
+
 .. _ref-classes-useradd:
 
 ``useradd*``
