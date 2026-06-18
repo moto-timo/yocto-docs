@@ -10373,6 +10373,10 @@ system and gives an overview of their function and contents.
       :term:`DESCRIPTION` variable if :term:`DESCRIPTION` is
       not set in the recipe.
 
+      If you don't set this variable in your recipe file, you will be warned
+      about that and it will be set to a default value from the
+      :oecore_path:`meta/conf/bitbake.conf` file.
+
    :term:`SVNDIR`
       The directory in which files checked out of a Subversion system are
       stored.
