@@ -370,7 +370,7 @@ Once the build process gets the sample file, it uses ``sed`` to substitute final
 .. _structure-build-conf-site.conf:
 
 ``build/conf/site.conf``
-========================
+------------------------
 
 This configuration file contains the site specific configurations for your build
 environment.
