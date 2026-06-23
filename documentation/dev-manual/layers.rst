@@ -149,8 +149,8 @@ Follow these general steps to create your layer without using tools:
    of "6", you can either use the ``--priority`` option or you can edit the
    :term:`BBFILE_PRIORITY` value in the ``conf/layer.conf`` after the script
    creates it. Furthermore, if you want to give the example recipe file some
-   name other than the default, you can use the ``--example-recipe-name``
-   option.
+   name or version other than the defaults, you can use the ``--example-recipe-name``
+   and/or ``--example-recipe-version`` options.
 
    The easiest way to see how the ``bitbake-layers create-layer`` command
    works is to experiment with the script. You can also read the usage
