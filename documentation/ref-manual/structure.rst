@@ -868,7 +868,10 @@ layer.
 ---------------
 
 This directory contains common license files and several text files used
-by the build system. The text files contain minimal device information
+by the build system, as well as
+:ref:`Wic files <dev-manual/wic:creating partitioned images using wic>`
+that define the layouts of the images produced by the build.
+The text files contain minimal device information
 and lists of files and directories with known permissions.
 
 .. _structure-meta-lib:
