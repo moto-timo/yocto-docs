@@ -539,6 +539,16 @@ licensing, see the
 ":ref:`dev-manual/licenses:maintaining open source license compliance during your product's lifecycle`"
 section in the Yocto Project Development Tasks Manual.
 
+.. _structure-build-tmp-deploy-spdx:
+
+``build/tmp/deploy/spdx/``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This directory contains JSON files in :term:`SPDX` format which are used to
+create a Software Bill of Materials (:term:`SBOM`), as explained in detail in
+the ":ref:`dev-manual/sbom:creating a software bill of materials`" section of
+the Yocto Project Development Tasks Manual.
+
 .. _structure-build-tmp-deploy-images:
 
 ``build/tmp/deploy/images/``
