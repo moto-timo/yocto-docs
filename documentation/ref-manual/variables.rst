@@ -1394,7 +1394,7 @@ system and gives an overview of their function and contents.
       When inheriting the :ref:`ref-classes-buildhistory`
       class, this variable specifies the build history features to be
       enabled. For more information on how build history works, see the
-      ":ref:`dev-manual/build-quality:maintaining build output quality`"
+      ":ref:`dev-manual/build-quality:maintaining build output quality with \`\`buildhistory\`\``"
       section in the Yocto Project Development Tasks Manual.
 
       You can specify these features in the form of a space-separated list:

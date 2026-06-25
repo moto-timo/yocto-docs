@@ -267,7 +267,7 @@ The OpenEmbedded build system creates this directory when you enable
 build history via the :ref:`ref-classes-buildhistory` class file. The directory
 organizes build information into image, packages, and SDK
 subdirectories. For information on the build history feature, see the
-":ref:`dev-manual/build-quality:maintaining build output quality`"
+":ref:`dev-manual/build-quality:maintaining build output quality with \`\`buildhistory\`\``"
 section in the Yocto Project Development Tasks Manual.
 
 .. _structure-build-cache:

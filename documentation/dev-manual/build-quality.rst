@@ -1,7 +1,7 @@
 .. SPDX-License-Identifier: CC-BY-SA-2.0-UK
 
-Maintaining Build Output Quality
-********************************
+Maintaining Build Output Quality with ``buildhistory``
+******************************************************
 
 Many factors can influence the quality of a build. For example, if you
 upgrade a recipe to use a new version of an upstream software package or
