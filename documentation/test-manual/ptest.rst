@@ -84,8 +84,8 @@ During the execution ``ptest-runner`` keeps count of total and failed
 ``ptests``. At end the execution summary is written to the console.
 If any of the ``run-ptest`` fails, ``ptest-runner`` returns '1'.
 
-Consequently, you might want to add ``ptest-runner`` to your image.
-
+The inclusion of any ptest packages in your image will automatically
+include ``ptest-runner`` in your image.
 
 Getting Your Package Ready
 ==========================
